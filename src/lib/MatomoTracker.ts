@@ -20,6 +20,7 @@ import {
 
 /**
  * Extends the global Window interface to include the _paq array used by Matomo
+ * This declaration is used throughout the codebase when accessing window._paq
  * @public
  */
 declare global {
@@ -33,7 +34,7 @@ declare global {
  * @public
  */
 export class MatomoTracker {
-  private options: MatomoProviderConfig;
+  private readonly options: MatomoProviderConfig;
 
   /**
    * Creates a new instance of the Matomo tracker
