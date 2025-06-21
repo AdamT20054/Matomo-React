@@ -1,3 +1,7 @@
-tsconfig.json
+tests/
+coverage/
+*.map
 .github/
 .idea/
+tsconfig.json
+jest.config.js

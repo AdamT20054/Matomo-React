@@ -1,5 +1,5 @@
 import React, { ReactNode, createContext, useContext, useMemo } from "react";
-import { MatomoTracker } from "../lib/MatomoTracker";
+import { MatomoTracker } from "../lib";
 import { MatomoProviderConfig } from "../types";
 
 type MatomoContextProps = {
