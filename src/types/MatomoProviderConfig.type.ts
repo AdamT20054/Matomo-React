@@ -12,6 +12,22 @@ export interface HeartBeatConfig {
 }
 
 /**
+ * Default configuration values for the Matomo tracker
+ * @internal
+ */
+export const DEFAULT_CONFIG = {
+  disableTracking: false,
+  disableLinkTracking: false,
+  enableJSErrorTracking: false,
+  enableHeartBeatTimer: true,
+  heartBeatTimerInterval: 15,
+  matomoJsFileName: "matomo.js",
+  matomoPhpFileName: "matomo.php",
+  debug: false,
+  deferTracking: false,
+};
+
+/**
  * Configuration options for the Matomo tracker
  * @public
  */
@@ -105,4 +121,23 @@ export type MatomoProviderConfig = {
    * Keys are Matomo API method names, values are the parameters
    */
   configurations?: Record<string, any>;
+
+  // Debug and performance options
+  /**
+   * When true, logs tracking information to the console
+   * Useful for debugging tracking issues
+   */
+  debug?: boolean;
+
+  /**
+   * When true, defers tracking until after critical page content has loaded
+   * Improves initial page load performance
+   */
+  deferTracking?: boolean;
+
+  /**
+   * Enable JavaScript error tracking
+   * When true, uncaught JavaScript errors will be tracked as events
+   */
+  enableJSErrorTracking?: boolean;
 };

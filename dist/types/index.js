@@ -16,4 +16,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./MatomoProviderConfig.type"), exports);
 __exportStar(require("./TrackParams.type"), exports);
+__exportStar(require("./MatomoTracking.type"), exports);
 //# sourceMappingURL=index.js.map
