@@ -83,8 +83,8 @@
               "name": "MongoJS"
             },
             {
-              "id": "JavaScript and TypeScript/General",
-              "name": "General",
+              "id": "JavaScript and TypeScript/Code style issues",
+              "name": "Code style issues",
               "relationships": [
                 {
                   "target": {
@@ -101,8 +101,8 @@
               ]
             },
             {
-              "id": "JavaScript and TypeScript/Code style issues",
-              "name": "Code style issues",
+              "id": "JavaScript and TypeScript/General",
+              "name": "General",
               "relationships": [
                 {
                   "target": {
@@ -181,6 +181,10 @@
               "name": "HTML"
             },
             {
+              "id": "Cucumber",
+              "name": "Cucumber"
+            },
+            {
               "id": "JavaScript and TypeScript/Unused symbols",
               "name": "Unused symbols",
               "relationships": [
@@ -197,10 +201,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "id": "Cucumber",
-              "name": "Cucumber"
             },
             {
               "id": "JavaScript and TypeScript/Data flow",
@@ -333,10 +333,6 @@
               ]
             },
             {
-              "id": "SQL",
-              "name": "SQL"
-            },
-            {
               "id": "JavaScript and TypeScript/Potentially confusing code constructs",
               "name": "Potentially confusing code constructs",
               "relationships": [
@@ -353,6 +349,10 @@
                   ]
                 }
               ]
+            },
+            {
+              "id": "SQL",
+              "name": "SQL"
             },
             {
               "id": "CSS",
@@ -399,6 +399,10 @@
               ]
             },
             {
+              "id": "Structural search",
+              "name": "Structural search"
+            },
+            {
               "id": "JavaScript and TypeScript/Function metrics",
               "name": "Function metrics",
               "relationships": [
@@ -415,10 +419,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "id": "Structural search",
-              "name": "Structural search"
             },
             {
               "id": "Dependency analysis",
@@ -776,19 +776,19 @@
                 ]
               },
               {
-                "id": "IfStatementWithTooManyBranchesJS",
+                "id": "NonBlockStatementBodyJS",
                 "shortDescription": {
-                  "text": "'if' statement with too many branches"
+                  "text": "Statement body without braces"
                 },
                 "fullDescription": {
-                  "text": "Reports an 'if' statement with too many branches. Such statements may be confusing, and often indicate inadequate levels of design abstraction. Use the field below to specify the maximum number of branches expected.",
-                  "markdown": "Reports an `if` statement with too many branches. Such statements may be confusing, and often indicate inadequate levels of design abstraction.\n\n\nUse the field below to specify the maximum number of branches expected."
+                  "text": "Reports a 'if', 'while', 'for', or 'with' statements whose body is not a block statement. Using code block in statement bodies is usually safer for downstream maintenance.",
+                  "markdown": "Reports a `if`, `while`, `for`, or `with` statements whose body is not a block statement. Using code block in statement bodies is usually safer for downstream maintenance."
                 },
                 "defaultConfiguration": {
                   "enabled": false,
                   "level": "warning",
                   "parameters": {
-                    "suppressToolId": "IfStatementWithTooManyBranchesJS",
+                    "suppressToolId": "NonBlockStatementBodyJS",
                     "ideaSeverity": "WARNING",
                     "qodanaSeverity": "High",
                     "codeQualityCategory": "Code Style"
@@ -797,8 +797,8 @@
                 "relationships": [
                   {
                     "target": {
-                      "id": "JavaScript and TypeScript/Control flow issues",
-                      "index": 1,
+                      "id": "JavaScript and TypeScript/Code style issues",
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -832,7 +832,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -844,19 +844,19 @@
                 ]
               },
               {
-                "id": "NonBlockStatementBodyJS",
+                "id": "IfStatementWithTooManyBranchesJS",
                 "shortDescription": {
-                  "text": "Statement body without braces"
+                  "text": "'if' statement with too many branches"
                 },
                 "fullDescription": {
-                  "text": "Reports a 'if', 'while', 'for', or 'with' statements whose body is not a block statement. Using code block in statement bodies is usually safer for downstream maintenance.",
-                  "markdown": "Reports a `if`, `while`, `for`, or `with` statements whose body is not a block statement. Using code block in statement bodies is usually safer for downstream maintenance."
+                  "text": "Reports an 'if' statement with too many branches. Such statements may be confusing, and often indicate inadequate levels of design abstraction. Use the field below to specify the maximum number of branches expected.",
+                  "markdown": "Reports an `if` statement with too many branches. Such statements may be confusing, and often indicate inadequate levels of design abstraction.\n\n\nUse the field below to specify the maximum number of branches expected."
                 },
                 "defaultConfiguration": {
                   "enabled": false,
                   "level": "warning",
                   "parameters": {
-                    "suppressToolId": "NonBlockStatementBodyJS",
+                    "suppressToolId": "IfStatementWithTooManyBranchesJS",
                     "ideaSeverity": "WARNING",
                     "qodanaSeverity": "High",
                     "codeQualityCategory": "Code Style"
@@ -865,8 +865,8 @@
                 "relationships": [
                   {
                     "target": {
-                      "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
+                      "id": "JavaScript and TypeScript/Control flow issues",
+                      "index": 1,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -921,7 +921,7 @@
                   "markdown": "Reports a JavaScript file with a `@flow` flag that doesn't have an associated `.flowconfig` file in the project."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "FlowJSConfig",
@@ -1036,7 +1036,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Unused symbols",
-                      "index": 18,
+                      "index": 19,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -1116,40 +1116,6 @@
                 ]
               },
               {
-                "id": "JSClosureCompilerSyntax",
-                "shortDescription": {
-                  "text": "Incorrect usage of JSDoc tags"
-                },
-                "fullDescription": {
-                  "text": "Reports warnings implied by Google Closure Compiler annotations including correct use of '@abstract', '@interface', and '@implements' tags.",
-                  "markdown": "Reports warnings implied by *Google Closure Compiler* annotations including correct use of `@abstract`, `@interface`, and `@implements` tags."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "JSClosureCompilerSyntax",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Code Style"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/General",
-                      "index": 11,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "UnnecessaryContinueJS",
                 "shortDescription": {
                   "text": "Unnecessary 'continue' statement"
@@ -1173,6 +1139,40 @@
                     "target": {
                       "id": "JavaScript and TypeScript/Control flow issues",
                       "index": 1,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "JSClosureCompilerSyntax",
+                "shortDescription": {
+                  "text": "Incorrect usage of JSDoc tags"
+                },
+                "fullDescription": {
+                  "text": "Reports warnings implied by Google Closure Compiler annotations including correct use of '@abstract', '@interface', and '@implements' tags.",
+                  "markdown": "Reports warnings implied by *Google Closure Compiler* annotations including correct use of `@abstract`, `@interface`, and `@implements` tags."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "JSClosureCompilerSyntax",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Code Style"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/General",
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -1342,7 +1342,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -1444,7 +1444,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Function metrics",
-                      "index": 34,
+                      "index": 35,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -1465,7 +1465,7 @@
                   "markdown": "Reports an unnecessary local variable that does not make a function more comprehensible:\n\n* a local variable that is immediately returned\n* a local variable that is immediately assigned to another variable and is not used anymore\n* a local variable that always has the same value as another local variable or parameter.\n\n\nUse the checkbox below to have this inspection ignore variables that are immediately\nreturned or thrown. Some coding styles suggest using such variables for clarity and\nease of debugging."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "UnnecessaryLocalVariableJS",
@@ -1512,7 +1512,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -1546,7 +1546,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -1682,7 +1682,41 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "ES6ShorthandObjectProperty",
+                "shortDescription": {
+                  "text": "Property can be replaced with shorthand"
+                },
+                "fullDescription": {
+                  "text": "Reports an object property that can be converted to ES6 shorthand style and provides a quick-fix to do it. Example: 'var obj = {foo:foo}' After applying the quick-fix the code looks as follows: 'var obj = {foo}'",
+                  "markdown": "Reports an object property that can be converted to ES6 shorthand style and provides a quick-fix to do it.\n\nExample:\n\n\n    var obj = {foo:foo}\n\nAfter applying the quick-fix the code looks as follows:\n\n\n    var obj = {foo}\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "note",
+                  "parameters": {
+                    "suppressToolId": "ES6ShorthandObjectProperty",
+                    "ideaSeverity": "INFORMATION",
+                    "qodanaSeverity": "Info",
+                    "codeQualityCategory": "Code Style"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/General",
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -1717,40 +1751,6 @@
                     "target": {
                       "id": "JavaScript and TypeScript/Control flow issues",
                       "index": 1,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "ES6ShorthandObjectProperty",
-                "shortDescription": {
-                  "text": "Property can be replaced with shorthand"
-                },
-                "fullDescription": {
-                  "text": "Reports an object property that can be converted to ES6 shorthand style and provides a quick-fix to do it. Example: 'var obj = {foo:foo}' After applying the quick-fix the code looks as follows: 'var obj = {foo}'",
-                  "markdown": "Reports an object property that can be converted to ES6 shorthand style and provides a quick-fix to do it.\n\nExample:\n\n\n    var obj = {foo:foo}\n\nAfter applying the quick-fix the code looks as follows:\n\n\n    var obj = {foo}\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "note",
-                  "parameters": {
-                    "suppressToolId": "ES6ShorthandObjectProperty",
-                    "ideaSeverity": "INFORMATION",
-                    "qodanaSeverity": "Info",
-                    "codeQualityCategory": "Code Style"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/General",
-                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -1873,7 +1873,7 @@
                   "markdown": "Reports an arithmetic expression that include adding or subtracting zero, multiplying by zero or one, division by one, and shift by zero. Such expressions may result from not fully completed automated refactoring."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "PointlessArithmeticExpressionJS",
@@ -1886,7 +1886,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -1954,7 +1954,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2022,7 +2022,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2124,7 +2124,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2260,7 +2260,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2294,7 +2294,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2328,7 +2328,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2430,7 +2430,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2532,7 +2532,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2600,7 +2600,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Function metrics",
-                      "index": 34,
+                      "index": 35,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2646,40 +2646,6 @@
                 ]
               },
               {
-                "id": "NpmUsedModulesInstalled",
-                "shortDescription": {
-                  "text": "Missing module dependency"
-                },
-                "fullDescription": {
-                  "text": "Reports a module from a 'require()' call or an 'import' statement that is not installed or is not listed in package.json dependencies. Suggests installing the module and/or including it into package.json. For 'require()' calls, works only in the files from the scope of Node.js Core JavaScript library.",
-                  "markdown": "Reports a module from a `require()` call or an `import` statement that is not installed or is not listed in package.json dependencies.\n\nSuggests installing the module and/or including it into package.json.\n\nFor `require()` calls, works only in the files from the scope of *Node.js Core* JavaScript library."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "note",
-                  "parameters": {
-                    "suppressToolId": "NpmUsedModulesInstalled",
-                    "ideaSeverity": "WEAK WARNING",
-                    "qodanaSeverity": "Moderate",
-                    "codeQualityCategory": "Sanity"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/Imports and dependencies",
-                      "index": 45,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "UnusedCatchParameterJS",
                 "shortDescription": {
                   "text": "Unused 'catch' parameter"
@@ -2703,6 +2669,40 @@
                     "target": {
                       "id": "JavaScript and TypeScript/Try statement issues",
                       "index": 33,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "NpmUsedModulesInstalled",
+                "shortDescription": {
+                  "text": "Missing module dependency"
+                },
+                "fullDescription": {
+                  "text": "Reports a module from a 'require()' call or an 'import' statement that is not installed or is not listed in package.json dependencies. Suggests installing the module and/or including it into package.json. For 'require()' calls, works only in the files from the scope of Node.js Core JavaScript library.",
+                  "markdown": "Reports a module from a `require()` call or an `import` statement that is not installed or is not listed in package.json dependencies.\n\nSuggests installing the module and/or including it into package.json.\n\nFor `require()` calls, works only in the files from the scope of *Node.js Core* JavaScript library."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "note",
+                  "parameters": {
+                    "suppressToolId": "NpmUsedModulesInstalled",
+                    "ideaSeverity": "WEAK WARNING",
+                    "qodanaSeverity": "Moderate",
+                    "codeQualityCategory": "Sanity"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/Imports and dependencies",
+                      "index": 45,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2838,7 +2838,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2906,7 +2906,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -2940,7 +2940,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -3063,7 +3063,7 @@
                   "markdown": "Reports an unused globally accessible public function, variable, class, or property."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "JSUnusedGlobalSymbols",
@@ -3076,7 +3076,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Unused symbols",
-                      "index": 18,
+                      "index": 19,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -3156,40 +3156,6 @@
                 ]
               },
               {
-                "id": "BlockStatementJS",
-                "shortDescription": {
-                  "text": "Unnecessary block statement"
-                },
-                "fullDescription": {
-                  "text": "Reports a block statement that is not used as the body of 'if', 'for', 'while', 'do', 'with', or 'try' statements, or as the body of a function declaration. Starting from ECMAScript 6, JavaScript blocks introduce new scopes for 'let' and 'const' variables, but still free-standing block statements may be confusing and result in subtle bugs when used with 'var' variables.",
-                  "markdown": "Reports a block statement that is not used as the body of `if`, `for`, `while`, `do`, `with`, or `try` statements, or as the body of a function declaration. Starting from ECMAScript 6, JavaScript blocks introduce new scopes for `let` and `const` variables, but still free-standing block statements may be confusing and result in subtle bugs when used with `var` variables."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "BlockStatementJS",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Code Style"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "AnonymousFunctionJS",
                 "shortDescription": {
                   "text": "Anonymous function"
@@ -3213,6 +3179,40 @@
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially undesirable code constructs",
                       "index": 14,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "BlockStatementJS",
+                "shortDescription": {
+                  "text": "Unnecessary block statement"
+                },
+                "fullDescription": {
+                  "text": "Reports a block statement that is not used as the body of 'if', 'for', 'while', 'do', 'with', or 'try' statements, or as the body of a function declaration. Starting from ECMAScript 6, JavaScript blocks introduce new scopes for 'let' and 'const' variables, but still free-standing block statements may be confusing and result in subtle bugs when used with 'var' variables.",
+                  "markdown": "Reports a block statement that is not used as the body of `if`, `for`, `while`, `do`, `with`, or `try` statements, or as the body of a function declaration. Starting from ECMAScript 6, JavaScript blocks introduce new scopes for `let` and `const` variables, but still free-standing block statements may be confusing and result in subtle bugs when used with `var` variables."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "BlockStatementJS",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Code Style"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/Potentially confusing code constructs",
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -3292,40 +3292,6 @@
                 ]
               },
               {
-                "id": "NestedConditionalExpressionJS",
-                "shortDescription": {
-                  "text": "Nested conditional expression"
-                },
-                "fullDescription": {
-                  "text": "Reports a ternary conditional expression within another ternary condition. Such nested conditionals may be extremely confusing, and best replaced by more explicit conditional logic.",
-                  "markdown": "Reports a ternary conditional expression within another ternary condition. Such nested conditionals may be extremely confusing, and best replaced by more explicit conditional logic."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "NestedConditionalExpressionJS",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Code Style"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "JSTypeOfValues",
                 "shortDescription": {
                   "text": "'typeof' comparison with non-standard value"
@@ -3349,6 +3315,40 @@
                     "target": {
                       "id": "JavaScript and TypeScript/Probable bugs",
                       "index": 16,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "NestedConditionalExpressionJS",
+                "shortDescription": {
+                  "text": "Nested conditional expression"
+                },
+                "fullDescription": {
+                  "text": "Reports a ternary conditional expression within another ternary condition. Such nested conditionals may be extremely confusing, and best replaced by more explicit conditional logic.",
+                  "markdown": "Reports a ternary conditional expression within another ternary condition. Such nested conditionals may be extremely confusing, and best replaced by more explicit conditional logic."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "NestedConditionalExpressionJS",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Code Style"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/Potentially confusing code constructs",
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -3539,7 +3539,7 @@
                   "markdown": "Reports a `@flow` flag comment that is not located at the top of a file."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "FlowJSFlagCommentPlacement",
@@ -3620,7 +3620,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -3824,7 +3824,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Function metrics",
-                      "index": 34,
+                      "index": 35,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -3858,7 +3858,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4028,7 +4028,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4062,7 +4062,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4198,7 +4198,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4266,7 +4266,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4368,7 +4368,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4470,7 +4470,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4538,7 +4538,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4674,7 +4674,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4742,7 +4742,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -4924,6 +4924,74 @@
                 ]
               },
               {
+                "id": "JSUnfilteredForInLoop",
+                "shortDescription": {
+                  "text": "Unfiltered for..in loop"
+                },
+                "fullDescription": {
+                  "text": "Reports unfiltered 'for-in' loops. The use of this construct results in processing not only own properties of an object but properties from its prototype as well. It may be unexpected in some specific cases, for example, in utility methods that copy or modify all properties or when 'Object''s prototype may be incorrectly modified. For example, the following code will print 42 and myMethod: 'Object.prototype.myMethod = function myMethod() {};\nlet a = { foo: 42 };\nfor (let i in a) {\n  console.log(a[i]);\n}' Suggests replacing the whole loop with a 'Object.keys()' method or adding a 'hasOwnProperty()' check. After applying the quick-fix the code looks as follows: 'for (let i in a) {\n  if (a.hasOwnProperty(i)) {\n    console.log(a[i]);\n  }\n}'",
+                  "markdown": "Reports unfiltered `for-in` loops.   \n\nThe use of this construct results in processing not only own properties of an object but properties from its prototype as well. It may be unexpected in some specific cases, for example, in utility methods that copy or modify all properties or when `Object`'s prototype may be incorrectly modified. For example, the following code will print **42** and **myMethod** :   \n\n\n    Object.prototype.myMethod = function myMethod() {};\n    let a = { foo: 42 };\n    for (let i in a) {\n      console.log(a[i]);\n    }\n\nSuggests replacing the whole loop with a `Object.keys()` method or adding a `hasOwnProperty()` check. After applying the quick-fix the code looks as follows:\n\n\n    for (let i in a) {\n      if (a.hasOwnProperty(i)) {\n        console.log(a[i]);\n      }\n    }\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "JSUnfilteredForInLoop",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Reliability"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/General",
+                      "index": 12,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "JSAnnotator",
+                "shortDescription": {
+                  "text": "ECMAScript specification is not followed"
+                },
+                "fullDescription": {
+                  "text": "Reports basic syntax issues and inconsistencies with language specification, such as invalid usages of keywords, usages of incompatible numeric format, or multiple parameters to getters/setters. Generally, such errors must always be reported and shouldn't be disabled. But in some cases, such as issues due to the dynamic nature of JavaScript, the use of not yet supported language features, or bugs in IDE's checker, it may be handy to disable reporting these very basic errors.",
+                  "markdown": "Reports basic syntax issues and inconsistencies with language specification, such as invalid usages of keywords, usages of incompatible numeric format, or multiple parameters to getters/setters.   \nGenerally, such errors must always be reported and shouldn't be disabled. But in some cases, such as issues due to the dynamic nature of JavaScript, the use of not yet supported language features, or bugs in IDE's checker, it may be handy to disable reporting these very basic errors."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "suppressToolId": "JSAnnotator",
+                    "ideaSeverity": "ERROR",
+                    "qodanaSeverity": "Critical",
+                    "codeQualityCategory": "Sanity"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/General",
+                      "index": 12,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
                 "id": "JSIncompatibleTypesComparison",
                 "shortDescription": {
                   "text": "Comparison of expressions having incompatible types"
@@ -4958,74 +5026,6 @@
                 ]
               },
               {
-                "id": "JSAnnotator",
-                "shortDescription": {
-                  "text": "ECMAScript specification is not followed"
-                },
-                "fullDescription": {
-                  "text": "Reports basic syntax issues and inconsistencies with language specification, such as invalid usages of keywords, usages of incompatible numeric format, or multiple parameters to getters/setters. Generally, such errors must always be reported and shouldn't be disabled. But in some cases, such as issues due to the dynamic nature of JavaScript, the use of not yet supported language features, or bugs in IDE's checker, it may be handy to disable reporting these very basic errors.",
-                  "markdown": "Reports basic syntax issues and inconsistencies with language specification, such as invalid usages of keywords, usages of incompatible numeric format, or multiple parameters to getters/setters.   \nGenerally, such errors must always be reported and shouldn't be disabled. But in some cases, such as issues due to the dynamic nature of JavaScript, the use of not yet supported language features, or bugs in IDE's checker, it may be handy to disable reporting these very basic errors."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "suppressToolId": "JSAnnotator",
-                    "ideaSeverity": "ERROR",
-                    "qodanaSeverity": "Critical",
-                    "codeQualityCategory": "Sanity"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/General",
-                      "index": 11,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "JSUnfilteredForInLoop",
-                "shortDescription": {
-                  "text": "Unfiltered for..in loop"
-                },
-                "fullDescription": {
-                  "text": "Reports unfiltered 'for-in' loops. The use of this construct results in processing not only own properties of an object but properties from its prototype as well. It may be unexpected in some specific cases, for example, in utility methods that copy or modify all properties or when 'Object''s prototype may be incorrectly modified. For example, the following code will print 42 and myMethod: 'Object.prototype.myMethod = function myMethod() {};\nlet a = { foo: 42 };\nfor (let i in a) {\n  console.log(a[i]);\n}' Suggests replacing the whole loop with a 'Object.keys()' method or adding a 'hasOwnProperty()' check. After applying the quick-fix the code looks as follows: 'for (let i in a) {\n  if (a.hasOwnProperty(i)) {\n    console.log(a[i]);\n  }\n}'",
-                  "markdown": "Reports unfiltered `for-in` loops.   \n\nThe use of this construct results in processing not only own properties of an object but properties from its prototype as well. It may be unexpected in some specific cases, for example, in utility methods that copy or modify all properties or when `Object`'s prototype may be incorrectly modified. For example, the following code will print **42** and **myMethod** :   \n\n\n    Object.prototype.myMethod = function myMethod() {};\n    let a = { foo: 42 };\n    for (let i in a) {\n      console.log(a[i]);\n    }\n\nSuggests replacing the whole loop with a `Object.keys()` method or adding a `hasOwnProperty()` check. After applying the quick-fix the code looks as follows:\n\n\n    for (let i in a) {\n      if (a.hasOwnProperty(i)) {\n        console.log(a[i]);\n      }\n    }\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "JSUnfilteredForInLoop",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Reliability"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/General",
-                      "index": 11,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "JSLastCommaInObjectLiteral",
                 "shortDescription": {
                   "text": "Unneeded last comma in object literal"
@@ -5048,7 +5048,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -5273,7 +5273,7 @@
                   "markdown": "Reports an assignment to a property that is not defined in the type of a variable.\n\nExample:\n\n\n    /**\n     * @type {{ property1: string, property2: number }}\n     */\n    let myVariable = create();\n\n    myVariable.newProperty = 3; // bad\n"
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "note",
                   "parameters": {
                     "suppressToolId": "JSUndefinedPropertyAssignment",
@@ -5286,7 +5286,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -5354,7 +5354,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Function metrics",
-                      "index": 34,
+                      "index": 35,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -5490,7 +5490,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -5524,7 +5524,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -5626,7 +5626,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -5762,7 +5762,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -5864,7 +5864,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Function metrics",
-                      "index": 34,
+                      "index": 35,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -5932,7 +5932,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Function metrics",
-                      "index": 34,
+                      "index": 35,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -5966,7 +5966,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6000,7 +6000,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6034,7 +6034,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6068,7 +6068,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6136,7 +6136,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Function metrics",
-                      "index": 34,
+                      "index": 35,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6204,7 +6204,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6272,7 +6272,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6293,7 +6293,7 @@
                   "markdown": "Reports an `if` statement that can be simplified to a single assignment or a `return` statement.\n\nExample:\n\n\n    if(foo())\n     {\n      return true;\n     }\n     else\n     {\n       return false;\n     }\n\nAfter applying the quick-fix the code looks as follows:\n\n     return foo();\n"
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "RedundantIfStatementJS",
@@ -6386,40 +6386,6 @@
                 ]
               },
               {
-                "id": "ConstantOnLHSOfComparisonJS",
-                "shortDescription": {
-                  "text": "Constant on left side of comparison"
-                },
-                "fullDescription": {
-                  "text": "Reports a comparison operation with a constant value in the left-hand side. According to coding conventions, constants should be in the right-hand side of comparisons.",
-                  "markdown": "Reports a comparison operation with a constant value in the left-hand side. According to coding conventions, constants should be in the right-hand side of comparisons."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "ConstantOnLefSideOfComparisonJS",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Code Style"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "JSCheckFunctionSignatures",
                 "shortDescription": {
                   "text": "Signature mismatch"
@@ -6442,6 +6408,40 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
+                      "index": 12,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "ConstantOnLHSOfComparisonJS",
+                "shortDescription": {
+                  "text": "Constant on left side of comparison"
+                },
+                "fullDescription": {
+                  "text": "Reports a comparison operation with a constant value in the left-hand side. According to coding conventions, constants should be in the right-hand side of comparisons.",
+                  "markdown": "Reports a comparison operation with a constant value in the left-hand side. According to coding conventions, constants should be in the right-hand side of comparisons."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "ConstantOnLefSideOfComparisonJS",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Code Style"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/Code style issues",
                       "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
@@ -6544,7 +6544,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6612,7 +6612,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6748,7 +6748,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6782,7 +6782,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6884,41 +6884,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Code style issues",
-                      "index": 12,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "IfStatementWithIdenticalBranchesJS",
-                "shortDescription": {
-                  "text": "'if' statement with identical branches"
-                },
-                "fullDescription": {
-                  "text": "Reports an 'if' statement with identical 'then' and 'else' branches. Such statements are almost certainly an error.",
-                  "markdown": "Reports an `if` statement with identical `then` and `else` branches. Such statements are almost certainly an error."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "IfStatementWithIdenticalBranchesJS",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Reliability"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/Control flow issues",
-                      "index": 1,
+                      "index": 11,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -6953,6 +6919,40 @@
                     "target": {
                       "id": "JavaScript and TypeScript/DOM issues",
                       "index": 50,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "IfStatementWithIdenticalBranchesJS",
+                "shortDescription": {
+                  "text": "'if' statement with identical branches"
+                },
+                "fullDescription": {
+                  "text": "Reports an 'if' statement with identical 'then' and 'else' branches. Such statements are almost certainly an error.",
+                  "markdown": "Reports an `if` statement with identical `then` and `else` branches. Such statements are almost certainly an error."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "IfStatementWithIdenticalBranchesJS",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Reliability"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/Control flow issues",
+                      "index": 1,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -7075,7 +7075,7 @@
                   "markdown": "Reports a usage of the `caller` property in a JavaScript function. Using this property to access the stack frame of the calling method can be extremely confusing and result in subtle bugs."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "CallerJS",
@@ -7088,7 +7088,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -7202,6 +7202,40 @@
                 ]
               },
               {
+                "id": "TrivialConditionalJS",
+                "shortDescription": {
+                  "text": "Redundant conditional expression"
+                },
+                "fullDescription": {
+                  "text": "Reports a conditional expression of the form 'condition ? true : false\ncondition ? false : true' These expressions may be safely converted to 'condition\n!condition'",
+                  "markdown": "Reports a conditional expression of the form\n\n\n    condition ? true : false\n    condition ? false : true\n\n\nThese expressions may be safely converted to\n\n\n    condition\n    !condition\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "RedundantConditionalExpressionJS",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Code Style"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JavaScript and TypeScript/Control flow issues",
+                      "index": 1,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
                 "id": "TypeScriptDuplicateUnionOrIntersectionType",
                 "shortDescription": {
                   "text": "Duplicate union or intersection type component"
@@ -7236,29 +7270,29 @@
                 ]
               },
               {
-                "id": "TrivialConditionalJS",
+                "id": "InnerHTMLJS",
                 "shortDescription": {
-                  "text": "Redundant conditional expression"
+                  "text": "Use of 'innerHTML' property"
                 },
                 "fullDescription": {
-                  "text": "Reports a conditional expression of the form 'condition ? true : false\ncondition ? false : true' These expressions may be safely converted to 'condition\n!condition'",
-                  "markdown": "Reports a conditional expression of the form\n\n\n    condition ? true : false\n    condition ? false : true\n\n\nThese expressions may be safely converted to\n\n\n    condition\n    !condition\n"
+                  "text": "Reports a JavaScript access to DOM nodes as text using the 'innerHTML' property. Most usages of 'innerHTML' are performed better with explicit DOM calls, such as 'getElementByID()' and 'createElement()'. Additionally, 'innerHTML' will not work with XML DOMs, including DOMs for XHTML if viewed as XML. This can lead to difficulties in diagnosing bugs.",
+                  "markdown": "Reports a JavaScript access to DOM nodes as text using the `innerHTML` property. Most usages of `innerHTML` are performed better with explicit DOM calls, such as `getElementByID()` and `createElement()`. Additionally, `innerHTML` will not work with XML DOMs, including DOMs for XHTML if viewed as XML. This can lead to difficulties in diagnosing bugs."
                 },
                 "defaultConfiguration": {
                   "enabled": false,
                   "level": "warning",
                   "parameters": {
-                    "suppressToolId": "RedundantConditionalExpressionJS",
+                    "suppressToolId": "InnerHTMLJS",
                     "ideaSeverity": "WARNING",
                     "qodanaSeverity": "High",
-                    "codeQualityCategory": "Code Style"
+                    "codeQualityCategory": "Performance"
                   }
                 },
                 "relationships": [
                   {
                     "target": {
-                      "id": "JavaScript and TypeScript/Control flow issues",
-                      "index": 1,
+                      "id": "JavaScript and TypeScript/DOM issues",
+                      "index": 50,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -7327,40 +7361,6 @@
                     "target": {
                       "id": "JavaScript and TypeScript/Switch statement issues",
                       "index": 49,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "InnerHTMLJS",
-                "shortDescription": {
-                  "text": "Use of 'innerHTML' property"
-                },
-                "fullDescription": {
-                  "text": "Reports a JavaScript access to DOM nodes as text using the 'innerHTML' property. Most usages of 'innerHTML' are performed better with explicit DOM calls, such as 'getElementByID()' and 'createElement()'. Additionally, 'innerHTML' will not work with XML DOMs, including DOMs for XHTML if viewed as XML. This can lead to difficulties in diagnosing bugs.",
-                  "markdown": "Reports a JavaScript access to DOM nodes as text using the `innerHTML` property. Most usages of `innerHTML` are performed better with explicit DOM calls, such as `getElementByID()` and `createElement()`. Additionally, `innerHTML` will not work with XML DOMs, including DOMs for XHTML if viewed as XML. This can lead to difficulties in diagnosing bugs."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "InnerHTMLJS",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Performance"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JavaScript and TypeScript/DOM issues",
-                      "index": 50,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -7462,7 +7462,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -7619,7 +7619,7 @@
                   "markdown": "Reports an `if`, `while`, `for`, or `with` statement with an empty body. Such statements often result from typos, and may cause confusion.\n\n\nUse the checkbox below to specify whether the statements with empty block statements as bodies\nshould be reported."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "StatementWithEmptyBodyJS",
@@ -7632,7 +7632,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Potentially confusing code constructs",
-                      "index": 29,
+                      "index": 28,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -7734,7 +7734,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/Unused symbols",
-                      "index": 18,
+                      "index": 19,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -7768,7 +7768,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -9389,7 +9389,7 @@
                   "markdown": "Reports issues related to usage of `ngSrc` ([NgOptimizedDirective](https://angular.io/guide/image-directive)) on `img` tags.\n\n\nFollowing issues are reported:\n\n* `img` tags, which use `src` instead of `ngSrc`\n* lack of `width` and `height`, or `fill` attributes when `ngSrc` is used\n* `width` or `height`, and `fill` attributes being present on the same element when `ngSrc` is used"
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "note",
                   "parameters": {
                     "suppressToolId": "AngularNgOptimizedImage",
@@ -9423,7 +9423,7 @@
                   "markdown": "Reports problems with Angular blocks."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularIncorrectBlockUsage",
@@ -9457,7 +9457,7 @@
                   "markdown": "Reports a template reference variable that is not assigned to a directive when using `exportAs` or is assigned to multiple directives."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularInvalidTemplateReferenceVariable",
@@ -9491,7 +9491,7 @@
                   "markdown": "Reports multiple structural directives (`*ngIf`, `*ngFor`, etc.) on one element."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularMultipleStructuralDirectives",
@@ -9525,7 +9525,7 @@
                   "markdown": "Reports an unresolved pipe."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularUnresolvedPipe",
@@ -9559,7 +9559,7 @@
                   "markdown": "Suggests using the `ng add` command to install the dependency.\n\n`ng add` will use the package manager to download it and invoke a schematic\nwhich can update your project with configuration changes, add additional dependencies (e.g. polyfills),\nor scaffold package-specific initialization code."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "AngularCliAddDependency",
@@ -9593,7 +9593,7 @@
                   "markdown": "Reports issues with triggers in \\`on\\` parameters in \\`@defer\\` block."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularDeferBlockOnTrigger",
@@ -9627,7 +9627,7 @@
                   "markdown": "Reports access to invisible (private or protected) component member or directive input from an Angular template."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularInaccessibleSymbol",
@@ -9661,7 +9661,7 @@
                   "markdown": "Reports a missing event handler statement for an event binding."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularMissingEventHandler",
@@ -9695,7 +9695,7 @@
                   "markdown": "Reports unused imports in Angular components."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularUnusedComponentImport",
@@ -9729,7 +9729,7 @@
                   "markdown": "Reports a tag defined by a component or directive out of the current scope."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularUndefinedTag",
@@ -9763,7 +9763,7 @@
                   "markdown": "Reports an undefined property, event, or structural directive bindings on elements."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularUndefinedBinding",
@@ -9797,7 +9797,7 @@
                   "markdown": "Reports any symbol that is declared, imported or exported by an Angular module or standalone component that is not a module, component, directive, or pipe or can't be used in the context of the property."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularInvalidImportedOrDeclaredSymbol",
@@ -9831,7 +9831,7 @@
                   "markdown": "Reports illegal access to the template variable within `@for` loop `track` expression."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularIllegalForLoopTrackAccess",
@@ -9865,7 +9865,7 @@
                   "markdown": "Reports a component that is matched on an embedded template element `<ng-template>` or multiple components matched on any other element."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularAmbiguousComponentTag",
@@ -9899,7 +9899,7 @@
                   "markdown": "Reports an export of an undeclared or unimported component, directive, or pipes from an Angular module."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularUndefinedModuleExport",
@@ -9933,7 +9933,7 @@
                   "markdown": "Reports a problem with a `i18n-*` attribute."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "AngularInvalidI18nAttribute",
@@ -9967,7 +9967,7 @@
                   "markdown": "Reports that the type of variable to iterate over does not have `[Symbol.iterator]()` method, which returns an iterator."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularForBlockNonIterableVar",
@@ -10001,7 +10001,7 @@
                   "markdown": "Reports a component that doesn't have an associated template or uses both `template` and `templateUrl` properties."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularIncorrectTemplateDefinition",
@@ -10035,7 +10035,7 @@
                   "markdown": "Reports problems with @let declaration usages."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularIncorrectLetUsage",
@@ -10069,7 +10069,7 @@
                   "markdown": "Reports usages of imports property in non-standalone component decorators. Imports can be used only in standalone components."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularNonStandaloneComponentImports",
@@ -10103,7 +10103,7 @@
                   "markdown": "Reports a non-standalone Angular component, directive, or pipe that is not declared in any module or is declared in multiple modules."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularMissingOrInvalidDeclarationInModule",
@@ -10137,7 +10137,7 @@
                   "markdown": "Reports an invalid assignment of an animation trigger. To attach an animation to an element, use `[@triggerName]=\"expression\"` or an attribute without a value `@triggerName`."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularInvalidAnimationTriggerAssignment",
@@ -10171,7 +10171,7 @@
                   "markdown": "Reports an invalid Angular component specified in the module's `bootstrap` or `entryComponents` property."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularInvalidEntryComponent",
@@ -10205,7 +10205,7 @@
                   "markdown": "Reports a cyclic dependency between Angular modules or standalone components."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularRecursiveModuleImportExport",
@@ -10239,7 +10239,7 @@
                   "markdown": "Reports an invalid `selector` property of a component or directive."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularInvalidSelector",
@@ -10273,7 +10273,7 @@
                   "markdown": "Reports a mismatch between actual and expected directive binding type."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularBindingTypeMismatch",
@@ -10307,7 +10307,7 @@
                   "markdown": "Reports a text or tag occurrence inside a `<ng-content>` tag used for content projection."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularNonEmptyNgContent",
@@ -10341,7 +10341,7 @@
                   "markdown": "Reports problems with Angular expression syntax, which is not supported in an older version of Angular."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularUnsupportedSyntax",
@@ -10375,7 +10375,7 @@
                   "markdown": "Reports a missing binding for a required directive input."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "AngularMissingRequiredDirectiveInputBinding",
@@ -10409,7 +10409,7 @@
                   "markdown": "Reports a binding to an event property or attribute, for example, `[onclick]` or `[attr.onclick]` instead of `(click)`."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "AngularInsecureBindingToEvent",
@@ -11242,7 +11242,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11276,7 +11276,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11310,7 +11310,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11344,7 +11344,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11378,7 +11378,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11412,7 +11412,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11446,41 +11446,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "SqlDtInspection",
-                "shortDescription": {
-                  "text": "Ill-formed date/time literals"
-                },
-                "fullDescription": {
-                  "text": "Reports errors in date and time literals. This inspection is available in MySQL, Oracle, Db2, and H2. Example (MySQL): 'SELECT TIME '10 -12:13:14' FROM dual;\nSELECT TIME ' 12 : 13 : 14 ' FROM dual;\nSELECT TIME '12 13 14' FROM dual;\nSELECT TIME '12-13-14' FROM dual;\nSELECT TIME '12.13.14' FROM dual;\nSELECT TIME '12:13:' FROM dual;\nSELECT TIME '12:13' FROM dual;\nSELECT TIME '12:' FROM dual;' In this example, dates ignore the MySQL standard for date and time literals. Therefore, they will be highlighted. For more information about date and time literals in MySQL, see Date and Time Literals at dev.mysql.com. The following date and type literals are valid for MySQL. 'SELECT TIME '12:13:14' FROM dual;\nSELECT TIME '12:13:14.555' FROM dual;\nSELECT TIME '12:13:14.' FROM dual;\nSELECT TIME '-12:13:14' FROM dual;\nSELECT TIME '10 12:13:14' FROM dual;\nSELECT TIME '-10 12:13:14' FROM dual;'",
-                  "markdown": "Reports errors in date and time literals. This inspection is available in MySQL, Oracle, Db2, and H2.\n\nExample (MySQL):\n\n    SELECT TIME '10 -12:13:14' FROM dual;\n    SELECT TIME ' 12 : 13 : 14 ' FROM dual;\n    SELECT TIME '12 13 14' FROM dual;\n    SELECT TIME '12-13-14' FROM dual;\n    SELECT TIME '12.13.14' FROM dual;\n    SELECT TIME '12:13:' FROM dual;\n    SELECT TIME '12:13' FROM dual;\n    SELECT TIME '12:' FROM dual;\n\nIn this example, dates ignore the MySQL standard for date and time literals. Therefore, they will be highlighted.\nFor more information about date and time literals in MySQL, see [Date and Time Literals at dev.mysql.com](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-literals.html).\n\nThe following date and type literals are valid for MySQL.\n\n    SELECT TIME '12:13:14' FROM dual;\n    SELECT TIME '12:13:14.555' FROM dual;\n    SELECT TIME '12:13:14.' FROM dual;\n    SELECT TIME '-12:13:14' FROM dual;\n    SELECT TIME '10 12:13:14' FROM dual;\n    SELECT TIME '-10 12:13:14' FROM dual;\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "SqlDateTime",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Code Style"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11514,7 +11480,41 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "SqlDtInspection",
+                "shortDescription": {
+                  "text": "Ill-formed date/time literals"
+                },
+                "fullDescription": {
+                  "text": "Reports errors in date and time literals. This inspection is available in MySQL, Oracle, Db2, and H2. Example (MySQL): 'SELECT TIME '10 -12:13:14' FROM dual;\nSELECT TIME ' 12 : 13 : 14 ' FROM dual;\nSELECT TIME '12 13 14' FROM dual;\nSELECT TIME '12-13-14' FROM dual;\nSELECT TIME '12.13.14' FROM dual;\nSELECT TIME '12:13:' FROM dual;\nSELECT TIME '12:13' FROM dual;\nSELECT TIME '12:' FROM dual;' In this example, dates ignore the MySQL standard for date and time literals. Therefore, they will be highlighted. For more information about date and time literals in MySQL, see Date and Time Literals at dev.mysql.com. The following date and type literals are valid for MySQL. 'SELECT TIME '12:13:14' FROM dual;\nSELECT TIME '12:13:14.555' FROM dual;\nSELECT TIME '12:13:14.' FROM dual;\nSELECT TIME '-12:13:14' FROM dual;\nSELECT TIME '10 12:13:14' FROM dual;\nSELECT TIME '-10 12:13:14' FROM dual;'",
+                  "markdown": "Reports errors in date and time literals. This inspection is available in MySQL, Oracle, Db2, and H2.\n\nExample (MySQL):\n\n    SELECT TIME '10 -12:13:14' FROM dual;\n    SELECT TIME ' 12 : 13 : 14 ' FROM dual;\n    SELECT TIME '12 13 14' FROM dual;\n    SELECT TIME '12-13-14' FROM dual;\n    SELECT TIME '12.13.14' FROM dual;\n    SELECT TIME '12:13:' FROM dual;\n    SELECT TIME '12:13' FROM dual;\n    SELECT TIME '12:' FROM dual;\n\nIn this example, dates ignore the MySQL standard for date and time literals. Therefore, they will be highlighted.\nFor more information about date and time literals in MySQL, see [Date and Time Literals at dev.mysql.com](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-literals.html).\n\nThe following date and type literals are valid for MySQL.\n\n    SELECT TIME '12:13:14' FROM dual;\n    SELECT TIME '12:13:14.555' FROM dual;\n    SELECT TIME '12:13:14.' FROM dual;\n    SELECT TIME '-12:13:14' FROM dual;\n    SELECT TIME '10 12:13:14' FROM dual;\n    SELECT TIME '-10 12:13:14' FROM dual;\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "SqlDateTime",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Code Style"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "SQL",
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11548,7 +11548,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11582,7 +11582,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11616,7 +11616,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11650,7 +11650,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11684,7 +11684,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11718,7 +11718,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11752,7 +11752,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11820,7 +11820,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11888,7 +11888,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11922,7 +11922,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -11990,7 +11990,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12024,7 +12024,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12058,7 +12058,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12092,41 +12092,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "SqlUnusedVariableInspection",
-                "shortDescription": {
-                  "text": "Unused variable"
-                },
-                "fullDescription": {
-                  "text": "Reports unused arguments, variables, or parameters. Example (PostgreSQL): 'CREATE FUNCTION foo(PARAMUSED INT, PARAMUNUSED INT) RETURNS INT AS\n$$\nBEGIN\n    RETURN PARAMUSED;\nEND\n$$ LANGUAGE plpgsql;' The 'PARAMUNUSED' parameter is not used in the function and might be deleted.",
-                  "markdown": "Reports unused arguments, variables, or parameters.\n\nExample (PostgreSQL):\n\n    CREATE FUNCTION foo(PARAMUSED INT, PARAMUNUSED INT) RETURNS INT AS\n    $$\n    BEGIN\n        RETURN PARAMUSED;\n    END\n    $$ LANGUAGE plpgsql;\n\nThe `PARAMUNUSED` parameter is not used in the function and might be deleted."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "SqlUnused",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Reliability"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12160,7 +12126,41 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "SqlUnusedVariableInspection",
+                "shortDescription": {
+                  "text": "Unused variable"
+                },
+                "fullDescription": {
+                  "text": "Reports unused arguments, variables, or parameters. Example (PostgreSQL): 'CREATE FUNCTION foo(PARAMUSED INT, PARAMUNUSED INT) RETURNS INT AS\n$$\nBEGIN\n    RETURN PARAMUSED;\nEND\n$$ LANGUAGE plpgsql;' The 'PARAMUNUSED' parameter is not used in the function and might be deleted.",
+                  "markdown": "Reports unused arguments, variables, or parameters.\n\nExample (PostgreSQL):\n\n    CREATE FUNCTION foo(PARAMUSED INT, PARAMUNUSED INT) RETURNS INT AS\n    $$\n    BEGIN\n        RETURN PARAMUSED;\n    END\n    $$ LANGUAGE plpgsql;\n\nThe `PARAMUNUSED` parameter is not used in the function and might be deleted."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "SqlUnused",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Reliability"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "SQL",
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12194,7 +12194,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12262,7 +12262,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12296,7 +12296,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12330,7 +12330,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12364,7 +12364,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12398,7 +12398,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12432,7 +12432,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12500,41 +12500,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "SqlNamedArgumentsInspection",
-                "shortDescription": {
-                  "text": "Named arguments should be used"
-                },
-                "fullDescription": {
-                  "text": "Reports arguments that are used without names in routine calls. By default, this inspection is disabled. For more information about the difference between named and unnamed parameters, see Binding Parameters by Name (Named Parameters) at docs.microsoft.com . Example (Microsoft SQL Server): 'CREATE FUNCTION foo(n INT, m INT) RETURNS INT AS\nBEGIN\n    RETURN n + m;\nEND;\n\nCREATE PROCEDURE test AS\nBEGIN\n    foo n = 1, m = 2;\n\n--- The following call misses parameter names and will be highlighted\n    foo 1, 2;\nEND;' Parameters '1, 2' in the 'foo 1, 2;' call are highlighted because they miss names.",
-                  "markdown": "Reports arguments that are used without names in routine calls. By default, this inspection is disabled.\n\nFor more information about the difference between named and unnamed parameters, see [Binding Parameters by Name (Named Parameters) at docs.microsoft.com](https://docs.microsoft.com/en-us/sql/odbc/reference/develop-app/binding-parameters-by-name-named-parameters).\n\nExample (Microsoft SQL Server):\n\n    CREATE FUNCTION foo(n INT, m INT) RETURNS INT AS\n    BEGIN\n        RETURN n + m;\n    END;\n\n    CREATE PROCEDURE test AS\n    BEGIN\n        foo n = 1, m = 2;\n\n    --- The following call misses parameter names and will be highlighted\n        foo 1, 2;\n    END;\n\nParameters `1, 2` in the `foo 1, 2;` call are highlighted because they miss names."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "SqlNamedArguments",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Code Style"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12568,7 +12534,41 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "SqlNamedArgumentsInspection",
+                "shortDescription": {
+                  "text": "Named arguments should be used"
+                },
+                "fullDescription": {
+                  "text": "Reports arguments that are used without names in routine calls. By default, this inspection is disabled. For more information about the difference between named and unnamed parameters, see Binding Parameters by Name (Named Parameters) at docs.microsoft.com . Example (Microsoft SQL Server): 'CREATE FUNCTION foo(n INT, m INT) RETURNS INT AS\nBEGIN\n    RETURN n + m;\nEND;\n\nCREATE PROCEDURE test AS\nBEGIN\n    foo n = 1, m = 2;\n\n--- The following call misses parameter names and will be highlighted\n    foo 1, 2;\nEND;' Parameters '1, 2' in the 'foo 1, 2;' call are highlighted because they miss names.",
+                  "markdown": "Reports arguments that are used without names in routine calls. By default, this inspection is disabled.\n\nFor more information about the difference between named and unnamed parameters, see [Binding Parameters by Name (Named Parameters) at docs.microsoft.com](https://docs.microsoft.com/en-us/sql/odbc/reference/develop-app/binding-parameters-by-name-named-parameters).\n\nExample (Microsoft SQL Server):\n\n    CREATE FUNCTION foo(n INT, m INT) RETURNS INT AS\n    BEGIN\n        RETURN n + m;\n    END;\n\n    CREATE PROCEDURE test AS\n    BEGIN\n        foo n = 1, m = 2;\n\n    --- The following call misses parameter names and will be highlighted\n        foo 1, 2;\n    END;\n\nParameters `1, 2` in the `foo 1, 2;` call are highlighted because they miss names."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "SqlNamedArguments",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Code Style"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "SQL",
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12602,41 +12602,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "SqlIdentifierInspection",
-                "shortDescription": {
-                  "text": "Identifier should be quoted"
-                },
-                "fullDescription": {
-                  "text": "Reports situations when you use SQL reserved keywords as identifier names in your query. Example (Microsoft SQL Server): 'CREATE TABLE select (identity INT IDENTITY NOT NULL, order INT NOT NULL);' We use 'select', 'identity', and 'order' as table and column names. But they are also reserved keywords in Microsoft SQL Server. Therefore, in order to use them as object names in the query, you must quote these identifiers. To quote them, you can use the Quote identifier quick-fix. After the quick-fix is applied: 'CREATE TABLE [select] ([identity] INT IDENTITY NOT NULL, [order] INT NOT NULL);'",
-                  "markdown": "Reports situations when you use SQL reserved keywords as identifier names in your query.\n\nExample (Microsoft SQL Server):\n\n    CREATE TABLE select (identity INT IDENTITY NOT NULL, order INT NOT NULL);\n\nWe use `select`, `identity`, and `order` as table and column names.\nBut they are also reserved keywords in Microsoft SQL Server.\nTherefore, in order to use them as object names in the query, you must quote these identifiers. To quote them, you can use the\n**Quote identifier** quick-fix.\n\nAfter the quick-fix is applied:\n\n    CREATE TABLE [select] ([identity] INT IDENTITY NOT NULL, [order] INT NOT NULL);\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "SqlIdentifier",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Code Style"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12670,7 +12636,41 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "SqlIdentifierInspection",
+                "shortDescription": {
+                  "text": "Identifier should be quoted"
+                },
+                "fullDescription": {
+                  "text": "Reports situations when you use SQL reserved keywords as identifier names in your query. Example (Microsoft SQL Server): 'CREATE TABLE select (identity INT IDENTITY NOT NULL, order INT NOT NULL);' We use 'select', 'identity', and 'order' as table and column names. But they are also reserved keywords in Microsoft SQL Server. Therefore, in order to use them as object names in the query, you must quote these identifiers. To quote them, you can use the Quote identifier quick-fix. After the quick-fix is applied: 'CREATE TABLE [select] ([identity] INT IDENTITY NOT NULL, [order] INT NOT NULL);'",
+                  "markdown": "Reports situations when you use SQL reserved keywords as identifier names in your query.\n\nExample (Microsoft SQL Server):\n\n    CREATE TABLE select (identity INT IDENTITY NOT NULL, order INT NOT NULL);\n\nWe use `select`, `identity`, and `order` as table and column names.\nBut they are also reserved keywords in Microsoft SQL Server.\nTherefore, in order to use them as object names in the query, you must quote these identifiers. To quote them, you can use the\n**Quote identifier** quick-fix.\n\nAfter the quick-fix is applied:\n\n    CREATE TABLE [select] ([identity] INT IDENTITY NOT NULL, [order] INT NOT NULL);\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "SqlIdentifier",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Code Style"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "SQL",
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12704,7 +12704,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12738,7 +12738,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12772,7 +12772,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12840,7 +12840,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12874,7 +12874,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12908,7 +12908,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12942,7 +12942,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -12976,7 +12976,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -13010,7 +13010,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -13044,7 +13044,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -13214,7 +13214,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -13248,7 +13248,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -13282,7 +13282,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -13316,7 +13316,7 @@
                   {
                     "target": {
                       "id": "SQL",
-                      "index": 28,
+                      "index": 29,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -13417,7 +13417,7 @@
                   "markdown": "Reports duplicated blocks of code from the selected scope: the same file or the entire project.\n\nThe inspection features quick-fixes that help you to set the size of detected duplicates, navigate to repetitive code fragments, and compare them in a tool window.\n\nThe inspection options allow you to select the scope of the reported duplicated fragments and set the initial size for the duplicated language constructs."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "note",
                   "parameters": {
                     "suppressToolId": "DuplicatedCode",
@@ -13600,7 +13600,7 @@
                   {
                     "target": {
                       "id": "Structural search",
-                      "index": 35,
+                      "index": 34,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -13859,7 +13859,7 @@
                   "markdown": "Reports redundant character escape sequences that can be replaced with unescaped characters preserving the meaning. Many escape sequences that are necessary outside of a character class are redundant inside square brackets `[]` of a character class.\n\n\nAlthough unescaped opening curly braces `{` outside of character classes are allowed in some dialects (JavaScript, Python, and so on),\nit can cause confusion and make the pattern less portable, because there are dialects that require escaping curly braces as characters.\nFor this reason the inspection does not report escaped opening curly braces.\n\n**Example:**\n\n\n      \\-\\;[\\.]\n\nAfter the quick-fix is applied:\n\n\n      -;[.]\n\n\nThe **Ignore escaped closing brackets '}' and '\\]'** option specifies whether to report `\\}` and `\\]` outside of a character class\nwhen they are allowed to be unescaped by the RegExp dialect.\n\nNew in 2017.3"
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "warning",
                   "parameters": {
                     "suppressToolId": "RegExpRedundantEscape",
@@ -14573,7 +14573,7 @@
                   "markdown": "Reports regular expressions that can be simplified.\n\n**Example:**\n\n\n      [a] xx* [ah-hz]\n\nAfter the quick-fix is applied:\n\n\n      a x+ [ahz]\n\nNew in 2022.1"
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "note",
                   "parameters": {
                     "suppressToolId": "RegExpSimplifiable",
@@ -14768,40 +14768,6 @@
                 ]
               },
               {
-                "id": "XmlDeprecatedElement",
-                "shortDescription": {
-                  "text": "Deprecated symbol"
-                },
-                "fullDescription": {
-                  "text": "Reports a deprecated XML element or attribute. Symbols can be marked by XML comment or documentation tag with text 'deprecated'.",
-                  "markdown": "Reports a deprecated XML element or attribute.\n\nSymbols can be marked by XML comment or documentation tag with text 'deprecated'."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "suppressToolId": "XmlDeprecatedElement",
-                    "ideaSeverity": "WARNING",
-                    "qodanaSeverity": "High",
-                    "codeQualityCategory": "Unspecified"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "XML",
-                      "index": 38,
-                      "toolComponent": {
-                        "name": "QDJS"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "RegExpRedundantNestedCharacterClass",
                 "shortDescription": {
                   "text": "Redundant nested character class"
@@ -14825,6 +14791,40 @@
                     "target": {
                       "id": "RegExp",
                       "index": 42,
+                      "toolComponent": {
+                        "name": "QDJS"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "XmlDeprecatedElement",
+                "shortDescription": {
+                  "text": "Deprecated symbol"
+                },
+                "fullDescription": {
+                  "text": "Reports a deprecated XML element or attribute. Symbols can be marked by XML comment or documentation tag with text 'deprecated'.",
+                  "markdown": "Reports a deprecated XML element or attribute.\n\nSymbols can be marked by XML comment or documentation tag with text 'deprecated'."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "suppressToolId": "XmlDeprecatedElement",
+                    "ideaSeverity": "WARNING",
+                    "qodanaSeverity": "High",
+                    "codeQualityCategory": "Unspecified"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "XML",
+                      "index": 38,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -15346,7 +15346,7 @@
                   {
                     "target": {
                       "id": "Cucumber",
-                      "index": 19,
+                      "index": 18,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -15380,7 +15380,7 @@
                   {
                     "target": {
                       "id": "Cucumber",
-                      "index": 19,
+                      "index": 18,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -15414,7 +15414,7 @@
                   {
                     "target": {
                       "id": "Cucumber",
-                      "index": 19,
+                      "index": 18,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -15448,7 +15448,7 @@
                   {
                     "target": {
                       "id": "Cucumber",
-                      "index": 19,
+                      "index": 18,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -15482,7 +15482,7 @@
                   {
                     "target": {
                       "id": "Cucumber",
-                      "index": 19,
+                      "index": 18,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -15516,7 +15516,7 @@
                   {
                     "target": {
                       "id": "Cucumber",
-                      "index": 19,
+                      "index": 18,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -15550,7 +15550,7 @@
                   {
                     "target": {
                       "id": "Cucumber",
-                      "index": 19,
+                      "index": 18,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -17525,7 +17525,7 @@
                   "markdown": "Reports unresolved references injected by [Language Injections](https://www.jetbrains.com/help/idea/using-language-injections.html).\n\nExample:\n\n\n        @Language(\"file-reference\")\n        String fileName = \"/home/user/nonexistent.file\"; // highlighted if file doesn't exist\n"
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
+                  "enabled": true,
                   "level": "error",
                   "parameters": {
                     "suppressToolId": "InjectedReferences",
@@ -18040,7 +18040,7 @@
                   {
                     "target": {
                       "id": "JavaScript and TypeScript/General",
-                      "index": 11,
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDJS"
                       }
@@ -18395,7 +18395,7 @@
       },
       "invocations": [
         {
-          "startTimeUtc": "2025-06-21T04:44:40.350995568Z",
+          "startTimeUtc": "2025-06-21T08:58:45.798007147Z",
           "exitCode": 0,
           "executionSuccessful": true
         }
@@ -18404,7 +18404,7 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "https://github.com/AdamT20054/Matomo-React.git",
-          "revisionId": "bbea59246dde538ef3d881e35918c16c8f3414f3",
+          "revisionId": "5a56e2ed0cc9de5ecf72b3a662d8c45a8ce71883",
           "branch": "main",
           "properties": {
             "repoUrl": "https://github.com/AdamT20054/Matomo-React.git",
@@ -18416,69 +18416,12 @@
       ],
       "results": [
         {
-          "ruleId": "JSDeprecatedSymbols",
+          "ruleId": "JSUnusedGlobalSymbols",
           "kind": "fail",
-          "level": "note",
+          "level": "warning",
           "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/utils/validation.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 50,
-                  "startColumn": 15,
-                  "charOffset": 1585,
-                  "charLength": 9,
-                  "snippet": {
-                    "text": "heartbeat"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 48,
-                  "startColumn": 1,
-                  "charOffset": 1566,
-                  "charLength": 170,
-                  "snippet": {
-                    "text": "  }\n\n  if (options.heartbeat !== undefined) {\n    console.warn(\"[Matomo] 'heartbeat' is deprecated. Use 'heartBeat' with 'active' and 'seconds' properties instead.\");\n  }"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "4fbd1a8232d5b771",
-            "equalIndicator/v1": "021ca5f676dcd3bd166f46f79826dfd55442abb09b015e558c9457966188d7df"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
+            "text": "Unused method trackEvent",
+            "markdown": "Unused method trackEvent"
           },
           "locations": [
             {
@@ -18488,22 +18431,22 @@
                   "uriBaseId": "SRCROOT"
                 },
                 "region": {
-                  "startLine": 64,
-                  "startColumn": 56,
-                  "charOffset": 1775,
-                  "charLength": 12,
+                  "startLine": 187,
+                  "startColumn": 3,
+                  "charOffset": 4358,
+                  "charLength": 10,
                   "snippet": {
-                    "text": "linkTracking"
+                    "text": "trackEvent"
                   },
                   "sourceLanguage": "JavaScript"
                 },
                 "contextRegion": {
-                  "startLine": 62,
+                  "startLine": 185,
                   "startColumn": 1,
-                  "charOffset": 1554,
-                  "charLength": 241,
+                  "charOffset": 4309,
+                  "charLength": 185,
                   "snippet": {
-                    "text": "    // Handle linkTracking as the inverse of disableLinkTracking\n    if (this.options.linkTracking !== undefined && this.options.disableLinkTracking === undefined) {\n      this.options.disableLinkTracking = !this.options.linkTracking;\n    }\n"
+                    "text": "   * @noinspection JSUnusedGlobalSymbols\n   */\n  trackEvent({ category, action, name, value, ...otherParams }: TrackEventParams): void {\n    if (category && action) {\n      this.track({"
                   },
                   "sourceLanguage": "TypeScript"
                 }
@@ -18517,12 +18460,12 @@
             }
           ],
           "partialFingerprints": {
-            "equalIndicator/v2": "3d82ccca793fe2c0",
-            "equalIndicator/v1": "468fc30e5cc58e59bb0a095621e8125e963e50fcdde6e5457eebdc11008e2063"
+            "equalIndicator/v2": "facb152a48dea4db",
+            "equalIndicator/v1": "2a18cc16ab3e12b7ce68e57b54e3f80bf38a3030e9e33563eedc42c09e798290"
           },
           "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
+            "ideaSeverity": "WARNING",
+            "qodanaSeverity": "High",
             "problemType": "REGULAR",
             "tags": [
               "JavaScript"
@@ -18530,69 +18473,12 @@
           }
         },
         {
-          "ruleId": "JSDeprecatedSymbols",
+          "ruleId": "JSUnusedGlobalSymbols",
           "kind": "fail",
-          "level": "note",
+          "level": "warning",
           "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/utils/validation.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 46,
-                  "startColumn": 15,
-                  "charOffset": 1420,
-                  "charLength": 12,
-                  "snippet": {
-                    "text": "linkTracking"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 44,
-                  "startColumn": 1,
-                  "charOffset": 1401,
-                  "charLength": 168,
-                  "snippet": {
-                    "text": "  }\n\n  if (options.linkTracking !== undefined) {\n    console.warn(\"[Matomo] 'linkTracking' is deprecated. Use 'disableLinkTracking' (with inverse value) instead.\");\n  }"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "01c5a2caa7f0bcaf",
-            "equalIndicator/v1": "5da42491526598be60060c0e50ca7c5c8aa0cc129f4168eb3895b99035ce0aba"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
+            "text": "Unused method trackSiteSearch",
+            "markdown": "Unused method trackSiteSearch"
           },
           "locations": [
             {
@@ -18602,22 +18488,22 @@
                   "uriBaseId": "SRCROOT"
                 },
                 "region": {
-                  "startLine": 54,
-                  "startColumn": 50,
-                  "charOffset": 1323,
-                  "charLength": 7,
+                  "startLine": 203,
+                  "startColumn": 3,
+                  "charOffset": 4794,
+                  "charLength": 15,
                   "snippet": {
-                    "text": "urlBase"
+                    "text": "trackSiteSearch"
                   },
                   "sourceLanguage": "JavaScript"
                 },
                 "contextRegion": {
-                  "startLine": 52,
+                  "startLine": 201,
                   "startColumn": 1,
-                  "charOffset": 1157,
-                  "charLength": 181,
+                  "charOffset": 4745,
+                  "charLength": 173,
                   "snippet": {
-                    "text": "    // Handle urlBase as an alias for trackerBaseUrl\n    if (this.options.urlBase && !this.options.trackerBaseUrl) {\n      this.options.trackerBaseUrl = this.options.urlBase;\n    }\n"
+                    "text": "   * @noinspection JSUnusedGlobalSymbols\n   */\n  trackSiteSearch({ keyword, category, count, ...otherParams }: TrackSiteSearchParams) {\n    if (keyword) {\n      this.track({"
                   },
                   "sourceLanguage": "TypeScript"
                 }
@@ -18631,12 +18517,12 @@
             }
           ],
           "partialFingerprints": {
-            "equalIndicator/v2": "19f0c497a3121692",
-            "equalIndicator/v1": "830bd8ce10cc63d5fd7a434a463c3fc6820c695ff24d44ab736930fc981c1a68"
+            "equalIndicator/v2": "46aa7c27242ecefe",
+            "equalIndicator/v1": "4092cd7f02463dfcda18a2ad1754ebbd3b59fc529f40b9366f78ac42c059e433"
           },
           "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
+            "ideaSeverity": "WARNING",
+            "qodanaSeverity": "High",
             "problemType": "REGULAR",
             "tags": [
               "JavaScript"
@@ -18644,12 +18530,126 @@
           }
         },
         {
-          "ruleId": "JSDeprecatedSymbols",
+          "ruleId": "JSUnusedGlobalSymbols",
           "kind": "fail",
-          "level": "note",
+          "level": "warning",
           "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
+            "text": "Unused constant MatomoProvider",
+            "markdown": "Unused constant MatomoProvider"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/hooks/useMatomo.tsx",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 93,
+                  "startColumn": 14,
+                  "charOffset": 2432,
+                  "charLength": 14,
+                  "snippet": {
+                    "text": "MatomoProvider"
+                  },
+                  "sourceLanguage": "JavaScript"
+                },
+                "contextRegion": {
+                  "startLine": 91,
+                  "startColumn": 1,
+                  "charOffset": 2376,
+                  "charLength": 97,
+                  "snippet": {
+                    "text": " * @noinspection JSUnusedGlobalSymbols\n */\nexport const MatomoProvider = ({\n  config,\n  children,"
+                  },
+                  "sourceLanguage": "TypeScript JSX"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Matomo-React",
+                  "kind": "module"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "equalIndicator/v2": "40e2902973669a8f",
+            "equalIndicator/v1": "459a12d7a3fbb4091eb3dc6814de3bcfe746fb570ff2313572921374655996df"
+          },
+          "properties": {
+            "ideaSeverity": "WARNING",
+            "qodanaSeverity": "High",
+            "problemType": "REGULAR",
+            "tags": [
+              "JavaScript"
+            ]
+          }
+        },
+        {
+          "ruleId": "JSUnusedGlobalSymbols",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Unused readonly field POST",
+            "markdown": "Unused readonly field POST"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/enums/RequestMethod.enum.ts",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 3,
+                  "charOffset": 298,
+                  "charLength": 4,
+                  "snippet": {
+                    "text": "POST"
+                  },
+                  "sourceLanguage": "JavaScript"
+                },
+                "contextRegion": {
+                  "startLine": 8,
+                  "startColumn": 1,
+                  "charOffset": 197,
+                  "charLength": 118,
+                  "snippet": {
+                    "text": "  GET = 'GET',\n  /** Use POST method for tracking requests (recommended for bypassing adblocks) */\n  POST = 'POST',\n}\n"
+                  },
+                  "sourceLanguage": "TypeScript"
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Matomo-React",
+                  "kind": "module"
+                }
+              ]
+            }
+          ],
+          "partialFingerprints": {
+            "equalIndicator/v2": "96d7c2825e1d3000",
+            "equalIndicator/v1": "51aa4ade4e2e84cd245e177cdc7662ccbd91eccffe45597e1d7cd1a238d9ace0"
+          },
+          "properties": {
+            "ideaSeverity": "WARNING",
+            "qodanaSeverity": "High",
+            "problemType": "REGULAR",
+            "tags": [
+              "JavaScript"
+            ]
+          }
+        },
+        {
+          "ruleId": "JSUnusedGlobalSymbols",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Unused method trackPageView",
+            "markdown": "Unused method trackPageView"
           },
           "locations": [
             {
@@ -18659,22 +18659,22 @@
                   "uriBaseId": "SRCROOT"
                 },
                 "region": {
-                  "startLine": 150,
-                  "startColumn": 29,
-                  "charOffset": 3989,
-                  "charLength": 9,
+                  "startLine": 178,
+                  "startColumn": 3,
+                  "charOffset": 4144,
+                  "charLength": 13,
                   "snippet": {
-                    "text": "heartbeat"
+                    "text": "trackPageView"
                   },
                   "sourceLanguage": "JavaScript"
                 },
                 "contextRegion": {
-                  "startLine": 148,
+                  "startLine": 176,
                   "startColumn": 1,
-                  "charOffset": 3906,
-                  "charLength": 202,
+                  "charOffset": 4095,
+                  "charLength": 172,
                   "snippet": {
-                    "text": "      // Legacy format\n      const heartbeatInterval =\n        typeof this.options.heartbeat === \"number\" &&\n        Math.round(this.options.heartbeat) > 0\n          ? Math.round(this.options.heartbeat)"
+                    "text": "   * @noinspection JSUnusedGlobalSymbols\n   */\n  trackPageView(parameters?: TrackPageViewParams): void {\n    this.track({ data: [TrackType.PAGE_VIEW], ...parameters });\n  }"
                   },
                   "sourceLanguage": "TypeScript"
                 }
@@ -18688,12 +18688,12 @@
             }
           ],
           "partialFingerprints": {
-            "equalIndicator/v2": "6ae3f45928367612",
-            "equalIndicator/v1": "84058966c14387c142e30431201cd960144ee3337efa84a3da6392b80fd33ce8"
+            "equalIndicator/v2": "b4d73316c0016708",
+            "equalIndicator/v1": "6c638c264158f6d192925817bb4fd30a042ea35696dd9f4e471c8ac28108a3c3"
           },
           "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
+            "ideaSeverity": "WARNING",
+            "qodanaSeverity": "High",
             "problemType": "REGULAR",
             "tags": [
               "JavaScript"
@@ -18701,12 +18701,12 @@
           }
         },
         {
-          "ruleId": "JSDeprecatedSymbols",
+          "ruleId": "JSUnusedGlobalSymbols",
           "kind": "fail",
-          "level": "note",
+          "level": "warning",
           "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
+            "text": "Unused interface Window",
+            "markdown": "Unused interface Window"
           },
           "locations": [
             {
@@ -18716,22 +18716,22 @@
                   "uriBaseId": "SRCROOT"
                 },
                 "region": {
-                  "startLine": 63,
-                  "startColumn": 22,
-                  "charOffset": 1640,
-                  "charLength": 12,
+                  "startLine": 28,
+                  "startColumn": 13,
+                  "charOffset": 634,
+                  "charLength": 6,
                   "snippet": {
-                    "text": "linkTracking"
+                    "text": "Window"
                   },
                   "sourceLanguage": "JavaScript"
                 },
                 "contextRegion": {
-                  "startLine": 61,
+                  "startLine": 26,
                   "startColumn": 1,
-                  "charOffset": 1553,
-                  "charLength": 241,
+                  "charOffset": 601,
+                  "charLength": 71,
                   "snippet": {
-                    "text": "\n    // Handle linkTracking as the inverse of disableLinkTracking\n    if (this.options.linkTracking !== undefined && this.options.disableLinkTracking === undefined) {\n      this.options.disableLinkTracking = !this.options.linkTracking;\n    }"
+                    "text": " */\ndeclare global {\n  interface Window {\n    _paq: MatomoPaqArray;\n  }"
                   },
                   "sourceLanguage": "TypeScript"
                 }
@@ -18745,582 +18745,12 @@
             }
           ],
           "partialFingerprints": {
-            "equalIndicator/v2": "5d1ff98678c80a90",
-            "equalIndicator/v1": "8583c8973b9de67f6441349e5627c28e996237803ebfa64a8a8daf6d020a69af"
+            "equalIndicator/v2": "3d53b45c5bef0514",
+            "equalIndicator/v1": "8d4205ba00ba4921daf9941e74bc408f742335b348d8d349ab692cb4c79353c9"
           },
           "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/lib/MatomoTracker.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 53,
-                  "startColumn": 22,
-                  "charOffset": 1231,
-                  "charLength": 7,
-                  "snippet": {
-                    "text": "urlBase"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 51,
-                  "startColumn": 1,
-                  "charOffset": 1156,
-                  "charLength": 181,
-                  "snippet": {
-                    "text": "\n    // Handle urlBase as an alias for trackerBaseUrl\n    if (this.options.urlBase && !this.options.trackerBaseUrl) {\n      this.options.trackerBaseUrl = this.options.urlBase;\n    }"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "906dd0754ccab145",
-            "equalIndicator/v1": "8e17f713c7edfca30e3af00e8d45010da2a7be96f15a57209fda12d5d0b33e23"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/lib/MatomoTracker.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 147,
-                  "startColumn": 29,
-                  "charOffset": 3853,
-                  "charLength": 9,
-                  "snippet": {
-                    "text": "heartbeat"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 145,
-                  "startColumn": 1,
-                  "charOffset": 3773,
-                  "charLength": 187,
-                  "snippet": {
-                    "text": "        this.enableHeartBeatTimer(seconds);\n      }\n    } else if (this.options.heartbeat === undefined || this.options.heartbeat) {\n      // Legacy format\n      const heartbeatInterval ="
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "00766f63ef931891",
-            "equalIndicator/v1": "a2baadb4e72eb4e315b7a1046bbaa8b39eac70d1b9d0cba689e136d743e85043"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/utils/validation.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 38,
-                  "startColumn": 15,
-                  "charOffset": 1173,
-                  "charLength": 7,
-                  "snippet": {
-                    "text": "urlBase"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 36,
-                  "startColumn": 1,
-                  "charOffset": 1124,
-                  "charLength": 148,
-                  "snippet": {
-                    "text": "\n  // Check for deprecated options\n  if (options.urlBase) {\n    console.warn(\"[Matomo] 'urlBase' is deprecated. Use 'trackerBaseUrl' instead.\");\n  }"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "548e848536eaaf6a",
-            "equalIndicator/v1": "a8330d904167cc937393a5af5a6d4ad22b3b262292bb7d02d462c46f947d7d74"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/utils/validation.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 18,
-                  "startColumn": 43,
-                  "charOffset": 600,
-                  "charLength": 7,
-                  "snippet": {
-                    "text": "urlBase"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 16,
-                  "startColumn": 1,
-                  "charOffset": 521,
-                  "charLength": 147,
-                  "snippet": {
-                    "text": "\n  // Check for required URL options\n  if (!options.trackerBaseUrl && !options.urlBase && !options.trackerUrl) {\n    return {\n      isValid: false,"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "89fe19ed46c835ac",
-            "equalIndicator/v1": "b15d33151ee611188b2ce0cee8675ab4c813bd8b87ee14310f3b2a73ab41085b"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/lib/MatomoTracker.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 147,
-                  "startColumn": 69,
-                  "charOffset": 3893,
-                  "charLength": 9,
-                  "snippet": {
-                    "text": "heartbeat"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 145,
-                  "startColumn": 1,
-                  "charOffset": 3773,
-                  "charLength": 187,
-                  "snippet": {
-                    "text": "        this.enableHeartBeatTimer(seconds);\n      }\n    } else if (this.options.heartbeat === undefined || this.options.heartbeat) {\n      // Legacy format\n      const heartbeatInterval ="
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "c43de6e6e53cdadf",
-            "equalIndicator/v1": "ba39f99cd501574b8731f2b03df48e522aab255343d4a82d3a27dff1545c4977"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/lib/MatomoTracker.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 58,
-                  "startColumn": 22,
-                  "charOffset": 1415,
-                  "charLength": 8,
-                  "snippet": {
-                    "text": "disabled"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 56,
-                  "startColumn": 1,
-                  "charOffset": 1338,
-                  "charLength": 214,
-                  "snippet": {
-                    "text": "\n    // Handle disabled as an alias for disableTracking\n    if (this.options.disabled !== undefined && this.options.disableTracking === undefined) {\n      this.options.disableTracking = this.options.disabled;\n    }"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "8f3abfcceaa9be0e",
-            "equalIndicator/v1": "bcf43585fc76b1659538ab2d71a2c1f9baa93292b964506d738fc827d534f803"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/utils/validation.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 42,
-                  "startColumn": 15,
-                  "charOffset": 1288,
-                  "charLength": 8,
-                  "snippet": {
-                    "text": "disabled"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 40,
-                  "startColumn": 1,
-                  "charOffset": 1269,
-                  "charLength": 135,
-                  "snippet": {
-                    "text": "  }\n\n  if (options.disabled !== undefined) {\n    console.warn(\"[Matomo] 'disabled' is deprecated. Use 'disableTracking' instead.\");\n  }"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "4a1e208d3a274f5b",
-            "equalIndicator/v1": "c3213319f8f532ddc110957795e83d139608d759425d6d619d501e8cc9712467"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/lib/MatomoTracker.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 59,
-                  "startColumn": 51,
-                  "charOffset": 1537,
-                  "charLength": 8,
-                  "snippet": {
-                    "text": "disabled"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 57,
-                  "startColumn": 1,
-                  "charOffset": 1339,
-                  "charLength": 214,
-                  "snippet": {
-                    "text": "    // Handle disabled as an alias for disableTracking\n    if (this.options.disabled !== undefined && this.options.disableTracking === undefined) {\n      this.options.disableTracking = this.options.disabled;\n    }\n"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "fd7c4ab84d669bb6",
-            "equalIndicator/v1": "ce860fc67086e0089b9e5580d435feb4626723a40a1a609533e55fd3869244b2"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/lib/MatomoTracker.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 152,
-                  "startColumn": 37,
-                  "charOffset": 4098,
-                  "charLength": 9,
-                  "snippet": {
-                    "text": "heartbeat"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 150,
-                  "startColumn": 1,
-                  "charOffset": 3961,
-                  "charLength": 215,
-                  "snippet": {
-                    "text": "        typeof this.options.heartbeat === \"number\" &&\n        Math.round(this.options.heartbeat) > 0\n          ? Math.round(this.options.heartbeat)\n          : 15;\n      this.enableHeartBeatTimer(heartbeatInterval);"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "8e71e51cb38b37c9",
-            "equalIndicator/v1": "dcebc003f9f61e2eeb1614c0cd7d0302e49826a7092a95eff8af5e118dc2bc07"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
-            "problemType": "REGULAR",
-            "tags": [
-              "JavaScript"
-            ]
-          }
-        },
-        {
-          "ruleId": "JSDeprecatedSymbols",
-          "kind": "fail",
-          "level": "note",
-          "message": {
-            "text": "Deprecated symbol used, consult docs for better alternative",
-            "markdown": "Deprecated symbol used, consult docs for better alternative"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/lib/MatomoTracker.ts",
-                  "uriBaseId": "SRCROOT"
-                },
-                "region": {
-                  "startLine": 151,
-                  "startColumn": 33,
-                  "charOffset": 4047,
-                  "charLength": 9,
-                  "snippet": {
-                    "text": "heartbeat"
-                  },
-                  "sourceLanguage": "JavaScript"
-                },
-                "contextRegion": {
-                  "startLine": 149,
-                  "startColumn": 1,
-                  "charOffset": 3929,
-                  "charLength": 195,
-                  "snippet": {
-                    "text": "      const heartbeatInterval =\n        typeof this.options.heartbeat === \"number\" &&\n        Math.round(this.options.heartbeat) > 0\n          ? Math.round(this.options.heartbeat)\n          : 15;"
-                  },
-                  "sourceLanguage": "TypeScript"
-                }
-              },
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "Matomo-React",
-                  "kind": "module"
-                }
-              ]
-            }
-          ],
-          "partialFingerprints": {
-            "equalIndicator/v2": "7a2517df49bb492a",
-            "equalIndicator/v1": "eb10a17d85a954b68640a157a40825a095f2839e17d34fbf5aeb345c5633ced7"
-          },
-          "properties": {
-            "ideaSeverity": "WEAK WARNING",
-            "qodanaSeverity": "Moderate",
+            "ideaSeverity": "WARNING",
+            "qodanaSeverity": "High",
             "problemType": "REGULAR",
             "tags": [
               "JavaScript"
@@ -19330,9 +18760,9 @@
       ],
       "automationDetails": {
         "id": "project/qodana/2025-06-21",
-        "guid": "0d3e0e29-6afa-489f-bcd0-3f317a788782",
+        "guid": "0dc02e0c-9082-447b-9db6-1637c04a5ee6",
         "properties": {
-          "jobUrl": "https://github.com/AdamT20054/Matomo-React/actions/runs/15792210994",
+          "jobUrl": "https://github.com/AdamT20054/Matomo-React/actions/runs/15794134984",
           "analysisKind": "regular"
         }
       },
@@ -19341,11 +18771,11 @@
         "\n"
       ],
       "properties": {
-        "configProfile": "absent",
+        "configProfile": "recommended",
         "deviceId": "200820300000000-6e55-5fe9-bfa0-d98191b37699",
         "qodanaNewResultSummary": {
-          "moderate": 16,
-          "total": 16
+          "high": 6,
+          "total": 6
         }
       }
     }
