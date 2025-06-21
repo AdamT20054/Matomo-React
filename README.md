@@ -64,54 +64,53 @@ Matomo React is a comprehensive TypeScript library that seamlessly integrates Ma
 
 ## Table of Contents
 
-## Table of Contents
+<div align="center">
+  <table style="width: 100%; max-width: 900px; border-collapse: separate; border-spacing: 0; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; background-color: #161b22; color: #c9d1d9;">
+    <tr>
+      <td valign="top" style="padding: 16px; width: 50%; border-right: 1px solid #30363d;">
+        <strong style="color: #f0f6fc;">Getting Started</strong><br />
+        <a href="#quick-start" style="color: #58a6ff;">Quick Start</a><br />
+        <a href="#installation" style="color: #58a6ff;">Installation</a><br />
+        <a href="#basic-usage" style="color: #58a6ff;">Basic Usage</a><br />
+        <a href="#configuration-options" style="color: #58a6ff;">Configuration Options</a><br />
+      </td>
+      <td valign="top" style="padding: 16px; width: 50%;">
+        <strong style="color: #f0f6fc;">Tracking Features</strong><br />
+        <a href="#tracking-methods" style="color: #58a6ff;">Tracking Methods</a><br />
+        <a href="#tracking-page-views" style="color: #58a6ff;">Page Views</a><br />
+        <a href="#tracking-events" style="color: #58a6ff;">Events</a><br />
+        <a href="#tracking-site-searches" style="color: #58a6ff;">Site Searches</a><br />
+        <a href="#custom-dimensions" style="color: #58a6ff;">Custom Dimensions</a><br />
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" style="padding: 16px; border-top: 1px solid #30363d; border-right: 1px solid #30363d;">
+        <strong style="color: #f0f6fc;">Advanced Features</strong><br />
+        <a href="#advanced-features" style="color: #58a6ff;">Overview</a><br />
+        <a href="#custom-instructions" style="color: #58a6ff;">Custom Instructions</a><br />
+        <a href="#ecommerce-tracking" style="color: #58a6ff;">Ecommerce Tracking</a><br />
+        <a href="#goal-tracking" style="color: #58a6ff;">Goal Tracking</a><br />
+        <a href="#content-tracking" style="color: #58a6ff;">Content Tracking</a><br />
+        <a href="#user-consent-management" style="color: #58a6ff;">User Consent Management</a><br />
+        <a href="#download-and-outlink-tracking" style="color: #58a6ff;">Download & Outlink Tracking</a><br />
+        <a href="#cross-domain-tracking" style="color: #58a6ff;">Cross-Domain Tracking</a><br />
+        <a href="#custom-variables" style="color: #58a6ff;">Custom Variables</a><br />
+        <a href="#multiple-tracker-instances" style="color: #58a6ff;">Multiple Tracker Instances</a><br />
+      </td>
+      <td valign="top" style="padding: 16px; border-top: 1px solid #30363d;">
+        <strong style="color: #f0f6fc;">Additional Information</strong><br />
+        <a href="#performance-optimization" style="color: #58a6ff;">Performance Optimization</a><br />
+        <a href="#deferred-tracking" style="color: #58a6ff;">Deferred Tracking</a><br />
+        <a href="#optimized-event-tracking" style="color: #58a6ff;">Optimized Event Tracking</a><br />
+        <a href="#debugging" style="color: #58a6ff;">Debugging</a><br />
+        <a href="#contributing" style="color: #58a6ff;">Contributing</a><br />
+        <a href="#license" style="color: #58a6ff;">License</a><br />
+        <a href="#project-background" style="color: #58a6ff;">Project Background</a><br />
+      </td>
+    </tr>
+  </table>
+</div>
 
-## Table of Contents
-
-<table>
-  <tr>
-    <td valign="top" width="50%">
-      <strong>Getting Started</strong><br />
-      <a href="#quick-start">Quick Start</a><br />
-      <a href="#installation">Installation</a><br />
-      <a href="#basic-usage">Basic Usage</a><br />
-      <a href="#configuration-options">Configuration Options</a><br />
-    </td>
-    <td valign="top" width="50%">
-      <strong>Tracking Features</strong><br />
-      <a href="#tracking-methods">Tracking Methods</a><br />
-      <a href="#tracking-page-views">Page Views</a><br />
-      <a href="#tracking-events">Events</a><br />
-      <a href="#tracking-site-searches">Site Searches</a><br />
-      <a href="#custom-dimensions">Custom Dimensions</a><br />
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
-      <strong>Advanced Features</strong><br />
-      <a href="#advanced-features">Overview</a><br />
-      <a href="#custom-instructions">Custom Instructions</a><br />
-      <a href="#ecommerce-tracking">Ecommerce Tracking</a><br />
-      <a href="#goal-tracking">Goal Tracking</a><br />
-      <a href="#content-tracking">Content Tracking</a><br />
-      <a href="#user-consent-management">User Consent Management</a><br />
-      <a href="#download-and-outlink-tracking">Download & Outlink Tracking</a><br />
-      <a href="#cross-domain-tracking">Cross-Domain Tracking</a><br />
-      <a href="#custom-variables">Custom Variables</a><br />
-      <a href="#multiple-tracker-instances">Multiple Tracker Instances</a><br />
-    </td>
-    <td valign="top">
-      <strong>Additional Information</strong><br />
-      <a href="#performance-optimization">Performance Optimization</a><br />
-      <a href="#deferred-tracking">Deferred Tracking</a><br />
-      <a href="#optimized-event-tracking">Optimized Event Tracking</a><br />
-      <a href="#debugging">Debugging</a><br />
-      <a href="#contributing">Contributing</a><br />
-      <a href="#license">License</a><br />
-      <a href="#project-background">Project Background</a><br />
-    </td>
-  </tr>
-</table>
 
 
 
