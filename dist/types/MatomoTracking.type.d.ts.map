@@ -1,0 +1,1 @@
+{"version":3,"file":"MatomoTracking.type.d.ts","sourceRoot":"","sources":["../../src/types/MatomoTracking.type.ts"],"names":[],"mappings":"AASA,MAAM,MAAM,aAAa,GAAG,CAAC,MAAM,EAAE,GAAG,GAAG,EAAE,CAAC,CAAC;AAK/C,MAAM,MAAM,cAAc,GAAG,aAAa,EAAE,CAAC;AAM7C,MAAM,WAAW,gBAAgB;IAC/B,OAAO,EAAE,OAAO,CAAC;IACjB,OAAO,CAAC,EAAE,MAAM,CAAC;CAClB"}

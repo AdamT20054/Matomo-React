@@ -13,27 +13,28 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MatomoTracker = void 0;
 const enums_1 = require("../enums");
+const types_1 = require("../types");
+const utils_1 = require("../utils");
 class MatomoTracker {
     constructor(options) {
-        if (options.urlBase && !options.trackerBaseUrl) {
-            options.trackerBaseUrl = options.urlBase;
+        this.options = Object.assign(Object.assign({}, types_1.DEFAULT_CONFIG), options);
+        if (this.options.urlBase && !this.options.trackerBaseUrl) {
+            this.options.trackerBaseUrl = this.options.urlBase;
         }
-        if (!options.trackerBaseUrl && !options.trackerUrl) {
-            throw new Error("You must specify either trackerBaseUrl/urlBase or trackerUrl.");
+        if (this.options.disabled !== undefined && this.options.disableTracking === undefined) {
+            this.options.disableTracking = this.options.disabled;
         }
-        if (!options.siteId) {
-            throw new Error("You must specify the site identifier.");
+        if (this.options.linkTracking !== undefined && this.options.disableLinkTracking === undefined) {
+            this.options.disableLinkTracking = !this.options.linkTracking;
         }
-        if (options.disabled !== undefined && options.disableTracking === undefined) {
-            options.disableTracking = options.disabled;
+        const validationResult = (0, utils_1.validateRequiredOptions)(this.options);
+        if (!validationResult.isValid) {
+            throw new Error(validationResult.message);
         }
-        if (options.linkTracking !== undefined && options.disableLinkTracking === undefined) {
-            options.disableLinkTracking = !options.linkTracking;
-        }
-        this.options = options;
-        this.launch();
+        (0, utils_1.checkForMisconfigurations)(this.options, !!this.options.debug);
+        this.initialize();
     }
-    launch() {
+    initialize() {
         if (typeof window === "undefined") {
             return;
         }
@@ -44,13 +45,18 @@ class MatomoTracker {
         if (this.options.disableTracking) {
             return;
         }
-        if (this.options.trackerUrl) {
-            this.addCustomInstruction("setTrackerUrl", this.options.trackerUrl);
+        this.configureTracker();
+        this.configureHeartbeat();
+        this.configureLinkTracking();
+        this.applyCustomConfigurations();
+        if (this.options.enableJSErrorTracking) {
+            this.enableJSErrorTracking();
         }
-        else {
-            const phpFileName = this.options.matomoPhpFileName || "matomo.php";
-            this.addCustomInstruction("setTrackerUrl", this.options.trackerBaseUrl + "/" + phpFileName);
-        }
+        this.loadTrackerScript();
+    }
+    configureTracker() {
+        const trackerUrl = (0, utils_1.constructTrackerUrl)(this.options);
+        this.addCustomInstruction("setTrackerUrl", trackerUrl);
         this.addCustomInstruction("setSiteId", this.options.siteId);
         if (this.options.userId) {
             this.addCustomInstruction("setUserId", this.options.userId);
@@ -58,6 +64,8 @@ class MatomoTracker {
         if (this.options.requestMethod) {
             this.addCustomInstruction("setRequestMethod", this.options.requestMethod);
         }
+    }
+    configureHeartbeat() {
         if (this.options.heartBeat) {
             if (this.options.heartBeat.active !== false) {
                 const seconds = this.options.heartBeat.seconds || 15;
@@ -71,13 +79,22 @@ class MatomoTracker {
                 : 15;
             this.enableHeartBeatTimer(heartbeatInterval);
         }
+    }
+    configureLinkTracking() {
         this.enableLinkTracking(!this.options.disableLinkTracking);
+    }
+    applyCustomConfigurations() {
         if (this.options.configurations) {
             Object.entries(this.options.configurations).forEach(([key, value]) => {
                 this.addCustomInstruction(key, value);
             });
         }
-        this.addTrackerToDOM();
+    }
+    enableJSErrorTracking() {
+        this.addCustomInstruction("enableJSErrorTracking");
+    }
+    loadTrackerScript() {
+        (0, utils_1.loadMatomoScript)(this.options);
     }
     trackPageView(parameters) {
         this.track(Object.assign({ data: [enums_1.TrackType.PAGE_VIEW] }, parameters));
@@ -102,6 +119,7 @@ class MatomoTracker {
     }
     addCustomInstruction(name, ...args) {
         if (typeof window !== "undefined") {
+            (0, utils_1.logTracking)(name, args, !!this.options.debug);
             window._paq.push([name, ...args]);
         }
         return this;
@@ -113,6 +131,12 @@ class MatomoTracker {
         this.addCustomInstruction("enableHeartBeatTimer", interval);
     }
     track({ data = [], documentTitle = window.document.title, href, customDimensions = false, }) {
+        if (this.options.disableTracking) {
+            if (this.options.debug) {
+                console.log("[Matomo] Tracking disabled, skipping track call:", data);
+            }
+            return;
+        }
         if (data.length) {
             if (customDimensions &&
                 Array.isArray(customDimensions) &&
@@ -121,25 +145,9 @@ class MatomoTracker {
             }
             this.addCustomInstruction("setCustomUrl", href !== null && href !== void 0 ? href : this.getPageUrl());
             this.addCustomInstruction("setDocumentTitle", documentTitle);
-            this.addCustomInstruction(...data);
+            const trackCommand = [data[0], ...data.slice(1)];
+            this.addCustomInstruction(...trackCommand);
         }
-    }
-    addTrackerToDOM() {
-        var _a;
-        const doc = document;
-        const scriptElement = doc.createElement("script");
-        const scripts = doc.getElementsByTagName("script")[0];
-        scriptElement.type = "text/javascript";
-        scriptElement.async = true;
-        scriptElement.defer = true;
-        if (this.options.srcUrl) {
-            scriptElement.src = this.options.srcUrl;
-        }
-        else {
-            const jsFileName = this.options.matomoJsFileName || "matomo.js";
-            scriptElement.src = `${this.options.trackerBaseUrl}/${jsFileName}`;
-        }
-        (_a = scripts === null || scripts === void 0 ? void 0 : scripts.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(scriptElement, scripts);
     }
     getPageUrl() {
         if (this.options.urlTransformer) {

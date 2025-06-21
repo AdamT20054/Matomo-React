@@ -1,13 +1,19 @@
-import { MatomoProviderConfig, TrackEventParams, TrackPageViewParams, TrackSiteSearchParams } from "../types";
+import { MatomoProviderConfig, TrackEventParams, TrackPageViewParams, TrackSiteSearchParams, MatomoPaqArray } from "../types";
 declare global {
     interface Window {
-        _paq: any[];
+        _paq: MatomoPaqArray;
     }
 }
 export declare class MatomoTracker {
     private options;
     constructor(options: MatomoProviderConfig);
-    private launch;
+    private initialize;
+    private configureTracker;
+    private configureHeartbeat;
+    private configureLinkTracking;
+    private applyCustomConfigurations;
+    private enableJSErrorTracking;
+    private loadTrackerScript;
     trackPageView(parameters?: TrackPageViewParams): void;
     trackEvent({ category, action, name, value, ...otherParams }: TrackEventParams): void;
     trackSiteSearch({ keyword, category, count, ...otherParams }: TrackSiteSearchParams): void;
@@ -15,7 +21,6 @@ export declare class MatomoTracker {
     private enableLinkTracking;
     private enableHeartBeatTimer;
     private track;
-    private addTrackerToDOM;
     private getPageUrl;
 }
 //# sourceMappingURL=MatomoTracker.d.ts.map

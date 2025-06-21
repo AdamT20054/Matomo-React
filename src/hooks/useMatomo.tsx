@@ -1,23 +1,80 @@
-import React, { ReactNode, createContext, useContext, useMemo } from "react";
+import React, { ReactNode, createContext, useContext, useMemo, useCallback } from "react";
 import { MatomoTracker } from "../lib";
-import { MatomoProviderConfig } from "../types";
+import { MatomoProviderConfig, TrackEventParams, TrackPageViewParams, TrackSiteSearchParams } from "../types";
 
+/**
+ * Props for the Matomo context
+ * @internal
+ */
 type MatomoContextProps = {
   tracker: MatomoTracker;
 };
 
-const MatomoContext = createContext<MatomoContextProps>(
-  {} as MatomoContextProps
-);
+/**
+ * Default value for the Matomo context
+ * This provides a better alternative to type casting with {} as MatomoContextProps
+ * @internal
+ */
+const defaultContextValue: MatomoContextProps = {
+  // This will be replaced by the actual tracker in the provider
+  tracker: null as unknown as MatomoTracker,
+};
+
+/**
+ * React context for the Matomo tracker
+ * @internal
+ */
+const MatomoContext = createContext<MatomoContextProps>(defaultContextValue);
 
 /**
  * React hook to access the Matomo tracker instance
+ * @returns The Matomo tracker instance
  * @public
  */
 export const useMatomo = () => useContext(MatomoContext);
 
 /**
+ * Custom hook for tracking events with optimized rendering
+ * Uses useCallback to prevent unnecessary re-renders
+ * @returns Memoized tracking functions
+ * @public
+ */
+export const useMatomoEvent = () => {
+  const { tracker } = useMatomo();
+
+  const trackPageView = useCallback(
+    (params?: TrackPageViewParams) => tracker.trackPageView(params),
+    [tracker]
+  );
+
+  const trackEvent = useCallback(
+    (params: TrackEventParams) => tracker.trackEvent(params),
+    [tracker]
+  );
+
+  const trackSiteSearch = useCallback(
+    (params: TrackSiteSearchParams) => tracker.trackSiteSearch(params),
+    [tracker]
+  );
+
+  const addCustomInstruction = useCallback(
+    (name: string, ...args: any[]) => tracker.addCustomInstruction(name, ...args),
+    [tracker]
+  );
+
+  return {
+    trackPageView,
+    trackEvent,
+    trackSiteSearch,
+    addCustomInstruction
+  };
+};
+
+/**
  * Provider component that initializes the Matomo tracker
+ * @param props - Component props
+ * @param props.config - Configuration options for the Matomo tracker
+ * @param props.children - Child components
  * @public
  */
 export const MatomoProvider = ({

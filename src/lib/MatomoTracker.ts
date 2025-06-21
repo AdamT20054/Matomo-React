@@ -6,7 +6,17 @@ import {
   TrackEventParams,
   TrackPageViewParams,
   TrackSiteSearchParams,
+  MatomoPaqArray,
+  MatomoCommand,
+  DEFAULT_CONFIG,
 } from "../types";
+import { 
+  loadMatomoScript, 
+  constructTrackerUrl, 
+  validateRequiredOptions, 
+  checkForMisconfigurations,
+  logTracking 
+} from "../utils";
 
 /**
  * Extends the global Window interface to include the _paq array used by Matomo
@@ -14,7 +24,7 @@ import {
  */
 declare global {
   interface Window {
-    _paq: any[];
+    _paq: MatomoPaqArray;
   }
 }
 
@@ -32,38 +42,45 @@ export class MatomoTracker {
    * @public
    */
   constructor(options: MatomoProviderConfig) {
-    // Handle urlBase as an alias for trackerBaseUrl
-    if (options.urlBase && !options.trackerBaseUrl) {
-      options.trackerBaseUrl = options.urlBase;
-    }
+    // Apply default values
+    this.options = {
+      ...DEFAULT_CONFIG,
+      ...options
+    };
 
-    if (!options.trackerBaseUrl && !options.trackerUrl) {
-      throw new Error("You must specify either trackerBaseUrl/urlBase or trackerUrl.");
-    }
-    if (!options.siteId) {
-      throw new Error("You must specify the site identifier.");
+    // Handle urlBase as an alias for trackerBaseUrl
+    if (this.options.urlBase && !this.options.trackerBaseUrl) {
+      this.options.trackerBaseUrl = this.options.urlBase;
     }
 
     // Handle disabled as an alias for disableTracking
-    if (options.disabled !== undefined && options.disableTracking === undefined) {
-      options.disableTracking = options.disabled;
+    if (this.options.disabled !== undefined && this.options.disableTracking === undefined) {
+      this.options.disableTracking = this.options.disabled;
     }
 
     // Handle linkTracking as the inverse of disableLinkTracking
-    if (options.linkTracking !== undefined && options.disableLinkTracking === undefined) {
-      options.disableLinkTracking = !options.linkTracking;
+    if (this.options.linkTracking !== undefined && this.options.disableLinkTracking === undefined) {
+      this.options.disableLinkTracking = !this.options.linkTracking;
     }
 
-    this.options = options;
+    // Validate required options
+    const validationResult = validateRequiredOptions(this.options);
+    if (!validationResult.isValid) {
+      throw new Error(validationResult.message);
+    }
 
-    this.launch();
+    // Check for misconfigurations
+    checkForMisconfigurations(this.options, !!this.options.debug);
+
+    // Initialize the tracker
+    this.initialize();
   }
 
   /**
    * Initializes the Matomo tracker with the provided configuration
    * @private
    */
-  private launch() {
+  private initialize(): void {
     if (typeof window === "undefined") {
       return;
     }
@@ -78,18 +95,28 @@ export class MatomoTracker {
       return;
     }
 
-    // Set tracker URL
-    if (this.options.trackerUrl) {
-      // Use trackerUrl directly if provided
-      this.addCustomInstruction("setTrackerUrl", this.options.trackerUrl);
-    } else {
-      // Otherwise construct from trackerBaseUrl and matomoPhpFileName
-      const phpFileName = this.options.matomoPhpFileName || "matomo.php";
-      this.addCustomInstruction(
-        "setTrackerUrl",
-        this.options.trackerBaseUrl + "/" + phpFileName
-      );
+    this.configureTracker();
+    this.configureHeartbeat();
+    this.configureLinkTracking();
+    this.applyCustomConfigurations();
+
+    // Enable JS error tracking if configured
+    if (this.options.enableJSErrorTracking) {
+      this.enableJSErrorTracking();
     }
+
+    // Load the Matomo script
+    this.loadTrackerScript();
+  }
+
+  /**
+   * Configures the basic tracker settings
+   * @private
+   */
+  private configureTracker(): void {
+    // Set tracker URL
+    const trackerUrl = constructTrackerUrl(this.options);
+    this.addCustomInstruction("setTrackerUrl", trackerUrl);
 
     // Set site ID
     this.addCustomInstruction("setSiteId", this.options.siteId);
@@ -103,8 +130,13 @@ export class MatomoTracker {
     if (this.options.requestMethod) {
       this.addCustomInstruction("setRequestMethod", this.options.requestMethod);
     }
+  }
 
-    // Configure heartbeat
+  /**
+   * Configures the heartbeat feature
+   * @private
+   */
+  private configureHeartbeat(): void {
     if (this.options.heartBeat) {
       // New format with active and seconds properties
       if (this.options.heartBeat.active !== false) {
@@ -120,18 +152,42 @@ export class MatomoTracker {
           : 15;
       this.enableHeartBeatTimer(heartbeatInterval);
     }
+  }
 
-    // Configure link tracking
+  /**
+   * Configures link tracking
+   * @private
+   */
+  private configureLinkTracking(): void {
     this.enableLinkTracking(!this.options.disableLinkTracking);
+  }
 
-    // Apply custom configurations
+  /**
+   * Applies custom configurations
+   * @private
+   */
+  private applyCustomConfigurations(): void {
     if (this.options.configurations) {
       Object.entries(this.options.configurations).forEach(([key, value]) => {
         this.addCustomInstruction(key, value);
       });
     }
+  }
 
-    this.addTrackerToDOM();
+  /**
+   * Enables JavaScript error tracking
+   * @private
+   */
+  private enableJSErrorTracking(): void {
+    this.addCustomInstruction("enableJSErrorTracking");
+  }
+
+  /**
+   * Loads the Matomo tracking script
+   * @private
+   */
+  private loadTrackerScript(): void {
+    loadMatomoScript(this.options);
   }
 
   /**
@@ -194,6 +250,9 @@ export class MatomoTracker {
    */
   addCustomInstruction(name: string, ...args: any[]): this {
     if (typeof window !== "undefined") {
+      // Log the tracking command if debug mode is enabled
+      logTracking(name, args, !!this.options.debug);
+
       window._paq.push([name, ...args]);
     }
     return this;
@@ -232,7 +291,16 @@ export class MatomoTracker {
     href,
     customDimensions = false,
   }: TrackParams): void {
+    // Skip tracking if disabled
+    if (this.options.disableTracking) {
+      if (this.options.debug) {
+        console.log("[Matomo] Tracking disabled, skipping track call:", data);
+      }
+      return;
+    }
+
     if (data.length) {
+      // Set custom dimensions if provided
       if (
         customDimensions &&
         Array.isArray(customDimensions) &&
@@ -247,35 +315,18 @@ export class MatomoTracker {
         );
       }
 
+      // Set custom URL and document title
       this.addCustomInstruction("setCustomUrl", href ?? this.getPageUrl());
       this.addCustomInstruction("setDocumentTitle", documentTitle);
-      this.addCustomInstruction(...(data as [string, ...any[]]));
+
+      // Execute the tracking command
+      const trackCommand: MatomoCommand = [data[0] as string, ...data.slice(1)];
+      this.addCustomInstruction(...trackCommand);
     }
   }
 
-  /**
-   * Adds the Matomo tracking script to the DOM
-   * @private
-   */
-  private addTrackerToDOM(): void {
-    const doc = document;
-    const scriptElement = doc.createElement("script");
-    const scripts = doc.getElementsByTagName("script")[0];
-
-    scriptElement.type = "text/javascript";
-    scriptElement.async = true;
-    scriptElement.defer = true;
-
-    // Use srcUrl if provided, otherwise construct from trackerBaseUrl and matomoJsFileName
-    if (this.options.srcUrl) {
-      scriptElement.src = this.options.srcUrl;
-    } else {
-      const jsFileName = this.options.matomoJsFileName || "matomo.js";
-      scriptElement.src = `${this.options.trackerBaseUrl}/${jsFileName}`;
-    }
-
-    scripts?.parentNode?.insertBefore(scriptElement, scripts);
-  }
+  // The addTrackerToDOM method has been replaced by the loadTrackerScript method
+  // which uses the loadMatomoScript utility function
 
   /**
    * Gets the current page URL, applying any configured URL transformer
