@@ -1,6 +1,6 @@
 {
   "name": "@adam20054/react-matomo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advanced React integration for Matomo analytics.",
   "main": "dist/index.js",
   "scripts": {
