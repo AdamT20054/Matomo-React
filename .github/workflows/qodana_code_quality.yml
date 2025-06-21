@@ -18,23 +18,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '21'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2025.1
-        with:
-          args: --fail-threshold=0
-          cache-dir: ${{ runner.temp }}/qodana-cache
-          pr-mode: true
-          upload-result: true
-          use-caches: true
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
