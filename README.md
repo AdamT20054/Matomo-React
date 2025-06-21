@@ -64,51 +64,53 @@ Matomo React is a comprehensive TypeScript library that seamlessly integrates Ma
 
 ## Table of Contents
 
-<div style="max-width: 600px; margin: 0 auto; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #f8f9fa;">
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: center;">
-    <div>
-      <h3>Getting Started</h3>
-      <p><a href="#quick-start">Quick Start</a></p>
-      <p><a href="#installation">Installation</a></p>
-      <p><a href="#basic-usage">Basic Usage</a></p>
-      <p><a href="#configuration-options">Configuration Options</a></p>
-    </div>
-    <div>
-      <h3>Tracking Features</h3>
-      <p><a href="#tracking-methods">Tracking Methods</a></p>
-      <p><a href="#tracking-page-views">Page Views</a></p>
-      <p><a href="#tracking-events">Events</a></p>
-      <p><a href="#tracking-site-searches">Site Searches</a></p>
-      <p><a href="#custom-dimensions">Custom Dimensions</a></p>
-    </div>
-  </div>
+## Table of Contents
 
-  <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: center;">
-    <div>
-      <h3>Advanced Features</h3>
-      <p><a href="#advanced-features">Overview</a></p>
-      <p><a href="#custom-instructions">Custom Instructions</a></p>
-      <p><a href="#ecommerce-tracking">Ecommerce Tracking</a></p>
-      <p><a href="#goal-tracking">Goal Tracking</a></p>
-      <p><a href="#content-tracking">Content Tracking</a></p>
-      <p><a href="#user-consent-management">User Consent Management</a></p>
-      <p><a href="#download-and-outlink-tracking">Download & Outlink Tracking</a></p>
-      <p><a href="#cross-domain-tracking">Cross-Domain Tracking</a></p>
-      <p><a href="#custom-variables">Custom Variables</a></p>
-      <p><a href="#multiple-tracker-instances">Multiple Tracker Instances</a></p>
-    </div>
-    <div>
-      <h3>Additional Information</h3>
-      <p><a href="#performance-optimization">Performance Optimization</a></p>
-      <p><a href="#deferred-tracking">Deferred Tracking</a></p>
-      <p><a href="#optimized-event-tracking">Optimized Event Tracking</a></p>
-      <p><a href="#debugging">Debugging</a></p>
-      <p><a href="#contributing">Contributing</a></p>
-      <p><a href="#license">License</a></p>
-      <p><a href="#project-background">Project Background</a></p>
-    </div>
-  </div>
-</div>
+<table>
+  <tr>
+    <td valign="top">
+      <strong>Getting Started</strong><br />
+      <a href="#quick-start">Quick Start</a><br />
+      <a href="#installation">Installation</a><br />
+      <a href="#basic-usage">Basic Usage</a><br />
+      <a href="#configuration-options">Configuration Options</a><br />
+    </td>
+    <td valign="top">
+      <strong>Tracking Features</strong><br />
+      <a href="#tracking-methods">Tracking Methods</a><br />
+      <a href="#tracking-page-views">Page Views</a><br />
+      <a href="#tracking-events">Events</a><br />
+      <a href="#tracking-site-searches">Site Searches</a><br />
+      <a href="#custom-dimensions">Custom Dimensions</a><br />
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <strong>Advanced Features</strong><br />
+      <a href="#advanced-features">Overview</a><br />
+      <a href="#custom-instructions">Custom Instructions</a><br />
+      <a href="#ecommerce-tracking">Ecommerce Tracking</a><br />
+      <a href="#goal-tracking">Goal Tracking</a><br />
+      <a href="#content-tracking">Content Tracking</a><br />
+      <a href="#user-consent-management">User Consent Management</a><br />
+      <a href="#download-and-outlink-tracking">Download & Outlink Tracking</a><br />
+      <a href="#cross-domain-tracking">Cross-Domain Tracking</a><br />
+      <a href="#custom-variables">Custom Variables</a><br />
+      <a href="#multiple-tracker-instances">Multiple Tracker Instances</a><br />
+    </td>
+    <td valign="top">
+      <strong>Additional Information</strong><br />
+      <a href="#performance-optimization">Performance Optimization</a><br />
+      <a href="#deferred-tracking">Deferred Tracking</a><br />
+      <a href="#optimized-event-tracking">Optimized Event Tracking</a><br />
+      <a href="#debugging">Debugging</a><br />
+      <a href="#contributing">Contributing</a><br />
+      <a href="#license">License</a><br />
+      <a href="#project-background">Project Background</a><br />
+    </td>
+  </tr>
+</table>
+
 
 ## Quick Start
 
