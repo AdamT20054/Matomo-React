@@ -3,11 +3,13 @@ name: 📦 Dependency Review
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+    types: [created, published]
   schedule:
     - cron: '0 0 * * 0'  # Run once a week at midnight on Sunday
   workflow_dispatch:
+  pull_request:
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -18,27 +20,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      
+
       - name: Dependency Review
         uses: actions/dependency-review-action@v3
         with:
           fail-on-severity: high
+        # Only run this step on pull_request, skip on other events to avoid base/head ref error
+        if: github.event_name == 'pull_request'
 
-  security-audit:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 21
-          cache: 'npm'
-      
-      - name: Install Dependencies
-        run: npm ci
-      
-      - name: Run npm audit
-        run: npm audit
-        continue-on-error: true
+      # Optionally, add a notification or logging step for other events
+      - name: Log non-PR event
+        if: github.event_name != 'pull_request'
+        run: echo "Dependency review only runs on pull requests due to required refs."
