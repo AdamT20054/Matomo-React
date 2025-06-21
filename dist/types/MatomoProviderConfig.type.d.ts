@@ -16,8 +16,7 @@ export declare const DEFAULT_CONFIG: {
 };
 export type MatomoProviderConfig = {
     siteId: string | number;
-    trackerBaseUrl?: string;
-    urlBase?: string;
+    trackerBaseUrl: string;
     userId?: string;
     disableTracking?: boolean;
     disabled?: boolean;
@@ -28,8 +27,6 @@ export type MatomoProviderConfig = {
     linkTracking?: boolean;
     matomoJsFileName?: string;
     matomoPhpFileName?: string;
-    trackerUrl?: string;
-    srcUrl?: string;
     requestMethod?: RequestMethod;
     configurations?: Record<string, any>;
     debug?: boolean;

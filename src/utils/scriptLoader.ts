@@ -1,19 +1,5 @@
 import { MatomoProviderConfig } from "../types";
 
-/**
- * Extracts the path from a URL
- * @param url - The URL to extract the path from
- * @returns The path part of the URL
- */
-function extractPathFromUrl(url: string): string {
-  try {
-    const urlObj = new URL(url);
-    return urlObj.pathname;
-  } catch (e) {
-    // If URL parsing fails, return the original URL
-    return url;
-  }
-}
 
 /**
  * Returns default filenames for Matomo trackers

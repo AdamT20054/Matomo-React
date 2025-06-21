@@ -18,9 +18,6 @@ const utils_1 = require("../utils");
 class MatomoTracker {
     constructor(options) {
         this.options = Object.assign(Object.assign({}, types_1.DEFAULT_CONFIG), options);
-        if (this.options.urlBase && !this.options.trackerBaseUrl) {
-            this.options.trackerBaseUrl = this.options.urlBase;
-        }
         if (this.options.disabled !== undefined && this.options.disableTracking === undefined) {
             this.options.disableTracking = this.options.disabled;
         }

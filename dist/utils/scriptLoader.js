@@ -2,6 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loadMatomoScript = loadMatomoScript;
 exports.constructTrackerUrl = constructTrackerUrl;
+function getDefaultFilenames() {
+    return {
+        jsFileName: "matomo.js",
+        phpFileName: "matomo.php"
+    };
+}
 function loadMatomoScript(options) {
     var _a;
     const doc = document;
@@ -10,13 +16,12 @@ function loadMatomoScript(options) {
     scriptElement.type = "text/javascript";
     scriptElement.async = true;
     scriptElement.defer = true;
-    if (options.srcUrl) {
-        scriptElement.src = options.srcUrl;
-    }
-    else {
-        const jsFileName = options.matomoJsFileName || "matomo.js";
-        scriptElement.src = `${options.trackerBaseUrl}/${jsFileName}`;
-    }
+    const baseUrl = options.trackerBaseUrl;
+    const defaultFilenames = getDefaultFilenames();
+    const jsFileName = (options.matomoJsFileName && options.matomoJsFileName !== "matomo.js")
+        ? options.matomoJsFileName
+        : defaultFilenames.jsFileName;
+    scriptElement.src = `${baseUrl}/${jsFileName}`;
     if (options.deferTracking) {
         scriptElement.setAttribute("loading", "lazy");
     }
@@ -24,10 +29,11 @@ function loadMatomoScript(options) {
     return scriptElement;
 }
 function constructTrackerUrl(options) {
-    if (options.trackerUrl) {
-        return options.trackerUrl;
-    }
-    const phpFileName = options.matomoPhpFileName || "matomo.php";
-    return `${options.trackerBaseUrl}/${phpFileName}`;
+    const baseUrl = options.trackerBaseUrl;
+    const defaultFilenames = getDefaultFilenames();
+    const phpFileName = (options.matomoPhpFileName && options.matomoPhpFileName !== "matomo.php")
+        ? options.matomoPhpFileName
+        : defaultFilenames.phpFileName;
+    return `${baseUrl}/${phpFileName}`;
 }
 //# sourceMappingURL=scriptLoader.js.map
