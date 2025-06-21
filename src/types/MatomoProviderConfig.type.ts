@@ -44,7 +44,6 @@ export type MatomoProviderConfig = {
    * Can be either:
    * 1. Domain only: "https://analytics.example.com" (assumes standard matomo.js/php files at the root)
    * 2. Path without file extension: "https://example.com/api/" (assumes standard matomo.js/php files at that path)
-   * 3. Path to custom files: "https://example.com/xyz/custom.js" (automatically detects custom filenames)
    */
   trackerBaseUrl: string;
 
@@ -86,15 +85,15 @@ export type MatomoProviderConfig = {
    */
   linkTracking?: boolean; // Inverse of disableLinkTracking
 
-  // Custom file names (only needed if auto-detection from trackerBaseUrl fails)
+  // Custom file names
   /** 
    * Custom filename for the Matomo JavaScript tracker (default: "matomo.js")
-   * Only needed if you need to specify a custom filename that can't be auto-detected
+   * Required if you need to use a custom filename instead of the default
    */
   matomoJsFileName?: string;
   /** 
    * Custom filename for the Matomo PHP tracker (default: "matomo.php")
-   * Only needed if you need to specify a custom filename that can't be auto-detected
+   * Required if you need to use a custom filename instead of the default
    */
   matomoPhpFileName?: string;
 

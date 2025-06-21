@@ -16,29 +16,10 @@ function extractPathFromUrl(url: string): string {
 }
 
 /**
- * Determines if a custom filename is needed based on the trackerBaseUrl
- * @param trackerBaseUrl - The base URL of the Matomo installation
- * @returns An object with jsFileName and phpFileName if custom filenames are detected, and baseUrl if it needs to be modified
+ * Returns default filenames for Matomo trackers
+ * @returns An object with default jsFileName and phpFileName
  */
-function detectCustomFilenames(trackerBaseUrl: string): { jsFileName?: string, phpFileName?: string, baseUrl?: string } {
-  const path = extractPathFromUrl(trackerBaseUrl);
-
-  // If the path ends with a filename (not just a directory)
-  if (path && path.includes('.')) {
-    const lastSegment = path.split('/').pop() || '';
-
-    // If the path ends with a .js file, extract the filename
-    if (lastSegment.endsWith('.js')) {
-      const baseName = lastSegment.replace('.js', '');
-      return {
-        jsFileName: lastSegment,
-        phpFileName: `${baseName}.php`,
-        baseUrl: trackerBaseUrl.substring(0, trackerBaseUrl.lastIndexOf('/'))
-      };
-    }
-  }
-
-  // No custom filenames detected - use default filenames at the current path
+function getDefaultFilenames(): { jsFileName: string, phpFileName: string } {
   return {
     jsFileName: "matomo.js",
     phpFileName: "matomo.php"
@@ -59,22 +40,17 @@ export function loadMatomoScript(options: MatomoProviderConfig): HTMLScriptEleme
   scriptElement.async = true;
   scriptElement.defer = true;
 
-  // Determine the JS filename and base URL
+  // Determine the JS filename
   let jsFileName = "matomo.js";
-  let baseUrl = options.trackerBaseUrl;
+  const baseUrl = options.trackerBaseUrl;
 
-  // Check if custom filenames are specified explicitly
+  // Use custom filename if specified
   if (options.matomoJsFileName && options.matomoJsFileName !== "matomo.js") {
     jsFileName = options.matomoJsFileName;
   } else {
-    // Auto-detect custom filenames from the trackerBaseUrl
-    const customFilenames = detectCustomFilenames(options.trackerBaseUrl);
-    jsFileName = customFilenames.jsFileName || "matomo.js";
-
-    // Only modify the base URL if it was detected from a URL with a file extension
-    if (customFilenames.baseUrl) {
-      baseUrl = customFilenames.baseUrl;
-    }
+    // Use default filename
+    const defaultFilenames = getDefaultFilenames();
+    jsFileName = defaultFilenames.jsFileName;
   }
 
   // Set the script source
@@ -96,22 +72,17 @@ export function loadMatomoScript(options: MatomoProviderConfig): HTMLScriptEleme
  * @returns The constructed tracker URL
  */
 export function constructTrackerUrl(options: MatomoProviderConfig): string {
-  // Determine the PHP filename and base URL
+  // Determine the PHP filename
   let phpFileName = "matomo.php";
-  let baseUrl = options.trackerBaseUrl;
+  const baseUrl = options.trackerBaseUrl;
 
-  // Check if custom filenames are specified explicitly
+  // Use custom filename if specified
   if (options.matomoPhpFileName && options.matomoPhpFileName !== "matomo.php") {
     phpFileName = options.matomoPhpFileName;
   } else {
-    // Auto-detect custom filenames from the trackerBaseUrl
-    const customFilenames = detectCustomFilenames(options.trackerBaseUrl);
-    phpFileName = customFilenames.phpFileName || "matomo.php";
-
-    // Only modify the base URL if it was detected from a URL with a file extension
-    if (customFilenames.baseUrl) {
-      baseUrl = customFilenames.baseUrl;
-    }
+    // Use default filename
+    const defaultFilenames = getDefaultFilenames();
+    phpFileName = defaultFilenames.phpFileName;
   }
 
   return `${baseUrl}/${phpFileName}`;

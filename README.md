@@ -198,7 +198,7 @@ function YourComponent() {
 | Option | Type | Required? | Description | Default |
 | --- | --- | --- | --- | --- |
 | `siteId` | String/Number | ✅ | The site identifier from your Matomo dashboard | - |
-| `trackerBaseUrl` | String | ✅ | Base URL of your Matomo installation. Can be: 1) Domain only (e.g., "https://analytics.example.com"), 2) Path without file extension (e.g., "https://example.com/api/"), or 3) Path to custom files (e.g., "https://example.com/xyz/custom.js") | - |
+| `trackerBaseUrl` | String | ✅ | Base URL of your Matomo installation. Can be: 1) Domain only (e.g., "https://analytics.example.com"), or 2) Path without file extension (e.g., "https://example.com/api/") | - |
 | `userId` | String | - | User identifier for cross-device tracking | - |
 | `disableTracking` | Boolean | - | When true, disables all tracking | `false` |
 | `disabled` | Boolean | - | **Deprecated** - Alias for `disableTracking` | - |
@@ -210,14 +210,14 @@ function YourComponent() {
 | `heartbeat` | Boolean/Number | - | **Deprecated** - Legacy heartbeat config | - |
 | `disableLinkTracking` | Boolean | - | Disables automatic link tracking | `false` |
 | `linkTracking` | Boolean | - | **Deprecated** - Inverse of `disableLinkTracking` | - |
-| `matomoJsFileName` | String | - | Custom filename for Matomo JS (only needed if auto-detection fails) | `"matomo.js"` |
-| `matomoPhpFileName` | String | - | Custom filename for Matomo PHP (only needed if auto-detection fails) | `"matomo.php"` |
+| `matomoJsFileName` | String | - | Custom filename for Matomo JS (required if you need to use a custom filename) | `"matomo.js"` |
+| `matomoPhpFileName` | String | - | Custom filename for Matomo PHP (required if you need to use a custom filename) | `"matomo.php"` |
 | `requestMethod` | RequestMethod | - | HTTP method for tracking requests | `RequestMethod.GET` |
 | `configurations` | Object | - | Additional Matomo configurations | - |
 
 ### TrackerBaseUrl Examples
 
-The `trackerBaseUrl` option can be used in three different ways:
+The `trackerBaseUrl` option can be used in two different ways:
 
 ```tsx
 // 1. Domain only - standard matomo.js/php files at the root
@@ -231,11 +231,18 @@ const config2 = {
   trackerBaseUrl: "https://example.com/api/",
   siteId: 1
 };
+```
 
-// 3. Path to custom files - automatically detects custom filenames
-const config3 = {
-  trackerBaseUrl: "https://example.com/xyz/custom.js",
-  siteId: 1
+### Custom Filenames
+
+If you need to use custom filenames instead of the default "matomo.js" and "matomo.php", you must specify them explicitly:
+
+```tsx
+const config = {
+  trackerBaseUrl: "https://analytics.example.com",
+  siteId: 1,
+  matomoJsFileName: "custom.js",
+  matomoPhpFileName: "custom.php"
 };
 ```
 
@@ -524,4 +531,4 @@ This project is licensed under the MIT Licence.
 
 This project builds upon the foundations of [React Matomo Tracker](https://github.com/keiko-app/react-matomo) and [Matomo-Tracker](https://github.com/jonkoops/matomo-tracker), enhancing them with advanced customization options, improved TypeScript support, and modern React patterns.
 
-Originally forked to enable custom Matomo tracker URLs (beyond the standard Matomo.js/php), the library has evolved into a complete solution for React analytics with an emphasis on developer experience and flexibility.
+Originally created to enable custom Matomo tracker URLs (beyond the standard Matomo.js/php), the library has evolved into a complete solution for React analytics with an emphasis on developer experience and flexibility.
