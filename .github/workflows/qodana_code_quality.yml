@@ -31,7 +31,7 @@ jobs:
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2025.1
         with:
-          args: --fail-threshold=1
+          args: --fail-threshold=0
           cache-dir: ${{ runner.temp }}/qodana-cache
           pr-mode: true
           upload-result: true
