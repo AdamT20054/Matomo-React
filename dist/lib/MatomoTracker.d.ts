@@ -5,7 +5,7 @@ declare global {
     }
 }
 export declare class MatomoTracker {
-    private options;
+    private readonly options;
     constructor(options: MatomoProviderConfig);
     private initialize;
     private configureTracker;
