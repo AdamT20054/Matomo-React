@@ -49,11 +49,6 @@ export class MatomoTracker {
       ...options
     };
 
-    // Handle urlBase as an alias for trackerBaseUrl
-    if (this.options.urlBase && !this.options.trackerBaseUrl) {
-      this.options.trackerBaseUrl = this.options.urlBase;
-    }
-
     // Handle disabled as an alias for disableTracking
     if (this.options.disabled !== undefined && this.options.disableTracking === undefined) {
       this.options.disableTracking = this.options.disabled;

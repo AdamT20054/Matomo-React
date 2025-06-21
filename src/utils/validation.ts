@@ -14,11 +14,11 @@ export function validateRequiredOptions(options: MatomoProviderConfig): Validati
     };
   }
 
-  // Check for required URL options
-  if (!options.trackerBaseUrl && !options.urlBase && !options.trackerUrl) {
+  // Check for required trackerBaseUrl
+  if (!options.trackerBaseUrl) {
     return {
       isValid: false,
-      message: "You must specify either trackerBaseUrl/urlBase or trackerUrl."
+      message: "You must specify the trackerBaseUrl."
     };
   }
 
@@ -35,10 +35,6 @@ export function checkForMisconfigurations(options: MatomoProviderConfig, debug: 
   if (!debug) return;
 
   // Check for deprecated options
-  if (options.urlBase) {
-    console.warn("[Matomo] 'urlBase' is deprecated. Use 'trackerBaseUrl' instead.");
-  }
-
   if (options.disabled !== undefined) {
     console.warn("[Matomo] 'disabled' is deprecated. Use 'disableTracking' instead.");
   }
@@ -49,15 +45,6 @@ export function checkForMisconfigurations(options: MatomoProviderConfig, debug: 
 
   if (options.heartbeat !== undefined) {
     console.warn("[Matomo] 'heartbeat' is deprecated. Use 'heartBeat' with 'active' and 'seconds' properties instead.");
-  }
-
-  // Check for potential conflicts
-  if (options.trackerUrl && options.trackerBaseUrl) {
-    console.warn("[Matomo] Both 'trackerUrl' and 'trackerBaseUrl' are specified. 'trackerUrl' will take precedence.");
-  }
-
-  if (options.srcUrl && options.trackerBaseUrl) {
-    console.warn("[Matomo] Both 'srcUrl' and 'trackerBaseUrl' are specified. 'srcUrl' will take precedence for script loading.");
   }
 
   // Check for potentially incorrect values

@@ -198,9 +198,7 @@ function YourComponent() {
 | Option | Type | Required? | Description | Default |
 | --- | --- | --- | --- | --- |
 | `siteId` | String/Number | ✅ | The site identifier from your Matomo dashboard | - |
-| `trackerBaseUrl` | String | ✅* | Base URL of your Matomo installation | - |
-| `urlBase` | String | ✅* | **Deprecated** - Alias for `trackerBaseUrl` | - |
-| `trackerUrl` | String | ✅* | Full URL to the tracking endpoint | - |
+| `trackerBaseUrl` | String | ✅ | Base URL of your Matomo installation. Can be: 1) Domain only (e.g., "https://analytics.example.com"), 2) Path without file extension (e.g., "https://example.com/api/"), or 3) Path to custom files (e.g., "https://example.com/xyz/custom.js") | - |
 | `userId` | String | - | User identifier for cross-device tracking | - |
 | `disableTracking` | Boolean | - | When true, disables all tracking | `false` |
 | `disabled` | Boolean | - | **Deprecated** - Alias for `disableTracking` | - |
@@ -212,13 +210,34 @@ function YourComponent() {
 | `heartbeat` | Boolean/Number | - | **Deprecated** - Legacy heartbeat config | - |
 | `disableLinkTracking` | Boolean | - | Disables automatic link tracking | `false` |
 | `linkTracking` | Boolean | - | **Deprecated** - Inverse of `disableLinkTracking` | - |
-| `matomoJsFileName` | String | - | Custom filename for Matomo JS | `"matomo.js"` |
-| `matomoPhpFileName` | String | - | Custom filename for Matomo PHP | `"matomo.php"` |
-| `srcUrl` | String | - | Full URL to the Matomo JS file | - |
+| `matomoJsFileName` | String | - | Custom filename for Matomo JS (only needed if auto-detection fails) | `"matomo.js"` |
+| `matomoPhpFileName` | String | - | Custom filename for Matomo PHP (only needed if auto-detection fails) | `"matomo.php"` |
 | `requestMethod` | RequestMethod | - | HTTP method for tracking requests | `RequestMethod.GET` |
 | `configurations` | Object | - | Additional Matomo configurations | - |
 
-*At least one of `trackerBaseUrl`, `urlBase`, or `trackerUrl` must be provided.
+### TrackerBaseUrl Examples
+
+The `trackerBaseUrl` option can be used in three different ways:
+
+```tsx
+// 1. Domain only - standard matomo.js/php files at the root
+const config1 = {
+  trackerBaseUrl: "https://analytics.example.com",
+  siteId: 1
+};
+
+// 2. Path without file extension - standard matomo.js/php files at that path
+const config2 = {
+  trackerBaseUrl: "https://example.com/api/",
+  siteId: 1
+};
+
+// 3. Path to custom files - automatically detects custom filenames
+const config3 = {
+  trackerBaseUrl: "https://example.com/xyz/custom.js",
+  siteId: 1
+};
+```
 
 ### URL Transformer
 

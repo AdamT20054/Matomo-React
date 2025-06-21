@@ -38,16 +38,15 @@ export type MatomoProviderConfig = {
    */
   siteId: string | number;
 
-  // Base URL parameters (one of these is required)
+  // Base URL parameter (required)
   /** 
-   * Base URL of your Matomo installation (e.g., "https://analytics.example.com")
-   * Either this or trackerUrl must be provided
+   * Base URL of your Matomo installation (required)
+   * Can be either:
+   * 1. Domain only: "https://analytics.example.com" (assumes standard matomo.js/php files at the root)
+   * 2. Path without file extension: "https://example.com/api/" (assumes standard matomo.js/php files at that path)
+   * 3. Path to custom files: "https://example.com/xyz/custom.js" (automatically detects custom filenames)
    */
-  trackerBaseUrl?: string;
-  /**
-   * @deprecated Use trackerBaseUrl instead
-   */
-  urlBase?: string; // Alias for trackerBaseUrl
+  trackerBaseUrl: string;
 
   // Optional parameters
   /** 
@@ -87,27 +86,17 @@ export type MatomoProviderConfig = {
    */
   linkTracking?: boolean; // Inverse of disableLinkTracking
 
-  // Custom file names
+  // Custom file names (only needed if auto-detection from trackerBaseUrl fails)
   /** 
    * Custom filename for the Matomo JavaScript tracker (default: "matomo.js")
+   * Only needed if you need to specify a custom filename that can't be auto-detected
    */
   matomoJsFileName?: string;
   /** 
    * Custom filename for the Matomo PHP tracker (default: "matomo.php")
+   * Only needed if you need to specify a custom filename that can't be auto-detected
    */
   matomoPhpFileName?: string;
-
-  // Custom URLs (override trackerBaseUrl + filename)
-  /** 
-   * Complete URL to the Matomo PHP tracker
-   * Overrides trackerBaseUrl + matomoPhpFileName
-   */
-  trackerUrl?: string;
-  /** 
-   * Complete URL to the Matomo JavaScript tracker
-   * Overrides trackerBaseUrl + matomoJsFileName
-   */
-  srcUrl?: string;
 
   // Request method
   /** 
