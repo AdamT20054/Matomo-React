@@ -1,13 +1,12 @@
 {
   "name": "@adam20054/react-matomo",
-  "version": "0.0.0",
+  "version": "0.9.0",
   "description": "Advanced React integration for Matomo analytics.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -16,8 +15,16 @@
   "keywords": [
     "matomo",
     "react",
-    "analytics"
+    "analytics",
+    "Matamo-react",
+    "react-matomo"
   ],
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "types": "dist/index.d.ts",
   "bugs": {
     "url": "https://github.com/AdamT20054/Matomo-React/issues"
   },
@@ -25,6 +32,7 @@
   "author": "Adam O'neill <ReactMatomo@AdamT05.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/react": "^19.1.8",
     "eslint": "^9.29.0",
     "np": "^10.2.0",
     "prettier": "^3.5.3",
@@ -33,5 +41,11 @@
   },
   "peerDependencies": {
     "react": "^18.3.1"
+  },
+  "engines": {
+    "node": ">=21"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

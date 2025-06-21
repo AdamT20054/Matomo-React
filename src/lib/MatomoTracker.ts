@@ -8,6 +8,10 @@ import {
   TrackSiteSearchParams,
 } from "../types";
 
+/**
+ * Extends the global Window interface to include the _paq array used by Matomo
+ * @public
+ */
 declare global {
   interface Window {
     _paq: any[];
@@ -116,10 +120,18 @@ export class MatomoTracker {
     this.addTrackerToDOM();
   }
 
+  /**
+   * Tracks a page view
+   * @public
+   */
   trackPageView(parameters?: TrackPageViewParams): void {
     this.track({ data: [TrackType.PAGE_VIEW], ...parameters });
   }
 
+  /**
+   * Tracks an event
+   * @public
+   */
   trackEvent({
     category,
     action,
@@ -139,6 +151,10 @@ export class MatomoTracker {
     }
   }
 
+  /**
+   * Tracks a site search
+   * @public
+   */
   trackSiteSearch({
     keyword,
     category,
@@ -182,7 +198,7 @@ export class MatomoTracker {
         Array.isArray(customDimensions) &&
         customDimensions.length
       ) {
-        customDimensions.map((customDimension: CustomDimension) =>
+        customDimensions.forEach((customDimension: CustomDimension) =>
           this.addCustomInstruction(
             "setCustomDimension",
             customDimension.id,

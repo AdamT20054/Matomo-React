@@ -38,13 +38,13 @@ const config = {
     userId: "user-123",                        // For user tracking across sessions
     disabled: false,                           // Enable/disable all tracking
 
-    // Request method (POST is more secure and handles larger data)
+    // Request method (POST/GET)
     requestMethod: "POST",
 
     // Custom configurations
     configurations: {
-        disableCookies: true,                    // For cookie-less tracking
-        setSecureCookie: true,                   // For secure cookies
+        disableCookies: true,                    // For cookie-less tracking (less accurate)
+        setSecureCookie: true,                  
         setRequestMethod: "POST"                 // Alternative way to set request method
     }
 };
@@ -400,13 +400,6 @@ const config: MatomoProviderConfig = {
 	urlTransformer
 };
 ```
-
-## 💖 What is keiko?
-
-**keiko** is an online service available on the Web and as mobile applications to simply manage home inventories and better deal with home insurers. It was proudly built in 🇫🇷 France and is currently only avaialble in this country. 
-
-➡️ **Discover more about keiko on our website: [https://keiko-app.fr](https://keiko-app.fr)**
-
 
 
 ## 🚀 Future Development

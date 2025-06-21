@@ -11,20 +11,32 @@ export type MatomoProviderConfig = {
 
   // Base URL parameters (one of these is required)
   trackerBaseUrl?: string;
+  /**
+   * @deprecated Use trackerBaseUrl instead
+   */
   urlBase?: string; // Alias for trackerBaseUrl
 
   // Optional parameters
   userId?: string;
   disableTracking?: boolean;
+  /**
+   * @deprecated Use disableTracking instead
+   */
   disabled?: boolean; // Alias for disableTracking
   urlTransformer?: (url: string) => string;
 
   // Heartbeat configuration
-  heartbeat?: boolean | number;
+  /**
+   * @deprecated Use heartBeat with active and seconds properties instead
+   */
+  heartbeat?: boolean | number; // Legacy format
   heartBeat?: HeartBeatConfig; // New format with active and seconds properties
 
   // Link tracking
   disableLinkTracking?: boolean;
+  /**
+   * @deprecated Use disableLinkTracking instead (with inverse value)
+   */
   linkTracking?: boolean; // Inverse of disableLinkTracking
 
   // Custom file names

@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useContext, useMemo } from "react";
+import { ReactNode, createContext, useContext, useMemo } from "react";
 import { MatomoTracker } from "../lib";
 import { MatomoProviderConfig } from "../types";
 
@@ -10,8 +10,16 @@ const MatomoContext = createContext<MatomoContextProps>(
   {} as MatomoContextProps
 );
 
+/**
+ * React hook to access the Matomo tracker instance
+ * @public
+ */
 export const useMatomo = () => useContext(MatomoContext);
 
+/**
+ * Provider component that initializes the Matomo tracker
+ * @public
+ */
 export const MatomoProvider = ({
   config,
   children,
