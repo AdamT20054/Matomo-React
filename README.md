@@ -29,12 +29,37 @@ Set the config and add the provider to you `App.tsx` page:
 import { MatomoProviderConfig, RequestMethod } from "@keiko-app/react-matomo";
 
 const config: MatomoProviderConfig = {
-	trackerBaseUrl: "https://base.url.of.your.tracker",
-	siteId: 1,
-	// Optional custom settings
-	matomoJsFileName: "custom-matomo.js", // Default is "matomo.js"
-	matomoPhpFileName: "custom-matomo.php", // Default is "matomo.php"
-	requestMethod: RequestMethod.POST, // Default is RequestMethod.GET
+	// Required parameters
+	urlBase: "https://LINK.TO.DOMAIN", // Alias for trackerBaseUrl
+	siteId: 3,
+	
+	// Optional parameters
+	userId: "UID76903202", // Optional user identifier
+	trackerUrl: "https://LINK.TO.DOMAIN/tracking.php", // Optional, default: ${urlBase}/matomo.php
+	srcUrl: "https://LINK.TO.DOMAIN/tracking.js", // Optional, default: ${urlBase}/matomo.js
+	disabled: false, // Optional, false by default. Makes all tracking calls no-ops if set to true
+	
+	// Heartbeat configuration (optional, enabled by default)
+	heartBeat: {
+		active: true, // Optional, default: true
+		seconds: 10 // Optional, default: 15
+	},
+	
+	// Link tracking (optional, enabled by default)
+	linkTracking: false,
+	
+	// Custom Matomo configurations (optional)
+	configurations: {
+		// Any valid Matomo configuration
+		disableCookies: true,
+		setSecureCookie: true,
+	},
+	
+	// Legacy options still supported
+	// trackerBaseUrl: "https://base.url.of.your.tracker",
+	// matomoJsFileName: "custom-matomo.js",
+	// matomoPhpFileName: "custom-matomo.php",
+	// requestMethod: RequestMethod.POST,
 };
 
 const App = () => {
@@ -93,7 +118,7 @@ With the following parameters:
 | Option | Type | Required? | Description | Default Value |
 | --- | --- | --- | --- | --- |
 | `keyword` | String | ✅ | The searched keyword | *none, must be set* 
-| `category` | String or `false` | - | The category used by the search engine. If not applicable (or unknown), set to `false` | `false`
+| `category` | String or `false` | - | The category used by the search engine. If not applicable (or unknown), set to `false` | `false`
 | `count` | Number or `false` | - | The number of results returned by the search. If not applicable (or unknown), set to `false` | `false`
 | `documentTitle` | String | - | Sets the page title | Value of `window.document.title`
 | `href` | String / [Location](https://developer.mozilla.org/docs/Web/API/Location) | - | Sets the page URL | Value of `window.location.href` |
@@ -117,15 +142,25 @@ interface CustomDimension {
 
 | Option | Type | Required? | Description | Example |
 | --- | --- | --- | --- | --- |
-| `trackerBaseUrl` | String | ✅ | The **base URL** of your matomo installation. This must not include `matomo.php` or `matomo.js` | `https://track.me.eu` |
-| `siteId` |  String or Number | ✅ | The site identifier. This can be retrieved from your matomo dashboard. | `1` |
-| `disableTracking` | Boolean | - | When set to `true`, tracking will be stopped. Useful for GDPR🇪🇺 compliance or development websites | `false` |
+| `siteId` |  String or Number | ✅ | The site identifier. This can be retrieved from your matomo dashboard. | `1` |
+| `trackerBaseUrl` | String | ✅* | The **base URL** of your matomo installation. This must not include `matomo.php` or `matomo.js`. Required unless `urlBase`, `trackerUrl`, or `srcUrl` is provided. | `https://track.me.eu` |
+| `urlBase` | String | ✅* | Alias for `trackerBaseUrl`. | `https://track.me.eu` |
+| `userId` | String | - | User identifier for cross-device and cross-session tracking. | `UID76903202` |
+| `trackerUrl` | String | - | Full URL to the tracking endpoint. If provided, overrides `trackerBaseUrl` + `matomoPhpFileName`. | `https://track.me.eu/tracking.php` |
+| `srcUrl` | String | - | Full URL to the Matomo JavaScript file. If provided, overrides `trackerBaseUrl` + `matomoJsFileName`. | `https://track.me.eu/tracking.js` |
+| `disabled` | Boolean | - | Alias for `disableTracking`. When set to `true`, tracking will be stopped. | `false` |
+| `disableTracking` | Boolean | - | When set to `true`, tracking will be stopped. Useful for GDPR🇪🇺 compliance or development websites | `false` |
 | `urlTransformer` | Function (see below) | - | Transform function that will modify the URL and set it as a custom URL. Usefull to remove sensitive informations (ids...) from URLs | See below |
-| `heartbeat` | Number or Boolean | - | When set to `false`, the heartbeat is disabled. When set to `true` (default value), a 15-second heartbeat will be used. When set to any positive integer, the value will be used as the heartbeat interval. | `false`, `15` |
+| `heartBeat` | Object | - | Configuration for the heartbeat feature. Has `active` (boolean) and `seconds` (number) properties. | `{ active: true, seconds: 10 }` |
+| `heartbeat` | Number or Boolean | - | Legacy option. When set to `false`, the heartbeat is disabled. When set to `true` (default value), a 15-second heartbeat will be used. When set to any positive integer, the value will be used as the heartbeat interval. | `false`, `15` |
+| `linkTracking` | Boolean | - | Enable tracking of outbound and download links. Defaults to `true`. Inverse of `disableLinkTracking`. | `false` |
 | `disableLinkTracking` | Boolean | - | Disable tracking of outbound and download links. Defaults to `false`. | `true` |
 | `matomoJsFileName` | String | - | Custom file name for the Matomo JavaScript file. Defaults to `matomo.js`. | `custom-matomo.js` |
 | `matomoPhpFileName` | String | - | Custom file name for the Matomo PHP file. Defaults to `matomo.php`. | `custom-matomo.php` |
 | `requestMethod` | RequestMethod | - | HTTP request method to use for tracking requests. Can be either `RequestMethod.GET` (default) or `RequestMethod.POST`. | `RequestMethod.POST` |
+| `configurations` | Object | - | Custom Matomo configurations. Any valid Matomo configuration can be specified here. | `{ disableCookies: true, setSecureCookie: true }` |
+
+*At least one of `trackerBaseUrl`, `urlBase`, or `trackerUrl` must be provided.
 
 
 ### Transform URLs using `urlTransformer`

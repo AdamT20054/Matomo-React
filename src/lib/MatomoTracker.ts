@@ -18,11 +18,26 @@ export class MatomoTracker {
   private options: MatomoProviderConfig;
 
   constructor(options: MatomoProviderConfig) {
-    if (!options.trackerBaseUrl) {
-      throw new Error("You must specify the tracker base URL.");
+    // Handle urlBase as an alias for trackerBaseUrl
+    if (options.urlBase && !options.trackerBaseUrl) {
+      options.trackerBaseUrl = options.urlBase;
+    }
+
+    if (!options.trackerBaseUrl && !options.trackerUrl) {
+      throw new Error("You must specify either trackerBaseUrl/urlBase or trackerUrl.");
     }
     if (!options.siteId) {
       throw new Error("You must specify the site identifier.");
+    }
+
+    // Handle disabled as an alias for disableTracking
+    if (options.disabled !== undefined && options.disableTracking === undefined) {
+      options.disableTracking = options.disabled;
+    }
+
+    // Handle linkTracking as the inverse of disableLinkTracking
+    if (options.linkTracking !== undefined && options.disableLinkTracking === undefined) {
+      options.disableLinkTracking = !options.linkTracking;
     }
 
     this.options = options;
@@ -45,19 +60,41 @@ export class MatomoTracker {
       return;
     }
 
-    const phpFileName = this.options.matomoPhpFileName || "matomo.php";
-    this.addCustomInstruction(
-      "setTrackerUrl",
-      this.options.trackerBaseUrl + "/" + phpFileName
-    );
+    // Set tracker URL
+    if (this.options.trackerUrl) {
+      // Use trackerUrl directly if provided
+      this.addCustomInstruction("setTrackerUrl", this.options.trackerUrl);
+    } else {
+      // Otherwise construct from trackerBaseUrl and matomoPhpFileName
+      const phpFileName = this.options.matomoPhpFileName || "matomo.php";
+      this.addCustomInstruction(
+        "setTrackerUrl",
+        this.options.trackerBaseUrl + "/" + phpFileName
+      );
+    }
+
+    // Set site ID
     this.addCustomInstruction("setSiteId", this.options.siteId);
+
+    // Set user ID if specified
+    if (this.options.userId) {
+      this.addCustomInstruction("setUserId", this.options.userId);
+    }
 
     // Set request method if specified
     if (this.options.requestMethod) {
       this.addCustomInstruction("setRequestMethod", this.options.requestMethod);
     }
 
-    if (this.options.heartbeat === undefined || this.options.heartbeat) {
+    // Configure heartbeat
+    if (this.options.heartBeat) {
+      // New format with active and seconds properties
+      if (this.options.heartBeat.active !== false) {
+        const seconds = this.options.heartBeat.seconds || 15;
+        this.enableHeartBeatTimer(seconds);
+      }
+    } else if (this.options.heartbeat === undefined || this.options.heartbeat) {
+      // Legacy format
       const heartbeatInterval =
         typeof this.options.heartbeat === "number" &&
         Math.round(this.options.heartbeat) > 0
@@ -66,7 +103,15 @@ export class MatomoTracker {
       this.enableHeartBeatTimer(heartbeatInterval);
     }
 
+    // Configure link tracking
     this.enableLinkTracking(!this.options.disableLinkTracking);
+
+    // Apply custom configurations
+    if (this.options.configurations) {
+      Object.entries(this.options.configurations).forEach(([key, value]) => {
+        this.addCustomInstruction(key, value);
+      });
+    }
 
     this.addTrackerToDOM();
   }
@@ -160,8 +205,14 @@ export class MatomoTracker {
     scriptElement.type = "text/javascript";
     scriptElement.async = true;
     scriptElement.defer = true;
-    const jsFileName = this.options.matomoJsFileName || "matomo.js";
-    scriptElement.src = `${this.options.trackerBaseUrl}/${jsFileName}`;
+
+    // Use srcUrl if provided, otherwise construct from trackerBaseUrl and matomoJsFileName
+    if (this.options.srcUrl) {
+      scriptElement.src = this.options.srcUrl;
+    } else {
+      const jsFileName = this.options.matomoJsFileName || "matomo.js";
+      scriptElement.src = `${this.options.trackerBaseUrl}/${jsFileName}`;
+    }
 
     scripts?.parentNode?.insertBefore(scriptElement, scripts);
   }
