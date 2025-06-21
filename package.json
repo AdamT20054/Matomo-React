@@ -4,7 +4,7 @@
   "description": "Advanced React integration for Matomo analytics.",
   "main": "dist/index.js",
   "scripts": {
-    "release": "release-it",
+    "release": "npm run build && release-it",
     "build": "npm run lint && npm run format && tsc",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build",
