@@ -49,15 +49,9 @@ export class MatomoTracker {
       ...options
     };
 
-    // Handle disabled as an alias for disableTracking
-    if (this.options.disabled !== undefined && this.options.disableTracking === undefined) {
-      this.options.disableTracking = this.options.disabled;
-    }
+    // Deprecated: disabled property is no longer supported
 
-    // Handle linkTracking as the inverse of disableLinkTracking
-    if (this.options.linkTracking !== undefined && this.options.disableLinkTracking === undefined) {
-      this.options.disableLinkTracking = !this.options.linkTracking;
-    }
+    // Deprecated: linkTracking property is no longer supported
 
     // Validate required options
     const validationResult = validateRequiredOptions(this.options);
@@ -133,20 +127,9 @@ export class MatomoTracker {
    * @private
    */
   private configureHeartbeat(): void {
-    if (this.options.heartBeat) {
-      // New format with active and seconds properties
-      if (this.options.heartBeat.active !== false) {
-        const seconds = this.options.heartBeat.seconds || 15;
-        this.enableHeartBeatTimer(seconds);
-      }
-    } else if (this.options.heartbeat === undefined || this.options.heartbeat) {
-      // Legacy format
-      const heartbeatInterval =
-        typeof this.options.heartbeat === "number" &&
-        Math.round(this.options.heartbeat) > 0
-          ? Math.round(this.options.heartbeat)
-          : 15;
-      this.enableHeartBeatTimer(heartbeatInterval);
+    if (this.options.heartBeat && this.options.heartBeat.active !== false) {
+      const seconds = this.options.heartBeat.seconds || 15;
+      this.enableHeartBeatTimer(seconds);
     }
   }
 

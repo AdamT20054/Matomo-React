@@ -201,15 +201,15 @@ function YourComponent() {
 | `trackerBaseUrl` | String | ✅ | Base URL of your Matomo installation. Can be: 1) Domain only (e.g., "https://analytics.example.com"), or 2) Path without file extension (e.g., "https://example.com/api/") | - |
 | `userId` | String | - | User identifier for cross-device tracking | - |
 | `disableTracking` | Boolean | - | When true, disables all tracking | `false` |
-| `disabled` | Boolean | - | **Deprecated** - Alias for `disableTracking` | - |
+| `disabled` | Boolean | - | **Deprecated and removed** - Use `disableTracking` instead | - |
 | `deferTracking` | Boolean | - | Defers tracking until after critical content loads | `false` |
 | `debug` | Boolean | - | Enables debug mode with console logging | `false` |
 | `enableJSErrorTracking` | Boolean | - | Tracks JavaScript errors as events | `false` |
 | `urlTransformer` | Function | - | Transforms URLs before tracking | - |
 | `heartBeat` | Object | - | Configuration for heartbeat feature | `{ active: true, seconds: 15 }` |
-| `heartbeat` | Boolean/Number | - | **Deprecated** - Legacy heartbeat config | - |
+| `heartbeat` | Boolean/Number | - | **Deprecated and removed** - Use `heartBeat` with `active` and `seconds` properties instead | - |
 | `disableLinkTracking` | Boolean | - | Disables automatic link tracking | `false` |
-| `linkTracking` | Boolean | - | **Deprecated** - Inverse of `disableLinkTracking` | - |
+| `linkTracking` | Boolean | - | **Deprecated and removed** - Use `disableLinkTracking` (with inverse value) instead | - |
 | `matomoJsFileName` | String | - | Custom filename for Matomo JS (required if you need to use a custom filename) | `"matomo.js"` |
 | `matomoPhpFileName` | String | - | Custom filename for Matomo PHP (required if you need to use a custom filename) | `"matomo.php"` |
 | `requestMethod` | RequestMethod | - | HTTP method for tracking requests | `RequestMethod.GET` |

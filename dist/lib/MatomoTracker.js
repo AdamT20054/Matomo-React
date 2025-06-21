@@ -18,12 +18,6 @@ const utils_1 = require("../utils");
 class MatomoTracker {
     constructor(options) {
         this.options = Object.assign(Object.assign({}, types_1.DEFAULT_CONFIG), options);
-        if (this.options.disabled !== undefined && this.options.disableTracking === undefined) {
-            this.options.disableTracking = this.options.disabled;
-        }
-        if (this.options.linkTracking !== undefined && this.options.disableLinkTracking === undefined) {
-            this.options.disableLinkTracking = !this.options.linkTracking;
-        }
         const validationResult = (0, utils_1.validateRequiredOptions)(this.options);
         if (!validationResult.isValid) {
             throw new Error(validationResult.message);
@@ -63,18 +57,9 @@ class MatomoTracker {
         }
     }
     configureHeartbeat() {
-        if (this.options.heartBeat) {
-            if (this.options.heartBeat.active !== false) {
-                const seconds = this.options.heartBeat.seconds || 15;
-                this.enableHeartBeatTimer(seconds);
-            }
-        }
-        else if (this.options.heartbeat === undefined || this.options.heartbeat) {
-            const heartbeatInterval = typeof this.options.heartbeat === "number" &&
-                Math.round(this.options.heartbeat) > 0
-                ? Math.round(this.options.heartbeat)
-                : 15;
-            this.enableHeartBeatTimer(heartbeatInterval);
+        if (this.options.heartBeat && this.options.heartBeat.active !== false) {
+            const seconds = this.options.heartBeat.seconds || 15;
+            this.enableHeartBeatTimer(seconds);
         }
     }
     configureLinkTracking() {

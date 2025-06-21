@@ -7,8 +7,10 @@ export declare const DEFAULT_CONFIG: {
     disableTracking: boolean;
     disableLinkTracking: boolean;
     enableJSErrorTracking: boolean;
-    enableHeartBeatTimer: boolean;
-    heartBeatTimerInterval: number;
+    heartBeat: {
+        active: boolean;
+        seconds: number;
+    };
     matomoJsFileName: string;
     matomoPhpFileName: string;
     debug: boolean;

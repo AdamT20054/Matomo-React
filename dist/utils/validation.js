@@ -21,15 +21,6 @@ function validateRequiredOptions(options) {
 function checkForMisconfigurations(options, debug) {
     if (!debug)
         return;
-    if (options.disabled !== undefined) {
-        console.warn("[Matomo] 'disabled' is deprecated. Use 'disableTracking' instead.");
-    }
-    if (options.linkTracking !== undefined) {
-        console.warn("[Matomo] 'linkTracking' is deprecated. Use 'disableLinkTracking' (with inverse value) instead.");
-    }
-    if (options.heartbeat !== undefined) {
-        console.warn("[Matomo] 'heartbeat' is deprecated. Use 'heartBeat' with 'active' and 'seconds' properties instead.");
-    }
     if (options.heartBeat && typeof options.heartBeat.seconds === 'number' && options.heartBeat.seconds < 5) {
         console.warn("[Matomo] Very low heartbeat interval detected. Values below 5 seconds may cause performance issues.");
     }

@@ -34,18 +34,7 @@ export function checkForMisconfigurations(options: MatomoProviderConfig, debug: 
   // Skip if debug mode is disabled
   if (!debug) return;
 
-  // Check for deprecated options
-  if (options.disabled !== undefined) {
-    console.warn("[Matomo] 'disabled' is deprecated. Use 'disableTracking' instead.");
-  }
-
-  if (options.linkTracking !== undefined) {
-    console.warn("[Matomo] 'linkTracking' is deprecated. Use 'disableLinkTracking' (with inverse value) instead.");
-  }
-
-  if (options.heartbeat !== undefined) {
-    console.warn("[Matomo] 'heartbeat' is deprecated. Use 'heartBeat' with 'active' and 'seconds' properties instead.");
-  }
+  // No deprecated options warnings - deprecated features have been removed
 
   // Check for potentially incorrect values
   if (options.heartBeat && typeof options.heartBeat.seconds === 'number' && options.heartBeat.seconds < 5) {
