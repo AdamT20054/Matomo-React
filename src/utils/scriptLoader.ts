@@ -41,17 +41,13 @@ export function loadMatomoScript(options: MatomoProviderConfig): HTMLScriptEleme
   scriptElement.defer = true;
 
   // Determine the JS filename
-  let jsFileName = "matomo.js";
   const baseUrl = options.trackerBaseUrl;
+  const defaultFilenames = getDefaultFilenames();
 
-  // Use custom filename if specified
-  if (options.matomoJsFileName && options.matomoJsFileName !== "matomo.js") {
-    jsFileName = options.matomoJsFileName;
-  } else {
-    // Use default filename
-    const defaultFilenames = getDefaultFilenames();
-    jsFileName = defaultFilenames.jsFileName;
-  }
+  // Use custom filename if specified, otherwise use default
+  const jsFileName = (options.matomoJsFileName && options.matomoJsFileName !== "matomo.js") 
+    ? options.matomoJsFileName 
+    : defaultFilenames.jsFileName;
 
   // Set the script source
   scriptElement.src = `${baseUrl}/${jsFileName}`;
@@ -73,17 +69,13 @@ export function loadMatomoScript(options: MatomoProviderConfig): HTMLScriptEleme
  */
 export function constructTrackerUrl(options: MatomoProviderConfig): string {
   // Determine the PHP filename
-  let phpFileName = "matomo.php";
   const baseUrl = options.trackerBaseUrl;
+  const defaultFilenames = getDefaultFilenames();
 
-  // Use custom filename if specified
-  if (options.matomoPhpFileName && options.matomoPhpFileName !== "matomo.php") {
-    phpFileName = options.matomoPhpFileName;
-  } else {
-    // Use default filename
-    const defaultFilenames = getDefaultFilenames();
-    phpFileName = defaultFilenames.phpFileName;
-  }
+  // Use custom filename if specified, otherwise use default
+  const phpFileName = (options.matomoPhpFileName && options.matomoPhpFileName !== "matomo.php") 
+    ? options.matomoPhpFileName 
+    : defaultFilenames.phpFileName;
 
   return `${baseUrl}/${phpFileName}`;
 }
