@@ -173,6 +173,7 @@ export class MatomoTracker {
   /**
    * Tracks a page view
    * @public
+   * @noinspection JSUnusedGlobalSymbols
    */
   trackPageView(parameters?: TrackPageViewParams): void {
     this.track({ data: [TrackType.PAGE_VIEW], ...parameters });
@@ -181,6 +182,7 @@ export class MatomoTracker {
   /**
    * Tracks an event
    * @public
+   * @noinspection JSUnusedGlobalSymbols
    */
   trackEvent({
     category,
@@ -204,6 +206,7 @@ export class MatomoTracker {
   /**
    * Tracks a site search
    * @public
+   * @noinspection JSUnusedGlobalSymbols
    */
   trackSiteSearch({
     keyword,
