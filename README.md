@@ -246,22 +246,22 @@ function YourComponent() {
 
 For a comprehensive guide on Matomo JavaScript tracking, see the [Matomo JavaScript Tracking Guide](https://developer.matomo.org/guides/tracking-javascript-guide).
 
-| Option | Type | Required? | Description                                                                                                                                                                                                                                                                                            | Default |
-| --- | --- | --- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --- |
-| `siteId` | String/Number | ✅ | The site identifier from your Matomo dashboard                                                                                                                                                                                                                                                         | - |
-| `trackerBaseUrl` | String | ✅ | Base URL of your Matomo installation. Can be: 1) Domain only (e.g., "https://analytics.example.com"), or 2) Path without file extension (e.g., "https://example.com/api/").<br>Matomo will assume you're using matamo.js/php as the filename unless matomo(Js/Php)FileName is specified in your config | - |
-| `userId` | String | - | User identifier for cross-device tracking                                                                                                                                                                                                                                                              | - |
-| `disableTracking` | Boolean | - | When true, disables all tracking                                                                                                                                                                                                                                                                       | `false` |
-| `deferTracking` | Boolean | - | Defers tracking until after critical content loads                                                                                                                                                                                                                                                     | `false` |
-| `debug` | Boolean | - | Enables debug mode with console logging                                                                                                                                                                                                                                                                | `false` |
-| `enableJSErrorTracking` | Boolean | - | Tracks JavaScript errors as events                                                                                                                                                                                                                                                                     | `false` |
-| `urlTransformer` | Function | - | Transforms URLs before tracking                                                                                                                                                                                                                                                                        | - |
-| `heartBeat` | Object | - | Configuration for heartbeat feature                                                                                                                                                                                                                                                                    | `{ active: true, seconds: 15 }` |
-| `disableLinkTracking` | Boolean | - | Disables automatic link tracking                                                                                                                                                                                                                                                                       | `false` |
-| `matomoJsFileName` | String | - | Custom filename for Matomo JS (required if you need to use a custom filename)                                                                                                                                                                                                                          | `"matomo.js"` |
-| `matomoPhpFileName` | String | - | Custom filename for Matomo PHP (required if you need to use a custom filename)                                                                                                                                                                                                                         | `"matomo.php"` |
-| `requestMethod` | RequestMethod | - | HTTP method for tracking requests                                                                                                                                                                                                                                                                      | `RequestMethod.GET` |
-| `configurations` | Object | - | Additional Matomo configurations. For options not specifically built into the config options but still supported by Matomo. See [Matomo JavaScript Tracking Guide](https://developer.matomo.org/guides/tracking-javascript) for available options.                                                     | - |
+| Option | Type | Required? | Description | Default |
+| --- | --- | --- | --- | --- |
+| `siteId` | String/Number | ✅ | The site identifier from your Matomo dashboard | - |
+| `trackerBaseUrl` | String | ✅ | Base URL of your Matomo installation. Can be: 1) Domain only (e.g., "https://analytics.example.com"), or 2) Path without file extension (e.g., "https://example.com/api/"). Matomo will assume you're using matamo.js/php as the filename unless matomo(Js/Php)FileName is specified in your config | - |
+| `userId` | String | - | User identifier for cross-device tracking | - |
+| `disableTracking` | Boolean | - | When true, disables all tracking | `false` |
+| `deferTracking` | Boolean | - | Defers tracking until after critical content loads | `false` |
+| `debug` | Boolean | - | Enables debug mode with console logging | `false` |
+| `enableJSErrorTracking` | Boolean | - | Tracks JavaScript errors as events | `false` |
+| `urlTransformer` | Function | - | Transforms URLs before tracking | - |
+| `heartBeat` | Object | - | Configuration for heartbeat feature | `{ active: true, seconds: 15 }` |
+| `disableLinkTracking` | Boolean | - | Disables automatic link tracking | `false` |
+| `matomoJsFileName` | String | - | Custom filename for Matomo JS (required if you need to use a custom filename) | `"matomo.js"` |
+| `matomoPhpFileName` | String | - | Custom filename for Matomo PHP (required if you need to use a custom filename) | `"matomo.php"` |
+| `requestMethod` | RequestMethod | - | HTTP method for tracking requests | `RequestMethod.GET` |
+| `configurations` | Object | - | Additional Matomo configurations. For options not specifically built into the config options but still supported by Matomo. See [Matomo JavaScript Tracking Guide](https://developer.matomo.org/guides/tracking-javascript) for available options. | - |
 
 ### TrackerBaseUrl Examples
 
