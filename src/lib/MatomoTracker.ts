@@ -33,7 +33,7 @@ declare global {
  * @public
  */
 export class MatomoTracker {
-  private options: MatomoProviderConfig;
+  private readonly options: MatomoProviderConfig;
 
   /**
    * Creates a new instance of the Matomo tracker
