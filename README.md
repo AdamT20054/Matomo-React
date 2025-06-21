@@ -23,8 +23,8 @@ npm i --save @adam20054/react-matomo
 yarn add @adam20054/react-matomo
 ```
 
-Set the config and add the provider to you `App.tsx` page:
-
+Set the config and add the provider to your `App.tsx` page:
+**Please note: Some aliases are depreciated BUT NOT INCOMPATIBLE, this is for compatability with people coming from other (similar) packages.**
 ```tsx
 import { MatomoProvider, useMatomo } from "@adam20054/react-matomo";
 
