@@ -1,4 +1,18 @@
 <!--suppress ALL -->
+<style>
+  body {
+    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+  }
+  pre, code {
+    text-align: left;
+  }
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
 <h1 align="center" id="title">@Adam20054/Matamo-React</h1>
 
 
@@ -36,34 +50,55 @@ Matomo React is a comprehensive TypeScript library that seamlessly integrates Ma
 
 ## Table of Contents
 
-- [Quick Start](#quick-start)
-- [Installation](#installation)
-- [Basic Usage](#basic-usage)
-- [Configuration Options](#configuration-options)
-- [Tracking Methods](#tracking-methods)
-  - [Page Views](#tracking-page-views)
-  - [Events](#tracking-events)
-  - [Site Searches](#tracking-site-searches)
-  - [Custom Dimensions](#custom-dimensions)
-- [Advanced Features](#advanced-features)
-  - [Custom Instructions](#custom-instructions)
-  - [Ecommerce Tracking](#ecommerce-tracking)
-  - [Goal Tracking](#goal-tracking)
-  - [Content Tracking](#content-tracking)
-  - [User Consent Management](#user-consent-management)
-  - [Download and Outlink Tracking](#download-and-outlink-tracking)
-  - [Cross-Domain Tracking](#cross-domain-tracking)
-  - [Custom Variables](#custom-variables)
-  - [Multiple Tracker Instances](#multiple-tracker-instances)
-- [Performance Optimization](#performance-optimization)
-  - [Deferred Tracking](#deferred-tracking)
-  - [Optimized Event Tracking](#optimized-event-tracking)
-- [Debugging](#debugging)
-- [Contributing](#contributing)
-- [License](#license)
-- [Project Background](#project-background)
+<div style="max-width: 600px; margin: 0 auto; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #f8f9fa;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: center;">
+    <div>
+      <h3>Getting Started</h3>
+      <p><a href="#quick-start">Quick Start</a></p>
+      <p><a href="#installation">Installation</a></p>
+      <p><a href="#basic-usage">Basic Usage</a></p>
+      <p><a href="#configuration-options">Configuration Options</a></p>
+    </div>
+    <div>
+      <h3>Tracking Features</h3>
+      <p><a href="#tracking-methods">Tracking Methods</a></p>
+      <p><a href="#tracking-page-views">Page Views</a></p>
+      <p><a href="#tracking-events">Events</a></p>
+      <p><a href="#tracking-site-searches">Site Searches</a></p>
+      <p><a href="#custom-dimensions">Custom Dimensions</a></p>
+    </div>
+  </div>
+
+  <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: center;">
+    <div>
+      <h3>Advanced Features</h3>
+      <p><a href="#advanced-features">Overview</a></p>
+      <p><a href="#custom-instructions">Custom Instructions</a></p>
+      <p><a href="#ecommerce-tracking">Ecommerce Tracking</a></p>
+      <p><a href="#goal-tracking">Goal Tracking</a></p>
+      <p><a href="#content-tracking">Content Tracking</a></p>
+      <p><a href="#user-consent-management">User Consent Management</a></p>
+      <p><a href="#download-and-outlink-tracking">Download & Outlink Tracking</a></p>
+      <p><a href="#cross-domain-tracking">Cross-Domain Tracking</a></p>
+      <p><a href="#custom-variables">Custom Variables</a></p>
+      <p><a href="#multiple-tracker-instances">Multiple Tracker Instances</a></p>
+    </div>
+    <div>
+      <h3>Additional Information</h3>
+      <p><a href="#performance-optimization">Performance Optimization</a></p>
+      <p><a href="#deferred-tracking">Deferred Tracking</a></p>
+      <p><a href="#optimized-event-tracking">Optimized Event Tracking</a></p>
+      <p><a href="#debugging">Debugging</a></p>
+      <p><a href="#contributing">Contributing</a></p>
+      <p><a href="#license">License</a></p>
+      <p><a href="#project-background">Project Background</a></p>
+    </div>
+  </div>
+</div>
 
 ## Quick Start
+
+Get started quickly with Matomo React by following this simple example:
 
 ```tsx
 import { MatomoProvider, useMatomo } from "@adam20054/react-matomo";
@@ -197,29 +232,29 @@ function YourComponent() {
 
 For a comprehensive guide on Matomo JavaScript tracking, see the [Matomo JavaScript Tracking Guide](https://developer.matomo.org/guides/tracking-javascript-guide).
 
-| Option | Type | Required? | Description | Default |
-| --- | --- | --- | --- | --- |
-| `siteId` | String/Number | ✅ | The site identifier from your Matomo dashboard | - |
-| `trackerBaseUrl` | String | ✅ | Base URL of your Matomo installation. Can be: 1) Domain only (e.g., "https://analytics.example.com"), or 2) Path without file extension (e.g., "https://example.com/api/") | - |
-| `userId` | String | - | User identifier for cross-device tracking | - |
-| `disableTracking` | Boolean | - | When true, disables all tracking | `false` |
-| `disabled` | Boolean | - | **Deprecated and removed** - Use `disableTracking` instead | - |
-| `deferTracking` | Boolean | - | Defers tracking until after critical content loads | `false` |
-| `debug` | Boolean | - | Enables debug mode with console logging | `false` |
-| `enableJSErrorTracking` | Boolean | - | Tracks JavaScript errors as events | `false` |
-| `urlTransformer` | Function | - | Transforms URLs before tracking | - |
-| `heartBeat` | Object | - | Configuration for heartbeat feature | `{ active: true, seconds: 15 }` |
-| `heartbeat` | Boolean/Number | - | **Deprecated and removed** - Use `heartBeat` with `active` and `seconds` properties instead | - |
-| `disableLinkTracking` | Boolean | - | Disables automatic link tracking | `false` |
-| `linkTracking` | Boolean | - | **Deprecated and removed** - Use `disableLinkTracking` (with inverse value) instead | - |
-| `matomoJsFileName` | String | - | Custom filename for Matomo JS (required if you need to use a custom filename) | `"matomo.js"` |
-| `matomoPhpFileName` | String | - | Custom filename for Matomo PHP (required if you need to use a custom filename) | `"matomo.php"` |
-| `requestMethod` | RequestMethod | - | HTTP method for tracking requests | `RequestMethod.GET` |
-| `configurations` | Object | - | Additional Matomo configurations. For options not specifically built into the config options but still supported by Matomo. See [Matomo JavaScript Tracking Guide](https://developer.matomo.org/guides/tracking-javascript) for available options. | - |
+| Option | Type | Required? | Description                                                                                                                                                                                                                                                                                            | Default |
+| --- | --- | --- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --- |
+| `siteId` | String/Number | ✅ | The site identifier from your Matomo dashboard                                                                                                                                                                                                                                                         | - |
+| `trackerBaseUrl` | String | ✅ | Base URL of your Matomo installation. Can be: 1) Domain only (e.g., "https://analytics.example.com"), or 2) Path without file extension (e.g., "https://example.com/api/").<br>Matomo will assume you're using matamo.js/php as the filename unless matomo(Js/Php)FileName is specified in your config | - |
+| `userId` | String | - | User identifier for cross-device tracking                                                                                                                                                                                                                                                              | - |
+| `disableTracking` | Boolean | - | When true, disables all tracking                                                                                                                                                                                                                                                                       | `false` |
+| `deferTracking` | Boolean | - | Defers tracking until after critical content loads                                                                                                                                                                                                                                                     | `false` |
+| `debug` | Boolean | - | Enables debug mode with console logging                                                                                                                                                                                                                                                                | `false` |
+| `enableJSErrorTracking` | Boolean | - | Tracks JavaScript errors as events                                                                                                                                                                                                                                                                     | `false` |
+| `urlTransformer` | Function | - | Transforms URLs before tracking                                                                                                                                                                                                                                                                        | - |
+| `heartBeat` | Object | - | Configuration for heartbeat feature                                                                                                                                                                                                                                                                    | `{ active: true, seconds: 15 }` |
+| `disableLinkTracking` | Boolean | - | Disables automatic link tracking                                                                                                                                                                                                                                                                       | `false` |
+| `matomoJsFileName` | String | - | Custom filename for Matomo JS (required if you need to use a custom filename)                                                                                                                                                                                                                          | `"matomo.js"` |
+| `matomoPhpFileName` | String | - | Custom filename for Matomo PHP (required if you need to use a custom filename)                                                                                                                                                                                                                         | `"matomo.php"` |
+| `requestMethod` | RequestMethod | - | HTTP method for tracking requests                                                                                                                                                                                                                                                                      | `RequestMethod.GET` |
+| `configurations` | Object | - | Additional Matomo configurations. For options not specifically built into the config options but still supported by Matomo. See [Matomo JavaScript Tracking Guide](https://developer.matomo.org/guides/tracking-javascript) for available options.                                                     | - |
 
 ### TrackerBaseUrl Examples
 
 The `trackerBaseUrl` option can be used in two different ways:
+
+<details>
+<summary><strong>Click to see a URL configuration example</strong></summary>
 
 ```tsx
 // 1. Domain only - standard matomo.js/php files at the root
@@ -234,10 +269,14 @@ const config2 = {
   siteId: 1
 };
 ```
+</details>
 
 ### Custom Filenames
 
 If you need to use custom filenames instead of the default "matomo.js" and "matomo.php", you must specify them explicitly:
+
+<details>
+<summary><strong>Click to see a custom filename configuration example</strong></summary>
 
 ```tsx
 const config = {
@@ -247,10 +286,14 @@ const config = {
   matomoPhpFileName: "custom.php"
 };
 ```
+</details>
 
 ### URL Transformer
 
 The `urlTransformer` option allows you to modify URLs before they are sent to Matomo:
+
+<details>
+<summary><strong>Click to see a URL transformer example</strong></summary>
 
 ```tsx
 const urlTransformer = (url: string) => {
@@ -265,10 +308,16 @@ const config = {
   urlTransformer
 };
 ```
+</details>
 
 ## Tracking Methods
 
+This section covers the core tracking functionality provided by the library. These methods allow you to track various user interactions and behaviors in your React application. Click on each example to see the code.
+
 ### Tracking Page Views
+
+<details>
+<summary><strong>Click to see page view tracking examples</strong></summary>
 
 ```tsx
 // Basic page view tracking
@@ -283,8 +332,12 @@ tracker.trackPageView({
   ]
 });
 ```
+</details>
 
 ### Tracking Events
+
+<details>
+<summary><strong>Click to see event tracking examples</strong></summary>
 
 ```tsx
 tracker.trackEvent({
@@ -294,8 +347,12 @@ tracker.trackEvent({
   value: 1
 });
 ```
+</details>
 
 ### Tracking Site Searches
+
+<details>
+<summary><strong>Click to see site search tracking examples</strong></summary>
 
 ```tsx
 tracker.trackSiteSearch({
@@ -304,10 +361,14 @@ tracker.trackSiteSearch({
   count: 5
 });
 ```
+</details>
 
 ### Custom Dimensions
 
 Custom dimensions can be included with any tracking call:
+
+<details>
+<summary><strong>Click to see custom dimension examples</strong></summary>
 
 ```tsx
 tracker.trackPageView({
@@ -317,12 +378,18 @@ tracker.trackPageView({
   ]
 });
 ```
+</details>
 
 ## Advanced Features
+
+This section covers advanced Matomo tracking capabilities that can be implemented with this library. Each feature includes example code that can be expanded by clicking on it.
 
 ### Custom Instructions
 
 You can use any Matomo tracking feature through the `addCustomInstruction` method:
+
+<details>
+<summary><strong>Click to see custom instruction examples</strong></summary>
 
 ```tsx
 // Track a goal conversion
@@ -334,8 +401,12 @@ tracker.addCustomInstruction('enableCrossDomainLinking');
 // Set a custom variable
 tracker.addCustomInstruction('setCustomVariable', 1, 'Category', 'Sports', 'page');
 ```
+</details>
 
 ### Ecommerce Tracking
+
+<details>
+<summary><strong>Click to see ecommerce tracking examples</strong></summary>
 
 ```tsx
 // Add an item to the cart
@@ -360,8 +431,12 @@ tracker.addCustomInstruction('trackEcommerceOrder',
   0                 // Discount
 );
 ```
+</details>
 
 ### Goal Tracking
+
+<details>
+<summary><strong>Click to see goal tracking examples</strong></summary>
 
 ```tsx
 // Track a goal conversion
@@ -370,8 +445,12 @@ tracker.addCustomInstruction('trackGoal', 1);
 // Track a goal conversion with revenue
 tracker.addCustomInstruction('trackGoal', 1, 50.0);
 ```
+</details>
 
 ### Content Tracking
+
+<details>
+<summary><strong>Click to see content tracking examples</strong></summary>
 
 ```tsx
 // Track all content impressions on the page
@@ -395,8 +474,12 @@ tracker.addCustomInstruction('trackContentInteraction',
   'https://example.com'
 );
 ```
+</details>
 
 ### User Consent Management
+
+<details>
+<summary><strong>Click to see consent management examples</strong></summary>
 
 ```tsx
 // Require consent before tracking
@@ -411,8 +494,12 @@ tracker.addCustomInstruction('rememberConsentGiven', 30); // 30 days
 // Forget consent for the current user
 tracker.addCustomInstruction('forgetConsentGiven');
 ```
+</details>
 
 ### Download and Outlink Tracking
+
+<details>
+<summary><strong>Click to see download and outlink tracking examples</strong></summary>
 
 ```tsx
 // Set custom file extensions to be recognized as downloads
@@ -427,8 +514,12 @@ tracker.addCustomInstruction('trackLink', 'https://example.com/file.pdf', 'downl
 // Manually track an outlink
 tracker.addCustomInstruction('trackLink', 'https://external-site.com', 'link');
 ```
+</details>
 
 ### Cross-Domain Tracking
+
+<details>
+<summary><strong>Click to see cross-domain tracking examples</strong></summary>
 
 ```tsx
 // Enable cross-domain linking
@@ -437,8 +528,12 @@ tracker.addCustomInstruction('enableCrossDomainLinking');
 // Set the domains to be treated as local
 tracker.addCustomInstruction('setDomains', ['example.com', '*.example.org']);
 ```
+</details>
 
 ### Custom Variables
+
+<details>
+<summary><strong>Click to see custom variable examples</strong></summary>
 
 ```tsx
 // Set a custom variable for the current visit
@@ -447,19 +542,29 @@ tracker.addCustomInstruction('setCustomVariable', 1, 'Gender', 'Male', 'visit');
 // Set a custom variable for the current page view
 tracker.addCustomInstruction('setCustomVariable', 2, 'Category', 'Sports', 'page');
 ```
+</details>
 
 ### Multiple Tracker Instances
+
+<details>
+<summary><strong>Click to see multiple tracker configuration examples</strong></summary>
 
 ```tsx
 // Add a second tracker to track data to another Matomo instance
 tracker.addCustomInstruction('addTracker', 'https://another-matomo.com/matomo.php', 2);
 ```
+</details>
 
 ## Performance Optimization
+
+This section provides techniques to optimize the performance impact of Matomo tracking in your React application. These optimizations help ensure that analytics tracking doesn't negatively affect your application's user experience.
 
 ### Deferred Tracking
 
 You can defer tracking until after critical page content has loaded:
+
+<details>
+<summary><strong>Click to see deferred tracking configuration example</strong></summary>
 
 ```tsx
 const config = {
@@ -468,12 +573,16 @@ const config = {
   deferTracking: true
 };
 ```
+</details>
 
 This improves initial page load performance by loading the Matomo script with lower priority.
 
 ### Optimized Event Tracking
 
 Use the `useMatomoEvent` hook for optimized event tracking with memoized functions:
+
+<details>
+<summary><strong>Click to see optimized event tracking examples</strong></summary>
 
 ```tsx
 import { useMatomoEvent } from "@adam20054/react-matomo";
@@ -492,10 +601,16 @@ function YourComponent() {
   return <button onClick={handleClick}>Click Me</button>;
 }
 ```
+</details>
 
 ## Debugging
 
+When implementing Matomo tracking, it's helpful to verify that events are being tracked correctly. The debug mode provides detailed logging to help you troubleshoot any issues:
+
 Enable debug mode to log tracking information to the console:
+
+<details>
+<summary><strong>Click to see debugging configuration example</strong></summary>
 
 ```tsx
 const config = {
@@ -504,6 +619,7 @@ const config = {
   debug: true
 };
 ```
+</details>
 
 This will log:
 - All tracking commands sent to Matomo
