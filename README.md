@@ -10,6 +10,20 @@
   table {
     margin-left: auto;
     margin-right: auto;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+  }
+  ol {
+    display: inline-block;
+    text-align: left;
+  }
+  ul {
+    display: inline-block;
+    text-align: left;
+  }
+  li {
+    text-align: left;
   }
 </style>
 
