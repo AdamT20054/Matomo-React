@@ -1,0 +1,27 @@
+#-------------------------------------------------------------------------------#
+#               Qodana analysis is configured by qodana.yaml file               #
+#             https://www.jetbrains.com/help/qodana/qodana-yaml.html            #
+#-------------------------------------------------------------------------------#
+version: "1.0"
+
+# Specify inspection profile for code analysis
+profile:
+  name: qodana.recommended
+
+# Enable specific inspections
+include:
+  - name: JSUnusedLocalSymbols
+  - name: JSUnusedGlobalSymbols
+  - name: TypeScriptUnresolvedVariable
+  - name: TypeScriptUnresolvedFunction
+  - name: TypeScriptCheckImport
+  - name: TypeScriptRedundantTypeArguments
+
+# Disable inspections for specific paths if needed
+# exclude:
+#   - name: <SomeDisabledInspectionId>
+#     paths:
+#       - <path/where/not/run/inspection>
+
+# Specify Qodana linter for analysis (Applied in CI/CD pipeline)
+linter: jetbrains/qodana-js:2025.1
