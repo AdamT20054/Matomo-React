@@ -195,6 +195,8 @@ function YourComponent() {
 
 ## Configuration Options
 
+For a comprehensive guide on Matomo JavaScript tracking, see the [Matomo JavaScript Tracking Guide](https://developer.matomo.org/guides/tracking-javascript-guide).
+
 | Option | Type | Required? | Description | Default |
 | --- | --- | --- | --- | --- |
 | `siteId` | String/Number | ✅ | The site identifier from your Matomo dashboard | - |
@@ -213,7 +215,7 @@ function YourComponent() {
 | `matomoJsFileName` | String | - | Custom filename for Matomo JS (required if you need to use a custom filename) | `"matomo.js"` |
 | `matomoPhpFileName` | String | - | Custom filename for Matomo PHP (required if you need to use a custom filename) | `"matomo.php"` |
 | `requestMethod` | RequestMethod | - | HTTP method for tracking requests | `RequestMethod.GET` |
-| `configurations` | Object | - | Additional Matomo configurations | - |
+| `configurations` | Object | - | Additional Matomo configurations. For options not specifically built into the config options but still supported by Matomo. See [Matomo JavaScript Tracking Guide](https://developer.matomo.org/guides/tracking-javascript) for available options. | - |
 
 ### TrackerBaseUrl Examples
 
