@@ -4,6 +4,7 @@
   "description": "Advanced React integration for Matomo analytics.",
   "main": "dist/index.js",
   "scripts": {
+    "release": "release-it",
     "build": "tsc",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build"
@@ -34,8 +35,8 @@
   "devDependencies": {
     "@types/react": "^19.1.8",
     "eslint": "^9.29.0",
-    "np": "^10.2.0",
     "prettier": "^3.5.3",
+    "release-it": "^19.0.3",
     "tslib": "^2.6.2",
     "typescript": "^5.4.5"
   },

@@ -4,6 +4,30 @@
 
 <p align="center"><img src="https://socialify.git.ci/AdamT20054/Matomo-React/image?custom_description=A+powerful+and+flexible+React+integration+for+Matomo+analytics+with+TypeScript+support.&description=1&font=JetBrains+Mono&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Dark" with="75%"></p>
 
+<p align="center">
+  <a href="https://github.com/AdamT20054/Matomo-React/actions/workflows/build.yml">
+    <img src="https://github.com/AdamT20054/Matomo-React/actions/workflows/build.yml/badge.svg" alt="Build Status" />
+  </a>
+  <a href="https://github.com/AdamT20054/Matomo-React/actions/workflows/codeql-analysis.yml">
+    <img src="https://github.com/AdamT20054/Matomo-React/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL Status" />
+  </a>
+  <a href="https://github.com/AdamT20054/Matomo-React/actions/workflows/qodana_code_quality.yml">
+    <img src="https://github.com/AdamT20054/Matomo-React/actions/workflows/qodana_code_quality.yml/badge.svg" alt="Qodana Status" />
+  </a>
+  <a href="https://github.com/AdamT20054/Matomo-React/actions/workflows/dependency-review.yml">
+    <img src="https://github.com/AdamT20054/Matomo-React/actions/workflows/dependency-review.yml/badge.svg" alt="Dependency Review" />
+  </a>
+  <a href="https://github.com/AdamT20054/Matomo-React/actions/workflows/lint.yml">
+    <img src="https://github.com/AdamT20054/Matomo-React/actions/workflows/lint.yml/badge.svg" alt="Lint Status" />
+  </a>
+  <a href="https://www.npmjs.com/package/@adam20054/react-matomo">
+    <img src="https://img.shields.io/npm/v/@adam20054/react-matomo.svg" alt="npm version" />
+  </a>
+  <a href="https://www.npmjs.com/package/@adam20054/react-matomo">
+    <img src="https://img.shields.io/npm/dm/@adam20054/react-matomo.svg" alt="npm downloads" />
+  </a>
+</p>
+
 ## What is Matomo React?
 
 Matomo React is a comprehensive TypeScript library that seamlessly integrates Matomo analytics into your React applications. It provides a simple, yet powerful API for tracking user interactions, page views, events, and more, while maintaining full type safety.
