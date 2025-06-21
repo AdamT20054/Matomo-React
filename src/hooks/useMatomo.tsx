@@ -38,6 +38,7 @@ export const useMatomo = () => useContext(MatomoContext);
  * Uses useCallback to prevent unnecessary re-renders
  * @returns Memoized tracking functions
  * @public
+ * @noinspection JSUnusedGlobalSymbols
  */
 export const useMatomoEvent = () => {
   const { tracker } = useMatomo();
@@ -76,6 +77,7 @@ export const useMatomoEvent = () => {
  * @param props.config - Configuration options for the Matomo tracker
  * @param props.children - Child components
  * @public
+ * @noinspection JSUnusedGlobalSymbols
  */
 export const MatomoProvider = ({
   config,

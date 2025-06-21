@@ -22,6 +22,7 @@ import {
  * Extends the global Window interface to include the _paq array used by Matomo
  * This declaration is used throughout the codebase when accessing window._paq
  * @public
+ * @noinspection JSUnusedGlobalSymbols
  */
 declare global {
   interface Window {
@@ -172,6 +173,7 @@ export class MatomoTracker {
   /**
    * Tracks a page view
    * @public
+   * @noinspection JSUnusedGlobalSymbols
    */
   trackPageView(parameters?: TrackPageViewParams): void {
     this.track({ data: [TrackType.PAGE_VIEW], ...parameters });
@@ -180,6 +182,7 @@ export class MatomoTracker {
   /**
    * Tracks an event
    * @public
+   * @noinspection JSUnusedGlobalSymbols
    */
   trackEvent({
     category,
@@ -203,6 +206,7 @@ export class MatomoTracker {
   /**
    * Tracks a site search
    * @public
+   * @noinspection JSUnusedGlobalSymbols
    */
   trackSiteSearch({
     keyword,

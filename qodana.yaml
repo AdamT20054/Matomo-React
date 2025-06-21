@@ -10,18 +10,73 @@ profile:
 
 # Enable specific inspections
 include:
+  # JavaScript and TypeScript inspections
   - name: JSUnusedLocalSymbols
   - name: JSUnusedGlobalSymbols
   - name: TypeScriptUnresolvedVariable
   - name: TypeScriptUnresolvedFunction
   - name: TypeScriptCheckImport
   - name: TypeScriptRedundantTypeArguments
+  - name: JSUnresolvedReference
+  - name: JSUnresolvedVariable
+  - name: JSUnresolvedFunction
+  - name: JSCheckFunctionSignatures
+  - name: JSIncompatibleTypesComparison
+  - name: JSUnusedAssignment
+  - name: JSPotentiallyInvalidUsageOfThis
+  - name: JSPotentiallyInvalidConstructorUsage
+  - name: JSIgnoredPromiseFromCall
+  - name: JSVoidFunctionReturnValueUsed
+  - name: JSDeprecatedSymbols
 
-# Disable inspections for specific paths if needed
-# exclude:
-#   - name: <SomeDisabledInspectionId>
-#     paths:
-#       - <path/where/not/run/inspection>
+  # Code quality inspections
+  - name: DuplicatedCode
+  - name: CommaExpressionJS
+  - name: UnterminatedStatementJS
+  - name: UnreachableCodeJS
+  - name: CyclomaticComplexityJS
+  - name: NestingDepthJS
+
+  # React-specific inspections
+  - name: ReactHookRules
+  - name: ReactHooksUnresolvedVariable
+  - name: ReactDependencyMismatch
+  - name: ReactPropTypesInspection
+
+  # Security inspections
+  - name: HardcodedCredentialsJS
+  - name: InsecureRandomJS
+  - name: XmlPathNavigationJS
+  - name: NonBlockingCallsInSyncCodeJS
+
+  # Documentation inspections
+  - name: JSMissingSwitchBranches
+  - name: JSMissingSuperCall
+  - name: JSMissingReturnJS
+  - name: JSMissingAwait
+  - name: JSDocSignatureJS
+
+# Configure analysis scope to include all project files
+# This ensures all directories are being scanned
+scope:
+  include:
+    - src/**
+    - .github/**
+    - dist/**
+    - test/**
+    - "*.json"
+    - "*.js"
+    - "*.ts"
+    - "*.tsx"
+    - "*.md"
+    - "*.yml"
+    - "*.yaml"
+
+# Configure bootstrap to ensure all dependencies are properly analyzed
+bootstrap: npm ci
+
+# Set failure threshold to ensure critical issues are caught
+failThreshold: error
 
 # Specify Qodana linter for analysis (Applied in CI/CD pipeline)
 linter: jetbrains/qodana-js:2025.1
