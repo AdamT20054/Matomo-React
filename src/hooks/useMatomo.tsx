@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useMemo } from "react";
+import React, { ReactNode, createContext, useContext, useMemo } from "react";
 import { MatomoTracker } from "../lib";
 import { MatomoProviderConfig } from "../types";
 

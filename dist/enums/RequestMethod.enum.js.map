@@ -1,1 +1,1 @@
-{"version":3,"file":"RequestMethod.enum.js","sourceRoot":"","sources":["../../src/enums/RequestMethod.enum.ts"],"names":[],"mappings":";;;AAAA,IAAY,aAGX;AAHD,WAAY,aAAa;IACvB,4BAAW,CAAA;IACX,8BAAa,CAAA;AACf,CAAC,EAHW,aAAa,6BAAb,aAAa,QAGxB"}
+{"version":3,"file":"RequestMethod.enum.js","sourceRoot":"","sources":["../../src/enums/RequestMethod.enum.ts"],"names":[],"mappings":";;;AAIA,IAAY,aAKX;AALD,WAAY,aAAa;IAEvB,4BAAW,CAAA;IAEX,8BAAa,CAAA;AACf,CAAC,EALW,aAAa,6BAAb,aAAa,QAKxB"}

@@ -117,7 +117,7 @@ class MatomoTracker {
             if (customDimensions &&
                 Array.isArray(customDimensions) &&
                 customDimensions.length) {
-                customDimensions.map((customDimension) => this.addCustomInstruction("setCustomDimension", customDimension.id, customDimension.value));
+                customDimensions.forEach((customDimension) => this.addCustomInstruction("setCustomDimension", customDimension.id, customDimension.value));
             }
             this.addCustomInstruction("setCustomUrl", href !== null && href !== void 0 ? href : this.getPageUrl());
             this.addCustomInstruction("setDocumentTitle", documentTitle);

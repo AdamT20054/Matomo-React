@@ -1,1 +1,1 @@
-{"version":3,"file":"RequestMethod.enum.d.ts","sourceRoot":"","sources":["../../src/enums/RequestMethod.enum.ts"],"names":[],"mappings":"AAAA,oBAAY,aAAa;IACvB,GAAG,QAAQ;IACX,IAAI,SAAS;CACd"}
+{"version":3,"file":"RequestMethod.enum.d.ts","sourceRoot":"","sources":["../../src/enums/RequestMethod.enum.ts"],"names":[],"mappings":"AAIA,oBAAY,aAAa;IAEvB,GAAG,QAAQ;IAEX,IAAI,SAAS;CACd"}
