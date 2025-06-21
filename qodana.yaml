@@ -77,7 +77,7 @@ scope:
 bootstrap: npm ci
 
 # Set failure threshold to ensure critical issues are caught
-failThreshold: error
+failThreshold: 1
 
 # Specify Qodana linter for analysis (Applied in CI/CD pipeline)
 linter: jetbrains/qodana-js:2025.1
