@@ -21,7 +21,7 @@ export const DEFAULT_CONFIG = {
   enableJSErrorTracking: false,
   heartBeat: {
     active: true,
-    seconds: 15
+    seconds: 15,
   },
   matomoJsFileName: "matomo.js",
   matomoPhpFileName: "matomo.php",
@@ -35,13 +35,13 @@ export const DEFAULT_CONFIG = {
  */
 export type MatomoProviderConfig = {
   // Required parameters
-  /** 
+  /**
    * The ID of the website in Matomo (required)
    */
   siteId: string | number;
 
   // Base URL parameter (required)
-  /** 
+  /**
    * Base URL of your Matomo installation (required)
    * Can be either:
    * 1. Domain only: "https://analytics.example.com" (assumes standard matomo.js/php files at the root)
@@ -50,11 +50,11 @@ export type MatomoProviderConfig = {
   trackerBaseUrl: string;
 
   // Optional parameters
-  /** 
+  /**
    * User ID to associate with tracking data
    */
   userId?: string;
-  /** 
+  /**
    * Set to true to disable all tracking
    */
   disableTracking?: boolean;
@@ -62,7 +62,7 @@ export type MatomoProviderConfig = {
    * @deprecated Use disableTracking instead
    */
   disabled?: boolean; // Alias for disableTracking
-  /** 
+  /**
    * Function to transform URLs before they are tracked
    */
   urlTransformer?: (url: string) => string;
@@ -72,13 +72,13 @@ export type MatomoProviderConfig = {
    * @deprecated Use heartBeat with active and seconds properties instead
    */
   heartbeat?: boolean | number; // Legacy format
-  /** 
+  /**
    * Configuration for the heartbeat feature
    */
   heartBeat?: HeartBeatConfig; // New format with active and seconds properties
 
   // Link tracking
-  /** 
+  /**
    * Set to true to disable automatic link tracking
    */
   disableLinkTracking?: boolean;
@@ -88,25 +88,25 @@ export type MatomoProviderConfig = {
   linkTracking?: boolean; // Inverse of disableLinkTracking
 
   // Custom file names
-  /** 
+  /**
    * Custom filename for the Matomo JavaScript tracker (default: "matomo.js")
    * Required if you need to use a custom filename instead of the default
    */
   matomoJsFileName?: string;
-  /** 
+  /**
    * Custom filename for the Matomo PHP tracker (default: "matomo.php")
    * Required if you need to use a custom filename instead of the default
    */
   matomoPhpFileName?: string;
 
   // Request method
-  /** 
+  /**
    * HTTP method to use for tracking requests
    */
   requestMethod?: RequestMethod;
 
   // Custom Matomo configurations
-  /** 
+  /**
    * Additional Matomo tracker configurations
    * Keys are Matomo API method names, values are the parameters
    */

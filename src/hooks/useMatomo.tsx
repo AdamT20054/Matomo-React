@@ -1,6 +1,17 @@
-import React, { ReactNode, createContext, useContext, useMemo, useCallback } from "react";
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useMemo,
+  useCallback,
+} from "react";
 import { MatomoTracker } from "../lib";
-import { MatomoProviderConfig, TrackEventParams, TrackPageViewParams, TrackSiteSearchParams } from "../types";
+import {
+  MatomoProviderConfig,
+  TrackEventParams,
+  TrackPageViewParams,
+  TrackSiteSearchParams,
+} from "../types";
 
 /**
  * Props for the Matomo context
@@ -44,36 +55,37 @@ export let useMatomoEvent: () => {
   trackPageView: (params?: TrackPageViewParams) => void;
   trackEvent: (params: TrackEventParams) => void;
   trackSiteSearch: (params: TrackSiteSearchParams) => void;
-  addCustomInstruction: (name: string, ...args: any[]) => MatomoTracker
+  addCustomInstruction: (name: string, ...args: any[]) => MatomoTracker;
 };
 useMatomoEvent = () => {
-  const {tracker} = useMatomo();
+  const { tracker } = useMatomo();
 
   const trackPageView = useCallback(
-      (params?: TrackPageViewParams) => tracker.trackPageView(params),
-      [tracker]
+    (params?: TrackPageViewParams) => tracker.trackPageView(params),
+    [tracker],
   );
 
   const trackEvent = useCallback(
-      (params: TrackEventParams) => tracker.trackEvent(params),
-      [tracker]
+    (params: TrackEventParams) => tracker.trackEvent(params),
+    [tracker],
   );
 
   const trackSiteSearch = useCallback(
-      (params: TrackSiteSearchParams) => tracker.trackSiteSearch(params),
-      [tracker]
+    (params: TrackSiteSearchParams) => tracker.trackSiteSearch(params),
+    [tracker],
   );
 
   const addCustomInstruction = useCallback(
-      (name: string, ...args: any[]) => tracker.addCustomInstruction(name, ...args),
-      [tracker]
+    (name: string, ...args: any[]) =>
+      tracker.addCustomInstruction(name, ...args),
+    [tracker],
   );
 
   return {
     trackPageView,
     trackEvent,
     trackSiteSearch,
-    addCustomInstruction
+    addCustomInstruction,
   };
 };
 

@@ -10,12 +10,12 @@ import {
   MatomoCommand,
   DEFAULT_CONFIG,
 } from "../types";
-import { 
-  loadMatomoScript, 
-  constructTrackerUrl, 
-  validateRequiredOptions, 
+import {
+  loadMatomoScript,
+  constructTrackerUrl,
+  validateRequiredOptions,
   checkForMisconfigurations,
-  logTracking 
+  logTracking,
 } from "../utils";
 
 /**
@@ -47,7 +47,7 @@ export class MatomoTracker {
     // Apply default values
     this.options = {
       ...DEFAULT_CONFIG,
-      ...options
+      ...options,
     };
 
     // Deprecated: disabled property is no longer supported
@@ -198,7 +198,7 @@ export class MatomoTracker {
       });
     } else {
       throw new Error(
-        "You must specify an action and a category for the event."
+        "You must specify an action and a category for the event.",
       );
     }
   }
@@ -293,8 +293,8 @@ export class MatomoTracker {
           this.addCustomInstruction(
             "setCustomDimension",
             customDimension.id,
-            customDimension.value
-          )
+            customDimension.value,
+          ),
         );
       }
 
