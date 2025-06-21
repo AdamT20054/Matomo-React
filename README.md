@@ -66,16 +66,18 @@ Matomo React is a comprehensive TypeScript library that seamlessly integrates Ma
 
 ## Table of Contents
 
+## Table of Contents
+
 <table>
   <tr>
-    <td valign="top">
+    <td valign="top" width="50%">
       <strong>Getting Started</strong><br />
       <a href="#quick-start">Quick Start</a><br />
       <a href="#installation">Installation</a><br />
       <a href="#basic-usage">Basic Usage</a><br />
       <a href="#configuration-options">Configuration Options</a><br />
     </td>
-    <td valign="top">
+    <td valign="top" width="50%">
       <strong>Tracking Features</strong><br />
       <a href="#tracking-methods">Tracking Methods</a><br />
       <a href="#tracking-page-views">Page Views</a><br />
@@ -110,6 +112,7 @@ Matomo React is a comprehensive TypeScript library that seamlessly integrates Ma
     </td>
   </tr>
 </table>
+
 
 
 ## Quick Start
