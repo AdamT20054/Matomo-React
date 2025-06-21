@@ -1,2 +1,2 @@
-export * from "./scriptLoader";
-export * from "./validation";
+export * from './scriptLoader';
+export * from './validation';

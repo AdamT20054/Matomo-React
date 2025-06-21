@@ -1,17 +1,11 @@
-import React, {
-  ReactNode,
-  createContext,
-  useContext,
-  useMemo,
-  useCallback,
-} from "react";
-import { MatomoTracker } from "../lib";
+import React, { ReactNode, createContext, useContext, useMemo, useCallback } from 'react';
+import { MatomoTracker } from '../lib';
 import {
   MatomoProviderConfig,
   TrackEventParams,
   TrackPageViewParams,
   TrackSiteSearchParams,
-} from "../types";
+} from '../types';
 
 /**
  * Props for the Matomo context
@@ -62,23 +56,22 @@ useMatomoEvent = () => {
 
   const trackPageView = useCallback(
     (params?: TrackPageViewParams) => tracker.trackPageView(params),
-    [tracker],
+    [tracker]
   );
 
   const trackEvent = useCallback(
     (params: TrackEventParams) => tracker.trackEvent(params),
-    [tracker],
+    [tracker]
   );
 
   const trackSiteSearch = useCallback(
     (params: TrackSiteSearchParams) => tracker.trackSiteSearch(params),
-    [tracker],
+    [tracker]
   );
 
   const addCustomInstruction = useCallback(
-    (name: string, ...args: any[]) =>
-      tracker.addCustomInstruction(name, ...args),
-    [tracker],
+    (name: string, ...args: any[]) => tracker.addCustomInstruction(name, ...args),
+    [tracker]
   );
 
   return {
@@ -105,9 +98,5 @@ export const MatomoProvider = ({
   config: MatomoProviderConfig;
 }) => {
   const tracker = useMemo(() => new MatomoTracker(config), [config]);
-  return (
-    <MatomoContext.Provider value={{ tracker }}>
-      {children}
-    </MatomoContext.Provider>
-  );
+  return <MatomoContext.Provider value={{ tracker }}>{children}</MatomoContext.Provider>;
 };

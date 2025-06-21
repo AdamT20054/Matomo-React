@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react";
-import { MatomoTracker } from "../lib";
-import { MatomoProviderConfig, TrackEventParams, TrackPageViewParams, TrackSiteSearchParams } from "../types";
+import React, { ReactNode } from 'react';
+import { MatomoTracker } from '../lib';
+import { MatomoProviderConfig, TrackEventParams, TrackPageViewParams, TrackSiteSearchParams } from '../types';
 type MatomoContextProps = {
     tracker: MatomoTracker;
 };
 export declare const useMatomo: () => MatomoContextProps;
-export declare const useMatomoEvent: () => {
+export declare let useMatomoEvent: () => {
     trackPageView: (params?: TrackPageViewParams) => void;
     trackEvent: (params: TrackEventParams) => void;
     trackSiteSearch: (params: TrackSiteSearchParams) => void;

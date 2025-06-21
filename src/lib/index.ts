@@ -1,1 +1,1 @@
-export * from "./MatomoTracker";
+export * from './MatomoTracker';

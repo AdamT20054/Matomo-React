@@ -1,4 +1,4 @@
-import { MatomoProviderConfig } from "../types";
+import { MatomoProviderConfig } from '../types';
 
 /**
  * Returns default filenames for Matomo trackers
@@ -6,8 +6,8 @@ import { MatomoProviderConfig } from "../types";
  */
 function getDefaultFilenames(): { jsFileName: string; phpFileName: string } {
   return {
-    jsFileName: "matomo.js",
-    phpFileName: "matomo.php",
+    jsFileName: 'matomo.js',
+    phpFileName: 'matomo.php',
   };
 }
 
@@ -16,14 +16,12 @@ function getDefaultFilenames(): { jsFileName: string; phpFileName: string } {
  * @param options - Configuration options for the Matomo tracker
  * @returns The created script element
  */
-export function loadMatomoScript(
-  options: MatomoProviderConfig,
-): HTMLScriptElement {
+export function loadMatomoScript(options: MatomoProviderConfig): HTMLScriptElement {
   const doc = document;
-  const scriptElement = doc.createElement("script");
-  const scripts = doc.getElementsByTagName("script")[0];
+  const scriptElement = doc.createElement('script');
+  const scripts = doc.getElementsByTagName('script')[0];
 
-  scriptElement.type = "text/javascript";
+  scriptElement.type = 'text/javascript';
   scriptElement.async = true;
   scriptElement.defer = true;
 
@@ -33,7 +31,7 @@ export function loadMatomoScript(
 
   // Use custom filename if specified, otherwise use default
   const jsFileName =
-    options.matomoJsFileName && options.matomoJsFileName !== "matomo.js"
+    options.matomoJsFileName && options.matomoJsFileName !== 'matomo.js'
       ? options.matomoJsFileName
       : defaultFilenames.jsFileName;
 
@@ -42,7 +40,7 @@ export function loadMatomoScript(
 
   // If defer tracking is enabled, set the loading attribute to "lazy"
   if (options.deferTracking) {
-    scriptElement.setAttribute("loading", "lazy");
+    scriptElement.setAttribute('loading', 'lazy');
   }
 
   scripts?.parentNode?.insertBefore(scriptElement, scripts);
@@ -62,7 +60,7 @@ export function constructTrackerUrl(options: MatomoProviderConfig): string {
 
   // Use custom filename if specified, otherwise use default
   const phpFileName =
-    options.matomoPhpFileName && options.matomoPhpFileName !== "matomo.php"
+    options.matomoPhpFileName && options.matomoPhpFileName !== 'matomo.php'
       ? options.matomoPhpFileName
       : defaultFilenames.phpFileName;
 

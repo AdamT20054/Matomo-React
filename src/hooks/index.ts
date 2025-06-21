@@ -1,1 +1,1 @@
-export * from "./useMatomo";
+export * from './useMatomo';

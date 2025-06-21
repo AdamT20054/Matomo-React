@@ -4,9 +4,9 @@
  */
 export enum TrackType {
   /** Tracks an event with category, action, and optional name/value */
-  EVENT = "trackEvent",
+  EVENT = 'trackEvent',
   /** Tracks a site search with keyword and optional category/count */
-  SEARCH = "trackSiteSearch",
+  SEARCH = 'trackSiteSearch',
   /** Tracks a page view */
-  PAGE_VIEW = "trackPageView",
+  PAGE_VIEW = 'trackPageView',
 }

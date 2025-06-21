@@ -1,2 +1,2 @@
-export * from "./TrackType.enum";
-export * from "./RequestMethod.enum";
+export * from './TrackType.enum';
+export * from './RequestMethod.enum';

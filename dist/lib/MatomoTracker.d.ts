@@ -1,4 +1,4 @@
-import { MatomoProviderConfig, TrackEventParams, TrackPageViewParams, TrackSiteSearchParams, MatomoPaqArray } from "../types";
+import { MatomoProviderConfig, TrackEventParams, TrackPageViewParams, TrackSiteSearchParams, MatomoPaqArray } from '../types';
 declare global {
     interface Window {
         _paq: MatomoPaqArray;

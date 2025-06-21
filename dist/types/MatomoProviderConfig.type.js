@@ -7,10 +7,10 @@ exports.DEFAULT_CONFIG = {
     enableJSErrorTracking: false,
     heartBeat: {
         active: true,
-        seconds: 15
+        seconds: 15,
     },
-    matomoJsFileName: "matomo.js",
-    matomoPhpFileName: "matomo.php",
+    matomoJsFileName: 'matomo.js',
+    matomoPhpFileName: 'matomo.php',
     debug: false,
     deferTracking: false,
 };

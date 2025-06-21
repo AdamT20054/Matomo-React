@@ -1,4 +1,4 @@
-import { RequestMethod } from "../enums";
+import { RequestMethod } from '../enums';
 export interface HeartBeatConfig {
     active?: boolean;
     seconds?: number;

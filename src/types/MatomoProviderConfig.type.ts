@@ -1,4 +1,4 @@
-import { RequestMethod } from "../enums";
+import { RequestMethod } from '../enums';
 
 /**
  * Configuration for the Matomo heartbeat feature
@@ -23,8 +23,8 @@ export const DEFAULT_CONFIG = {
     active: true,
     seconds: 15,
   },
-  matomoJsFileName: "matomo.js",
-  matomoPhpFileName: "matomo.php",
+  matomoJsFileName: 'matomo.js',
+  matomoPhpFileName: 'matomo.php',
   debug: false,
   deferTracking: false,
 };

@@ -1,2 +1,2 @@
-export * from "./MatomoTracker";
+export * from './MatomoTracker';
 //# sourceMappingURL=index.d.ts.map

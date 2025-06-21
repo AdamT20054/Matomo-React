@@ -26,7 +26,7 @@ class MatomoTracker {
         this.initialize();
     }
     initialize() {
-        if (typeof window === "undefined") {
+        if (typeof window === 'undefined') {
             return;
         }
         window._paq = window._paq || [];
@@ -47,13 +47,13 @@ class MatomoTracker {
     }
     configureTracker() {
         const trackerUrl = (0, utils_1.constructTrackerUrl)(this.options);
-        this.addCustomInstruction("setTrackerUrl", trackerUrl);
-        this.addCustomInstruction("setSiteId", this.options.siteId);
+        this.addCustomInstruction('setTrackerUrl', trackerUrl);
+        this.addCustomInstruction('setSiteId', this.options.siteId);
         if (this.options.userId) {
-            this.addCustomInstruction("setUserId", this.options.userId);
+            this.addCustomInstruction('setUserId', this.options.userId);
         }
         if (this.options.requestMethod) {
-            this.addCustomInstruction("setRequestMethod", this.options.requestMethod);
+            this.addCustomInstruction('setRequestMethod', this.options.requestMethod);
         }
     }
     configureHeartbeat() {
@@ -73,7 +73,7 @@ class MatomoTracker {
         }
     }
     enableJSErrorTracking() {
-        this.addCustomInstruction("enableJSErrorTracking");
+        this.addCustomInstruction('enableJSErrorTracking');
     }
     loadTrackerScript() {
         (0, utils_1.loadMatomoScript)(this.options);
@@ -87,7 +87,7 @@ class MatomoTracker {
             this.track(Object.assign({ data: [enums_1.TrackType.EVENT, category, action, name, value] }, otherParams));
         }
         else {
-            throw new Error("You must specify an action and a category for the event.");
+            throw new Error('You must specify an action and a category for the event.');
         }
     }
     trackSiteSearch(_a) {
@@ -96,37 +96,35 @@ class MatomoTracker {
             this.track(Object.assign({ data: [enums_1.TrackType.SEARCH, keyword, category, count] }, otherParams));
         }
         else {
-            throw new Error("You must specify a keyword for the site search.");
+            throw new Error('You must specify a keyword for the site search.');
         }
     }
     addCustomInstruction(name, ...args) {
-        if (typeof window !== "undefined") {
+        if (typeof window !== 'undefined') {
             (0, utils_1.logTracking)(name, args, !!this.options.debug);
             window._paq.push([name, ...args]);
         }
         return this;
     }
     enableLinkTracking(active) {
-        this.addCustomInstruction("enableLinkTracking", active);
+        this.addCustomInstruction('enableLinkTracking', active);
     }
     enableHeartBeatTimer(interval) {
-        this.addCustomInstruction("enableHeartBeatTimer", interval);
+        this.addCustomInstruction('enableHeartBeatTimer', interval);
     }
     track({ data = [], documentTitle = window.document.title, href, customDimensions = false, }) {
         if (this.options.disableTracking) {
             if (this.options.debug) {
-                console.log("[Matomo] Tracking disabled, skipping track call:", data);
+                console.log('[Matomo] Tracking disabled, skipping track call:', data);
             }
             return;
         }
         if (data.length) {
-            if (customDimensions &&
-                Array.isArray(customDimensions) &&
-                customDimensions.length) {
-                customDimensions.forEach((customDimension) => this.addCustomInstruction("setCustomDimension", customDimension.id, customDimension.value));
+            if (customDimensions && Array.isArray(customDimensions) && customDimensions.length) {
+                customDimensions.forEach((customDimension) => this.addCustomInstruction('setCustomDimension', customDimension.id, customDimension.value));
             }
-            this.addCustomInstruction("setCustomUrl", href !== null && href !== void 0 ? href : this.getPageUrl());
-            this.addCustomInstruction("setDocumentTitle", documentTitle);
+            this.addCustomInstruction('setCustomUrl', href !== null && href !== void 0 ? href : this.getPageUrl());
+            this.addCustomInstruction('setDocumentTitle', documentTitle);
             const trackCommand = [data[0], ...data.slice(1)];
             this.addCustomInstruction(...trackCommand);
         }

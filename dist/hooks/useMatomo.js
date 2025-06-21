@@ -42,7 +42,7 @@ const defaultContextValue = {
 const MatomoContext = (0, react_1.createContext)(defaultContextValue);
 const useMatomo = () => (0, react_1.useContext)(MatomoContext);
 exports.useMatomo = useMatomo;
-const useMatomoEvent = () => {
+exports.useMatomoEvent = () => {
     const { tracker } = (0, exports.useMatomo)();
     const trackPageView = (0, react_1.useCallback)((params) => tracker.trackPageView(params), [tracker]);
     const trackEvent = (0, react_1.useCallback)((params) => tracker.trackEvent(params), [tracker]);
@@ -52,13 +52,12 @@ const useMatomoEvent = () => {
         trackPageView,
         trackEvent,
         trackSiteSearch,
-        addCustomInstruction
+        addCustomInstruction,
     };
 };
-exports.useMatomoEvent = useMatomoEvent;
 const MatomoProvider = ({ config, children, }) => {
     const tracker = (0, react_1.useMemo)(() => new lib_1.MatomoTracker(config), [config]);
-    return (react_1.default.createElement(MatomoContext.Provider, { value: { tracker } }, children));
+    return react_1.default.createElement(MatomoContext.Provider, { value: { tracker } }, children);
 };
 exports.MatomoProvider = MatomoProvider;
 //# sourceMappingURL=useMatomo.js.map

@@ -1,4 +1,4 @@
-import { TrackType } from "../enums";
+import { TrackType } from '../enums';
 import {
   MatomoProviderConfig,
   CustomDimension,
@@ -9,14 +9,14 @@ import {
   MatomoPaqArray,
   MatomoCommand,
   DEFAULT_CONFIG,
-} from "../types";
+} from '../types';
 import {
   loadMatomoScript,
   constructTrackerUrl,
   validateRequiredOptions,
   checkForMisconfigurations,
   logTracking,
-} from "../utils";
+} from '../utils';
 
 /**
  * Extends the global Window interface to include the _paq array used by Matomo
@@ -72,7 +72,7 @@ export class MatomoTracker {
    * @private
    */
   private initialize(): void {
-    if (typeof window === "undefined") {
+    if (typeof window === 'undefined') {
       return;
     }
 
@@ -107,19 +107,19 @@ export class MatomoTracker {
   private configureTracker(): void {
     // Set tracker URL
     const trackerUrl = constructTrackerUrl(this.options);
-    this.addCustomInstruction("setTrackerUrl", trackerUrl);
+    this.addCustomInstruction('setTrackerUrl', trackerUrl);
 
     // Set site ID
-    this.addCustomInstruction("setSiteId", this.options.siteId);
+    this.addCustomInstruction('setSiteId', this.options.siteId);
 
     // Set user ID if specified
     if (this.options.userId) {
-      this.addCustomInstruction("setUserId", this.options.userId);
+      this.addCustomInstruction('setUserId', this.options.userId);
     }
 
     // Set request method if specified
     if (this.options.requestMethod) {
-      this.addCustomInstruction("setRequestMethod", this.options.requestMethod);
+      this.addCustomInstruction('setRequestMethod', this.options.requestMethod);
     }
   }
 
@@ -159,7 +159,7 @@ export class MatomoTracker {
    * @private
    */
   private enableJSErrorTracking(): void {
-    this.addCustomInstruction("enableJSErrorTracking");
+    this.addCustomInstruction('enableJSErrorTracking');
   }
 
   /**
@@ -184,22 +184,14 @@ export class MatomoTracker {
    * @public
    * @noinspection JSUnusedGlobalSymbols
    */
-  trackEvent({
-    category,
-    action,
-    name,
-    value,
-    ...otherParams
-  }: TrackEventParams): void {
+  trackEvent({ category, action, name, value, ...otherParams }: TrackEventParams): void {
     if (category && action) {
       this.track({
         data: [TrackType.EVENT, category, action, name, value],
         ...otherParams,
       });
     } else {
-      throw new Error(
-        "You must specify an action and a category for the event.",
-      );
+      throw new Error('You must specify an action and a category for the event.');
     }
   }
 
@@ -208,19 +200,14 @@ export class MatomoTracker {
    * @public
    * @noinspection JSUnusedGlobalSymbols
    */
-  trackSiteSearch({
-    keyword,
-    category,
-    count,
-    ...otherParams
-  }: TrackSiteSearchParams) {
+  trackSiteSearch({ keyword, category, count, ...otherParams }: TrackSiteSearchParams) {
     if (keyword) {
       this.track({
         data: [TrackType.SEARCH, keyword, category, count],
         ...otherParams,
       });
     } else {
-      throw new Error("You must specify a keyword for the site search.");
+      throw new Error('You must specify a keyword for the site search.');
     }
   }
 
@@ -232,7 +219,7 @@ export class MatomoTracker {
    * @public
    */
   addCustomInstruction(name: string, ...args: any[]): this {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       // Log the tracking command if debug mode is enabled
       logTracking(name, args, !!this.options.debug);
 
@@ -247,7 +234,7 @@ export class MatomoTracker {
    * @private
    */
   private enableLinkTracking(active: boolean): void {
-    this.addCustomInstruction("enableLinkTracking", active);
+    this.addCustomInstruction('enableLinkTracking', active);
   }
 
   /**
@@ -256,7 +243,7 @@ export class MatomoTracker {
    * @private
    */
   private enableHeartBeatTimer(interval: number): void {
-    this.addCustomInstruction("enableHeartBeatTimer", interval);
+    this.addCustomInstruction('enableHeartBeatTimer', interval);
   }
 
   /**
@@ -277,30 +264,22 @@ export class MatomoTracker {
     // Skip tracking if disabled
     if (this.options.disableTracking) {
       if (this.options.debug) {
-        console.log("[Matomo] Tracking disabled, skipping track call:", data);
+        console.log('[Matomo] Tracking disabled, skipping track call:', data);
       }
       return;
     }
 
     if (data.length) {
       // Set custom dimensions if provided
-      if (
-        customDimensions &&
-        Array.isArray(customDimensions) &&
-        customDimensions.length
-      ) {
+      if (customDimensions && Array.isArray(customDimensions) && customDimensions.length) {
         customDimensions.forEach((customDimension: CustomDimension) =>
-          this.addCustomInstruction(
-            "setCustomDimension",
-            customDimension.id,
-            customDimension.value,
-          ),
+          this.addCustomInstruction('setCustomDimension', customDimension.id, customDimension.value)
         );
       }
 
       // Set custom URL and document title
-      this.addCustomInstruction("setCustomUrl", href ?? this.getPageUrl());
-      this.addCustomInstruction("setDocumentTitle", documentTitle);
+      this.addCustomInstruction('setCustomUrl', href ?? this.getPageUrl());
+      this.addCustomInstruction('setDocumentTitle', documentTitle);
 
       // Execute the tracking command
       const trackCommand: MatomoCommand = [data[0] as string, ...data.slice(1)];
