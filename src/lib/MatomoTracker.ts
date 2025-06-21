@@ -18,9 +18,19 @@ declare global {
   }
 }
 
+/**
+ * Main class for interacting with the Matomo analytics tracker
+ * @public
+ */
 export class MatomoTracker {
   private options: MatomoProviderConfig;
 
+  /**
+   * Creates a new instance of the Matomo tracker
+   * @param options - Configuration options for the Matomo tracker
+   * @throws Error if required configuration options are missing
+   * @public
+   */
   constructor(options: MatomoProviderConfig) {
     // Handle urlBase as an alias for trackerBaseUrl
     if (options.urlBase && !options.trackerBaseUrl) {
@@ -49,6 +59,10 @@ export class MatomoTracker {
     this.launch();
   }
 
+  /**
+   * Initializes the Matomo tracker with the provided configuration
+   * @private
+   */
   private launch() {
     if (typeof window === "undefined") {
       return;
@@ -171,6 +185,13 @@ export class MatomoTracker {
     }
   }
 
+  /**
+   * Adds a custom instruction to the Matomo tracker
+   * @param name - The name of the Matomo tracking API method to call
+   * @param args - Arguments to pass to the Matomo tracking API method
+   * @returns The tracker instance for method chaining
+   * @public
+   */
   addCustomInstruction(name: string, ...args: any[]): this {
     if (typeof window !== "undefined") {
       window._paq.push([name, ...args]);
@@ -178,14 +199,33 @@ export class MatomoTracker {
     return this;
   }
 
+  /**
+   * Enables or disables automatic link tracking
+   * @param active - Whether link tracking should be enabled
+   * @private
+   */
   private enableLinkTracking(active: boolean): void {
     this.addCustomInstruction("enableLinkTracking", active);
   }
 
+  /**
+   * Enables the heartbeat timer to track time spent on page
+   * @param interval - Interval in seconds between heartbeat requests
+   * @private
+   */
   private enableHeartBeatTimer(interval: number): void {
     this.addCustomInstruction("enableHeartBeatTimer", interval);
   }
 
+  /**
+   * Core tracking method used by all specific tracking methods
+   * @param params - Parameters for the tracking request
+   * @param params.data - Array containing tracking data to be sent to Matomo
+   * @param params.documentTitle - Custom document title for the page view
+   * @param params.href - Custom URL for the page view
+   * @param params.customDimensions - Custom dimensions to set for this tracking request
+   * @private
+   */
   private track({
     data = [],
     documentTitle = window.document.title,
@@ -213,6 +253,10 @@ export class MatomoTracker {
     }
   }
 
+  /**
+   * Adds the Matomo tracking script to the DOM
+   * @private
+   */
   private addTrackerToDOM(): void {
     const doc = document;
     const scriptElement = doc.createElement("script");
@@ -233,6 +277,11 @@ export class MatomoTracker {
     scripts?.parentNode?.insertBefore(scriptElement, scripts);
   }
 
+  /**
+   * Gets the current page URL, applying any configured URL transformer
+   * @returns The current page URL, possibly transformed
+   * @private
+   */
   private getPageUrl(): string {
     if (this.options.urlTransformer) {
       return this.options.urlTransformer(window.location.href);
