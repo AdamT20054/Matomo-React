@@ -19,6 +19,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - name: 'Qodana Scan'
+        if: env.QODANA_TOKEN != ''
         uses: JetBrains/qodana-action@v2025.1
         with:
           args: --baseline,/qodana.sarif.json
