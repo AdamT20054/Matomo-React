@@ -1,32 +1,4 @@
 <!--suppress ALL -->
-<style>
-  body {
-    text-align: center;
-    font-family: "JetBrains Mono", monospace;
-  }
-  pre, code {
-    text-align: left;
-  }
-  table {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #0d1117;
-    border: 1px solid #30363d;
-    border-radius: 6px;
-  }
-  ol {
-    display: inline-block;
-    text-align: left;
-  }
-  ul {
-    display: inline-block;
-    text-align: left;
-  }
-  li {
-    text-align: left;
-  }
-</style>
-
 <h1 align="center" id="title">@Adam20054/Matamo-React</h1>
 
 
