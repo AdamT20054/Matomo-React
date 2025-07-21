@@ -1,4 +1,3 @@
-"use strict";
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -10,19 +9,17 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MatomoTracker = void 0;
-const enums_1 = require("../enums");
-const types_1 = require("../types");
-const utils_1 = require("../utils");
-class MatomoTracker {
+import { TrackType } from '../enums';
+import { DEFAULT_CONFIG, } from '../types';
+import { loadMatomoScript, constructTrackerUrl, validateRequiredOptions, checkForMisconfigurations, logTracking, } from '../utils';
+export class MatomoTracker {
     constructor(options) {
-        this.options = Object.assign(Object.assign({}, types_1.DEFAULT_CONFIG), options);
-        const validationResult = (0, utils_1.validateRequiredOptions)(this.options);
+        this.options = Object.assign(Object.assign({}, DEFAULT_CONFIG), options);
+        const validationResult = validateRequiredOptions(this.options);
         if (!validationResult.isValid) {
             throw new Error(validationResult.message);
         }
-        (0, utils_1.checkForMisconfigurations)(this.options, !!this.options.debug);
+        checkForMisconfigurations(this.options, !!this.options.debug);
         this.initialize();
     }
     initialize() {
@@ -46,7 +43,7 @@ class MatomoTracker {
         this.loadTrackerScript();
     }
     configureTracker() {
-        const trackerUrl = (0, utils_1.constructTrackerUrl)(this.options);
+        const trackerUrl = constructTrackerUrl(this.options);
         this.addCustomInstruction('setTrackerUrl', trackerUrl);
         this.addCustomInstruction('setSiteId', this.options.siteId);
         if (this.options.userId) {
@@ -76,15 +73,15 @@ class MatomoTracker {
         this.addCustomInstruction('enableJSErrorTracking');
     }
     loadTrackerScript() {
-        (0, utils_1.loadMatomoScript)(this.options);
+        loadMatomoScript(this.options);
     }
     trackPageView(parameters) {
-        this.track(Object.assign({ data: [enums_1.TrackType.PAGE_VIEW] }, parameters));
+        this.track(Object.assign({ data: [TrackType.PAGE_VIEW] }, parameters));
     }
     trackEvent(_a) {
         var { category, action, name, value } = _a, otherParams = __rest(_a, ["category", "action", "name", "value"]);
         if (category && action) {
-            this.track(Object.assign({ data: [enums_1.TrackType.EVENT, category, action, name, value] }, otherParams));
+            this.track(Object.assign({ data: [TrackType.EVENT, category, action, name, value] }, otherParams));
         }
         else {
             throw new Error('You must specify an action and a category for the event.');
@@ -93,7 +90,7 @@ class MatomoTracker {
     trackSiteSearch(_a) {
         var { keyword, category, count } = _a, otherParams = __rest(_a, ["keyword", "category", "count"]);
         if (keyword) {
-            this.track(Object.assign({ data: [enums_1.TrackType.SEARCH, keyword, category, count] }, otherParams));
+            this.track(Object.assign({ data: [TrackType.SEARCH, keyword, category, count] }, otherParams));
         }
         else {
             throw new Error('You must specify a keyword for the site search.');
@@ -101,7 +98,7 @@ class MatomoTracker {
     }
     addCustomInstruction(name, ...args) {
         if (typeof window !== 'undefined') {
-            (0, utils_1.logTracking)(name, args, !!this.options.debug);
+            logTracking(name, args, !!this.options.debug);
             window._paq.push([name, ...args]);
         }
         return this;
@@ -136,5 +133,4 @@ class MatomoTracker {
         return window.location.href;
     }
 }
-exports.MatomoTracker = MatomoTracker;
 //# sourceMappingURL=MatomoTracker.js.map

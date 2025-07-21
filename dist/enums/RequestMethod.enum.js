@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RequestMethod = void 0;
-var RequestMethod;
+export var RequestMethod;
 (function (RequestMethod) {
     RequestMethod["GET"] = "GET";
     RequestMethod["POST"] = "POST";
-})(RequestMethod || (exports.RequestMethod = RequestMethod = {}));
+})(RequestMethod || (RequestMethod = {}));
 //# sourceMappingURL=RequestMethod.enum.js.map

@@ -1,14 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.loadMatomoScript = loadMatomoScript;
-exports.constructTrackerUrl = constructTrackerUrl;
 function getDefaultFilenames() {
     return {
         jsFileName: 'matomo.js',
         phpFileName: 'matomo.php',
     };
 }
-function loadMatomoScript(options) {
+export function loadMatomoScript(options) {
     var _a;
     const doc = document;
     const scriptElement = doc.createElement('script');
@@ -28,7 +24,7 @@ function loadMatomoScript(options) {
     (_a = scripts === null || scripts === void 0 ? void 0 : scripts.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(scriptElement, scripts);
     return scriptElement;
 }
-function constructTrackerUrl(options) {
+export function constructTrackerUrl(options) {
     const baseUrl = options.trackerBaseUrl;
     const defaultFilenames = getDefaultFilenames();
     const phpFileName = options.matomoPhpFileName && options.matomoPhpFileName !== 'matomo.php'
